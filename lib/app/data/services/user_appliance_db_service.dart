@@ -12,20 +12,5 @@ class UserApplianceDbService extends GetxService {
     _box = await Hive.openBox(USERAPPLIANCEBOX);
   }
 
-  Future<int> addModel(UserApplianceModel model) async {
-    await _box.add(model.toJson());
-    return _box.keyAt(_box.length - 1);
-  }
-
-  Future<void> removeModel(int key) async {
-    await _box.delete(key);
-  }
-
-  Future<void> editModel(int key, UserApplianceModel newModel) async {
-    await _box.put(key, newModel.toJson());
-  }
-
-  UserApplianceModel getModel(int key) {
-    return UserApplianceModel.fromJson(_box.get(key));
-  }
+  Box<Map<String, dynamic>> get box => _box;
 }
