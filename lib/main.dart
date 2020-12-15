@@ -1,5 +1,8 @@
 import 'package:LaLu/app/data/services/appliance_db_service.dart';
 import 'package:LaLu/app/data/services/user_appliance_db_service.dart';
+import 'package:LaLu/app/modules/home/home_binding.dart';
+import 'package:LaLu/app/modules/home/home_page.dart';
+import 'package:LaLu/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
@@ -22,16 +25,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Material App',
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Material App Bar'),
-        ),
-        body: Center(
-          child: Container(
-            child: Text('Hello World'),
-          ),
-        ),
-      ),
+      home: HomePage(),
+      initialBinding: HomeBinding(),
+      getPages: AppPages.pages,
     );
   }
 }
