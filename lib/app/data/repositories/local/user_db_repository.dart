@@ -20,4 +20,10 @@ class UserDbRepository {
   UserApplianceModel getModel(int key) {
     return userApplianceDb.getModel(key);
   }
+
+  Map<dynamic, UserApplianceModel> getAllModels() {
+    return userApplianceDb.getAllModels();
+  }
+
+  bool isEmpty() => userApplianceDb.isEmpty();
 }

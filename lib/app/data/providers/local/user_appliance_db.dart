@@ -22,4 +22,15 @@ class UserApplianceDb {
   UserApplianceModel getModel(int key) {
     return UserApplianceModel.fromJson(_box.get(key));
   }
+
+  Map<dynamic, UserApplianceModel> getAllModels() {
+    var boxToMap = _box.toMap();
+    Map<dynamic, UserApplianceModel> allModels;
+    boxToMap.forEach((key, value) {
+      allModels[key] = UserApplianceModel.fromJson(value);
+    });
+    return allModels;
+  }
+
+  bool isEmpty() => _box.isEmpty;
 }
