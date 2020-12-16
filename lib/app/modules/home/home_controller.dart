@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 class HomeController extends GetxController {
   UserDbRepository _userDbRepository;
+  // The int represents the db key
   RxMap<int, UserApplianceModel> _userAppliances;
 
   @override
@@ -22,17 +23,6 @@ class HomeController extends GetxController {
 
   List<UserApplianceModel> getUserAppliancesValues() =>
       _userAppliances.values.toList();
-
-  Future<void> addAppliance(UserApplianceModel applianceModel) async {
-    var key = await _userDbRepository.addModel(applianceModel);
-    _userAppliances[key] = applianceModel;
-  }
-
-  Future<void> editAppliance(
-      int key, UserApplianceModel newApplianceModel) async {
-    await _userDbRepository.editModel(key, newApplianceModel);
-    _userAppliances[key] = newApplianceModel;
-  }
 
   Future<void> removeAppliance(int key) async {
     await _userDbRepository.removeModel(key);
