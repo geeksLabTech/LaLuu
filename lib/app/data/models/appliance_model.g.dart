@@ -10,11 +10,12 @@ ApplianceModel _$ApplianceModelFromJson(Map<String, dynamic> json) {
   return ApplianceModel(
     name: json['name'] as String,
     consumption: (json['consumption'] as num)?.toDouble(),
-  );
+  )..category = json['category'] as String;
 }
 
 Map<String, dynamic> _$ApplianceModelToJson(ApplianceModel instance) =>
     <String, dynamic>{
       'name': instance.name,
       'consumption': instance.consumption,
+      'category': instance.category,
     };

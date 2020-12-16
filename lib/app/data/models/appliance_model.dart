@@ -5,6 +5,7 @@ part 'appliance_model.g.dart';
 class ApplianceModel {
   String name;
   double consumption;
+  String category;
 
   ApplianceModel({this.name, this.consumption});
 
