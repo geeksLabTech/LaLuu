@@ -6,6 +6,7 @@ part 'user_appliance_model.g.dart';
 class UserApplianceModel {
   ApplianceModel applianceModel;
   Map<String, double> usage;
+  String tag;
 
   UserApplianceModel({this.applianceModel, this.usage});
 
