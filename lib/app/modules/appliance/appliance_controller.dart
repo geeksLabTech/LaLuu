@@ -11,26 +11,27 @@ class ApplianceController extends GetxController {
   int _applianceSelectedKey;
   //int _selectedSearchKey;
   UserApplianceModel _userApplianceModel;
-  RxMap<String, bool> applianceCategories;
+  RxString applianceCategorie;
   RxString applianceName;
   RxDouble applianceConsumption;
   RxString applianceTag;
   RxMap<String, double> applianceUsage;
-  bool isEditing;
+  RxBool isEditing;
 
   @override
   void onInit() {
     //_localApplianceDbRepository = Get.find<LocalApplianceDbRepository>();
     super.onInit();
     _userDbRepository = Get.find<UserDbRepository>();
-    _applianceSelectedKey = Get.find<int>(tag: APPLIANCESELECTEDKEY);
-    if (_applianceSelectedKey == null) {
-      isEditing = false;
+
+    if (!Get.isRegistered<int>(tag: APPLIANCESELECTEDKEY)) {
+      isEditing = false.obs;
       applianceName = ''.obs;
       applianceConsumption = 0.0.obs;
       applianceTag = ''.obs;
     } else {
-      isEditing = true;
+      isEditing = true.obs;
+      _applianceSelectedKey = Get.find(tag: APPLIANCESELECTEDKEY);
       _loadUserAppliance(_applianceSelectedKey);
     }
   }
@@ -42,11 +43,13 @@ class ApplianceController extends GetxController {
 
   Future<void> saveUserAppliance() async {
     _createUserApplianceModel();
-    if (isEditing)
+    if (isEditing.value)
       _editAppliance();
     else {
       _addAppliance();
     }
+    Get.delete<int>(tag: APPLIANCESELECTEDKEY);
+    Get.back();
   }
 
   Future<void> _addAppliance() async {
@@ -71,7 +74,10 @@ class ApplianceController extends GetxController {
     this._userApplianceModel = UserApplianceModel(
         applianceModel: ApplianceModel(
             name: this.applianceName.value,
-            consumption: this.applianceConsumption.value),
-        usage: this.applianceUsage);
+            consumption: this.applianceConsumption.value,
+            category: this.applianceCategorie.value,
+            standbyConsumption: 0.0),
+        usage: this.applianceUsage,
+        tag: this.applianceTag.value);
   }
 }
