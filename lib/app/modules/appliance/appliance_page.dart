@@ -1,3 +1,4 @@
+// import 'dart:html';
 import 'package:LaLu/app/modules/appliance/appliance_controller.dart';
 import 'package:LaLu/app/modules/appliance_search/appliance_search_delegate.dart';
 import 'package:LaLu/app/modules/appliance_search/local_widgets/appliance_search_widget.dart';
@@ -23,13 +24,14 @@ class AppliancePage extends StatelessWidget {
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             applianceController.saveUserAppliance();
+            navigator.pop(context);
           },
           child: Icon(Icons.save),
         ),
         body: Obx(() => ListView(
               children: [
                 TextFormField(
-                  enabled: applianceController.isEditing.value,
+                  enabled: true,
                   decoration: InputDecoration(
                     labelText: 'Nombre',
                   ),
@@ -49,12 +51,26 @@ class AppliancePage extends StatelessWidget {
                   },
                 ),
                 TextFormField(
-                  enabled: applianceController.isEditing.value,
+                  enabled: true,
+                  keyboardType: TextInputType.number,
                   decoration: InputDecoration(
-                    labelText: 'Consumo',
+                    labelText: 'Consumo (W/h)',
                   ),
                   initialValue:
                       applianceController.applianceConsumption.value.toString(),
+                  onChanged: (value) {
+                    //applianceController.applianceTag.value = value;
+                  },
+                ),
+                TextFormField(
+                  enabled: true,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    labelText: 'Consumo en Standby (W/h)',
+                  ),
+                  initialValue: applianceController
+                      .applianceStandbyConsumption.value
+                      .toString(),
                   onChanged: (value) {
                     //applianceController.applianceTag.value = value;
                   },

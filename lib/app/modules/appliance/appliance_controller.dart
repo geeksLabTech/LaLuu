@@ -14,6 +14,7 @@ class ApplianceController extends GetxController {
   RxString applianceCategorie;
   RxString applianceName;
   RxDouble applianceConsumption;
+  RxDouble applianceStandbyConsumption;
   RxString applianceTag;
   RxMap<String, double> applianceUsage;
   RxBool isEditing;
@@ -28,6 +29,7 @@ class ApplianceController extends GetxController {
       isEditing = false.obs;
       applianceName = ''.obs;
       applianceConsumption = 0.0.obs;
+      applianceStandbyConsumption = 0.0.obs;
       applianceTag = ''.obs;
     } else {
       isEditing = true.obs;
@@ -38,7 +40,8 @@ class ApplianceController extends GetxController {
 
   void loadSelectedAppliance(ApplianceModel applianceModel) {
     applianceName.value = applianceModel.name;
-    applianceConsumption.value = applianceModel.consumption;
+    applianceConsumption.value = applianceModel.standbyConsumption;
+    applianceConsumption.value = applianceModel.standbyConsumption;
   }
 
   Future<void> saveUserAppliance() async {
