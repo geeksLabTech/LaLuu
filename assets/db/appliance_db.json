@@ -1724,13 +1724,13 @@
     {
         "name": "Ventilador de Mesa",
         "category": "Refrigeracion/Calefaccion",
-        "consumption": "17,5",
+        "consumption": "17.5",
         "standbyConsumption": 0
     },
     {
         "name": "Ventilador de Pared",
         "category": "Refrigeracion/Calefaccion",
-        "consumption": "52,5",
+        "consumption": "52.5",
         "standbyConsumption": 0
     },
     {
@@ -1838,7 +1838,7 @@
     {
         "name": "WiFi Booster",
         "category": "Computadoras/Consolas",
-        "consumption": "1,5",
+        "consumption": "1.5",
         "standbyConsumption": 0
     },
     {

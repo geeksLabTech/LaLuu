@@ -9,7 +9,7 @@ part of 'appliance_model.dart';
 ApplianceModel _$ApplianceModelFromJson(Map<String, dynamic> json) {
   return ApplianceModel(
     name: json['name'] as String,
-    consumption: (json['consumption'] as num)?.toDouble(),
+    consumption: (double.parse(json['consumption']))?.toDouble(),
     standbyConsumption: (json['standbyConsumption'] as num)?.toDouble(),
     category: json['category'] as String,
   );
