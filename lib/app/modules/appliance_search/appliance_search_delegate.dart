@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ApplianceSearchDelegate extends SearchDelegate {
-  final applianceSearchController = Get.find<ApplianceSearchController>();
-
   @override
   List<Widget> buildActions(BuildContext context) {
     return [
@@ -33,12 +31,12 @@ class ApplianceSearchDelegate extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
-    // TODO: implement buildResults
-    throw UnimplementedError();
+    return ApplianceSearchWidget();
   }
 
   @override
   Widget buildSuggestions(BuildContext context) {
+    final applianceSearchController = Get.find<ApplianceSearchController>();
     applianceSearchController.search(query);
     //applianceSearchController.closeSearchFunction = close;
     return ApplianceSearchWidget();

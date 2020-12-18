@@ -13,17 +13,17 @@ class ApplianceSearchController extends GetxController {
   void onInit() {
     super.onInit();
     applianceController = Get.find<ApplianceController>();
+    _localApplianceDbRepository = Get.find<LocalApplianceDbRepository>();
     allApplianceModels =
         _localApplianceDbRepository.localApplianceDb.getModels();
-    searchedApplianceModelList = [].obs;
+    searchedApplianceModelList = RxList<ApplianceModel>([]);
     searchedApplianceModelList.addAll(allApplianceModels);
   }
 
   void search(String query) {
-    Iterable<ApplianceModel> appliances =
-        searchedApplianceModelList.where((appliance) {
+    Iterable<ApplianceModel> appliances = allApplianceModels.where((appliance) {
       return appliance.name.toLowerCase().contains(query.toLowerCase());
     });
-    searchedApplianceModelList = appliances.toList();
+    searchedApplianceModelList = appliances.toList().obs;
   }
 }

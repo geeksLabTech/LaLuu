@@ -3,10 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ApplianceSearchWidget extends StatelessWidget {
-  final applianceSearchController = Get.find<ApplianceSearchController>();
-
   @override
   Widget build(BuildContext context) {
+    final applianceSearchController = Get.find<ApplianceSearchController>();
     return Obx(() => ListView.builder(
         itemCount: applianceSearchController.searchedApplianceModelList.length,
         itemBuilder: (context, index) => ListTile(
