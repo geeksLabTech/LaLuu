@@ -26,35 +26,41 @@ class AppliancePage extends StatelessWidget {
           },
           child: Icon(Icons.save),
         ),
-        body: Obx(() => ListView(children: [
-              TextFormField(
-                enabled: applianceController.isEditing.value,
-                decoration: InputDecoration(labelText: 'Nombre'),
-                initialValue: applianceController.applianceName.value,
-                onChanged: (value) {
-                  //applianceController.applianceTag.value = value;
-                },
-              ),
-              TextFormField(
-                enabled: true,
-                decoration: InputDecoration(
-                    labelText: 'Etiqueta', hintText: 'Ejemplo: TV de la sala'),
-                initialValue: applianceController.applianceTag.value,
-                onChanged: (value) {
-                  //applianceController.applianceTag.value = value;
-                },
-              ),
-              TextFormField(
-                enabled: applianceController.isEditing.value,
-                decoration: InputDecoration(
-                  labelText: 'Consumo',
+        body: Obx(() => ListView(
+              children: [
+                TextFormField(
+                  enabled: applianceController.isEditing.value,
+                  decoration: InputDecoration(
+                    labelText: 'Nombre',
+                  ),
+                  initialValue: applianceController.applianceName.value,
+                  onChanged: (value) {
+                    //applianceController.applianceTag.value = value;
+                  },
                 ),
-                initialValue:
-                    applianceController.applianceConsumption.value.toString(),
-                onChanged: (value) {
-                  //applianceController.applianceTag.value = value;
-                },
-              )
-            ])));
+                TextFormField(
+                  enabled: true,
+                  decoration: InputDecoration(
+                      labelText: 'Etiqueta',
+                      hintText: 'Ejemplo: TV de la sala'),
+                  initialValue: applianceController.applianceTag.value,
+                  onChanged: (value) {
+                    //applianceController.applianceTag.value = value;
+                  },
+                ),
+                TextFormField(
+                  enabled: applianceController.isEditing.value,
+                  decoration: InputDecoration(
+                    labelText: 'Consumo',
+                  ),
+                  initialValue:
+                      applianceController.applianceConsumption.value.toString(),
+                  onChanged: (value) {
+                    //applianceController.applianceTag.value = value;
+                  },
+                )
+              ],
+              padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
+            )));
   }
 }
