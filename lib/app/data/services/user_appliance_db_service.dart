@@ -6,10 +6,10 @@ import 'package:hive/hive.dart';
 class UserApplianceDbService extends GetxService {
   Box<Map<String, dynamic>> _box;
 
-  @override
-  void onInit() async {
-    super.onInit();
+  Future<UserApplianceDbService> init() async {
     _box = await Hive.openBox(USERAPPLIANCEBOX);
+    return this;
+    //print('akiiii');
   }
 
   Box<Map<String, dynamic>> get box => _box;

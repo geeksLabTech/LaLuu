@@ -3,7 +3,11 @@ import 'package:LaLu/app/data/providers/local/user_appliance_db.dart';
 import 'package:get/get.dart';
 
 class UserDbRepository {
-  final userApplianceDb = Get.find<UserApplianceDb>();
+  UserApplianceDb userApplianceDb;
+
+  UserDbRepository() {
+    userApplianceDb = Get.find<UserApplianceDb>();
+  }
 
   Future<int> addModel(UserApplianceModel model) async {
     return await userApplianceDb.addModel(model);
@@ -26,4 +30,8 @@ class UserDbRepository {
   }
 
   bool isEmpty() => userApplianceDb.isEmpty();
+
+  Future<void> delete() async {
+    userApplianceDb.delete();
+  }
 }

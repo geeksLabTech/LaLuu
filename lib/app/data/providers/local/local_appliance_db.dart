@@ -4,7 +4,13 @@ import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 
 class LocalApplianceDb {
-  Box<Map<String, dynamic>> _box = Get.find<ApplianceDbService>().box;
+  Box<Map<String, dynamic>> _box;
+
+  LocalApplianceDb() {
+    _box = Get.find<ApplianceDbService>().box;
+    print('box');
+    print(_box);
+  }
 
   Future<void> _addNewModel(ApplianceModel newModel) async {
     await _box.add(newModel.toJson());
@@ -19,5 +25,9 @@ class LocalApplianceDb {
     newModels.forEach((model) {
       _addNewModel(model);
     });
+  }
+
+  Future<void> delete() async {
+    await _box.deleteFromDisk();
   }
 }

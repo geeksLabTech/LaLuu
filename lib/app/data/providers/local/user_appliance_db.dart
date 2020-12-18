@@ -4,7 +4,14 @@ import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 
 class UserApplianceDb {
-  Box<Map<String, dynamic>> _box = Get.find<UserApplianceDbService>().box;
+  Box<Map<String, dynamic>> _box;
+
+  UserApplianceDb() {
+    var userApplianceDbService = Get.find<UserApplianceDbService>();
+    _box = userApplianceDbService.box;
+    //_box = Get.find<UserApplianceDbService>().box;
+    print(_box);
+  }
 
   Future<int> addModel(UserApplianceModel model) async {
     await _box.add(model.toJson());
@@ -33,4 +40,8 @@ class UserApplianceDb {
   }
 
   bool isEmpty() => _box.isEmpty;
+
+  Future<void> delete() async {
+    await _box.deleteFromDisk();
+  }
 }

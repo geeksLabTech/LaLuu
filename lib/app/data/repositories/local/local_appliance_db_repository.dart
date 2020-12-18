@@ -3,13 +3,22 @@ import 'package:LaLu/app/data/providers/local/local_appliance_db.dart';
 import 'package:get/get.dart';
 
 class LocalApplianceDbRepository {
-  final localApplianceDb = Get.find<LocalApplianceDb>();
+  LocalApplianceDb localApplianceDb;
 
+  LocalApplianceDbRepository() {
+    localApplianceDb = Get.find<LocalApplianceDb>();
+    print("localAppliance db");
+    print(localApplianceDb);
+  }
   List<ApplianceModel> getModels() {
     return localApplianceDb.getModels();
   }
 
   Future<void> updateModels(List<ApplianceModel> newModels) async {
     await localApplianceDb.updateModels(newModels);
+  }
+
+  Future<void> delete() async {
+    await localApplianceDb.delete();
   }
 }
