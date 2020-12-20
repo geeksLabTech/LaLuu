@@ -16,7 +16,7 @@ class ApplianceController extends GetxController {
   RxDouble applianceStandbyConsumption;
   RxString applianceTag;
   RxMap<String, double> applianceUsage = new RxMap();
-  RxBool applianceStandby;
+  RxBool applianceStandby = new RxBool();
   RxBool isEditing;
 
   @override
@@ -31,6 +31,7 @@ class ApplianceController extends GetxController {
       applianceConsumption = 0.0.obs;
       applianceStandbyConsumption = 0.0.obs;
       applianceTag = ''.obs;
+      applianceStandby = false.obs;
     } else {
       isEditing = true.obs;
       _applianceSelectedKey = Get.find(tag: APPLIANCESELECTEDKEY);

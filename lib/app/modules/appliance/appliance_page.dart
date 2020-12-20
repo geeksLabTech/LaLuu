@@ -81,7 +81,16 @@ class _AppliancePageState extends State<AppliancePage> {
                         double.parse(value);
                   },
                 ),
-                Text("Cantidad de Horas por dia"),
+                Container(
+                  margin: EdgeInsets.all(2),
+                  child: Text(
+                    "Cantidad de Horas por dia de la semana",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                    ),
+                  ),
+                ),
                 Row(
                   children: [
                     generateDaysInputs(applianceController, "Lun"),
@@ -93,15 +102,19 @@ class _AppliancePageState extends State<AppliancePage> {
                     generateDaysInputs(applianceController, "Dom"),
                   ],
                 ),
-                Text("Standby"),
-                Checkbox(
-                    value: getStandbyValue(applianceController),
-                    onChanged: (bool value) {
-                      setState(() {
-                        applianceController.applianceStandby.value =
-                            !applianceController.applianceStandby.value;
-                      });
-                    })
+                Row(
+                  children: [
+                    Checkbox(
+                        value: getStandbyValue(applianceController),
+                        onChanged: (bool value) {
+                          setState(() {
+                            applianceController.applianceStandby.value =
+                                !applianceController.applianceStandby.value;
+                          });
+                        }),
+                    Text("Se queda en Standby cuando no se usa"),
+                  ],
+                )
               ],
               padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
             )));
@@ -146,6 +159,7 @@ class _AppliancePageState extends State<AppliancePage> {
   }
 
   getUsageValue(ApplianceController applianceController, String day) {
+    print(applianceController.applianceStandby);
     if (applianceController.applianceUsage[day] == null) {
       applianceController.applianceUsage[day] = 0.0;
     }
