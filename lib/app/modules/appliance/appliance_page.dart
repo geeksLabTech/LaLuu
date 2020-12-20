@@ -137,9 +137,4 @@ class _AppliancePageState extends State<AppliancePage> {
     }
     return applianceController.applianceStandby[day];
   }
-
-  // getStandbyValue(bool applianceStandby) {
-  //   if (applianceStandby == null) applianceStandby = false;
-  //   return applianceStandby;
-  // }
 }
