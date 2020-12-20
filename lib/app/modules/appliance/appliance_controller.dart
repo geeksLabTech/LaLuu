@@ -16,7 +16,8 @@ class ApplianceController extends GetxController {
   RxDouble applianceConsumption;
   RxDouble applianceStandbyConsumption;
   RxString applianceTag;
-  RxMap<String, double> applianceUsage;
+  RxMap<String, double> applianceUsage = new RxMap();
+  RxMap<String, bool> applianceStandby = new RxMap();
   RxBool isEditing;
 
   @override
