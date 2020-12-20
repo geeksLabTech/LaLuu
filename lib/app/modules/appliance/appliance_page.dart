@@ -28,7 +28,7 @@ class _AppliancePageState extends State<AppliancePage> {
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             applianceController.saveUserAppliance();
-            navigator.pop(context);
+            //navigator.pop(context);
           },
           child: Icon(Icons.save),
         ),
@@ -159,7 +159,7 @@ class _AppliancePageState extends State<AppliancePage> {
   }
 
   getUsageValue(ApplianceController applianceController, String day) {
-    print(applianceController.applianceStandby);
+    //print(applianceController.applianceStandby);
     if (applianceController.applianceUsage[day] == null) {
       applianceController.applianceUsage[day] = 0.0;
     }
