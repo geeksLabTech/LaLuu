@@ -1,6 +1,5 @@
 import 'package:LaLu/app/data/models/appliance_model.dart';
 import 'package:LaLu/app/data/models/user_appliance_model.dart';
-import 'package:LaLu/app/data/repositories/local/local_appliance_db_repository.dart';
 import 'package:LaLu/app/data/repositories/local/user_db_repository.dart';
 import 'package:LaLu/app/utils/constants.dart';
 import 'package:get/get.dart';
@@ -17,7 +16,7 @@ class ApplianceController extends GetxController {
   RxDouble applianceStandbyConsumption;
   RxString applianceTag;
   RxMap<String, double> applianceUsage = new RxMap();
-  RxMap<String, bool> applianceStandby = new RxMap();
+  RxBool applianceStandby;
   RxBool isEditing;
 
   @override

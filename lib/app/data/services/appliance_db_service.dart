@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:LaLu/app/data/models/appliance_model.dart';
 import 'package:LaLu/app/utils/constants.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';

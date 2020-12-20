@@ -1,7 +1,6 @@
 // import 'dart:html';
 import 'package:LaLu/app/modules/appliance/appliance_controller.dart';
 import 'package:LaLu/app/modules/appliance_search/appliance_search_delegate.dart';
-import 'package:LaLu/app/modules/appliance_search/local_widgets/appliance_search_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 //import "package:velocity_x/velocity_x.dart";
@@ -42,7 +41,7 @@ class _AppliancePageState extends State<AppliancePage> {
                   ),
                   initialValue: applianceController.applianceName.value,
                   onChanged: (value) {
-                    //applianceController.applianceTag.value = value;
+                    applianceController.applianceName.value = value;
                   },
                 ),
                 TextFormField(
@@ -52,7 +51,7 @@ class _AppliancePageState extends State<AppliancePage> {
                       hintText: 'Ejemplo: TV de la sala'),
                   initialValue: applianceController.applianceTag.value,
                   onChanged: (value) {
-                    //applianceController.applianceTag.value = value;
+                    applianceController.applianceTag.value = value;
                   },
                 ),
                 TextFormField(
@@ -64,7 +63,8 @@ class _AppliancePageState extends State<AppliancePage> {
                   initialValue:
                       applianceController.applianceConsumption.value.toString(),
                   onChanged: (value) {
-                    //applianceController.applianceTag.value = value;
+                    applianceController.applianceConsumption.value =
+                        double.parse(value);
                   },
                 ),
                 TextFormField(
@@ -77,9 +77,11 @@ class _AppliancePageState extends State<AppliancePage> {
                       .applianceStandbyConsumption.value
                       .toString(),
                   onChanged: (value) {
-                    //applianceController.applianceTag.value = value;
+                    applianceController.applianceStandbyConsumption.value =
+                        double.parse(value);
                   },
                 ),
+                Text("Cantidad de Horas por dia"),
                 Row(
                   children: [
                     generateDaysInputs(applianceController, "Lun"),
@@ -90,7 +92,16 @@ class _AppliancePageState extends State<AppliancePage> {
                     generateDaysInputs(applianceController, "Sab"),
                     generateDaysInputs(applianceController, "Dom"),
                   ],
-                )
+                ),
+                Text("Standby"),
+                Checkbox(
+                    value: getStandbyValue(applianceController),
+                    onChanged: (bool value) {
+                      setState(() {
+                        applianceController.applianceStandby.value =
+                            !applianceController.applianceStandby.value;
+                      });
+                    })
               ],
               padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
             )));
@@ -101,40 +112,43 @@ class _AppliancePageState extends State<AppliancePage> {
   }
 
   generateDaysInputs(ApplianceController applianceController, String day) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Container(
-          height: 10,
-        ),
-        Text(day),
-        // TextFormField(
-        //   enabled: true,
-        //   keyboardType: TextInputType.number,
-        //   decoration: InputDecoration(
-        //     labelText: '',
-        //   ),
-        //   initialValue: applianceController.applianceUsage[day].toString(),
-        //   onChanged: (value) {
-        //     //applianceController.applianceTag.value = value;
-        //   },
-        // ),
-        Checkbox(
-            value: getStandbyValue(applianceController, day),
-            onChanged: (bool value) {
-              setState(() {
-                applianceController.applianceStandby[day] =
-                    !applianceController.applianceStandby[day];
-              });
-            })
-      ],
+    return Container(
+      width: MediaQuery.of(context).size.width / 7 - 10,
+      margin: EdgeInsets.all(2),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            height: 10,
+          ),
+          Text(day),
+          TextFormField(
+            enabled: true,
+            keyboardType: TextInputType.number,
+            decoration: InputDecoration(
+              labelText: '',
+            ),
+            initialValue: getUsageValue(applianceController, day),
+            onChanged: (value) {
+              applianceController.applianceUsage[day] = double.parse(value);
+            },
+          ),
+        ],
+      ),
     );
   }
 
-  getStandbyValue(ApplianceController applianceController, String day) {
-    if (applianceController.applianceStandby[day] == null) {
-      applianceController.applianceStandby[day] = false;
+  getStandbyValue(ApplianceController applianceController) {
+    if (applianceController.applianceStandby.value == null) {
+      applianceController.applianceStandby.value = false;
     }
-    return applianceController.applianceStandby[day];
+    return applianceController.applianceStandby.value;
+  }
+
+  getUsageValue(ApplianceController applianceController, String day) {
+    if (applianceController.applianceUsage[day] == null) {
+      applianceController.applianceUsage[day] = 0.0;
+    }
+    return applianceController.applianceUsage[day].toString();
   }
 }
