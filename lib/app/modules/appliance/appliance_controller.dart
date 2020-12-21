@@ -56,7 +56,7 @@ class ApplianceController extends GetxController {
       await _addAppliance();
     }
     var homeController = Get.find<HomeController>();
-    homeController.updateAppliacesList();
+    homeController.onInit();
     Get.delete<int>(tag: APPLIANCESELECTEDKEY);
     Get.back();
   }
