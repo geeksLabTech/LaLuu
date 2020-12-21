@@ -63,8 +63,6 @@ class ApplianceController extends GetxController {
 
   Future<void> _addAppliance() async {
     await _userDbRepository.addModel(this._userApplianceModel);
-    // print(_userDbRepository.getAllModels().length);
-    print(_userDbRepository.isEmpty());
     //_userAppliances[key] = applianceModel;
   }
 
@@ -83,12 +81,43 @@ class ApplianceController extends GetxController {
 
   void _createUserApplianceModel() {
     this._userApplianceModel = UserApplianceModel(
-        applianceModel: ApplianceModel(
-            name: this.applianceName.value,
-            consumption: this.applianceConsumption.value,
-            category: this.applianceCategorie.value,
-            standbyConsumption: this.applianceStandbyConsumption.value),
-        usage: this.applianceUsage,
-        tag: this.applianceTag.value);
+      applianceModel: ApplianceModel(
+          name: this.applianceName.value,
+          consumption: this.applianceConsumption.value,
+          category: this.applianceCategorie.value,
+          standbyConsumption: this.applianceStandbyConsumption.value),
+      usage: this.applianceUsage,
+      tag: this.applianceTag.value,
+
+      //  this returning null idk
+      consumptionOn: getOnConsumpiton(this),
+      consumptionStandby: getStandbyConsumption(this),
+      consumptionTotal: getOnConsumpiton(this) + getStandbyConsumption(this),
+    );
+  }
+
+  double getOnConsumpiton(ApplianceController applianceController) {
+    double applianceConsumption = 0.0;
+
+    for (var i in applianceController.applianceUsage.keys) {
+      applianceConsumption += applianceController.applianceUsage[i] *
+          applianceController.applianceConsumption.value;
+    }
+
+    return applianceConsumption;
+  }
+
+  double getStandbyConsumption(ApplianceController applianceController) {
+    double applianceConsumption = 0.0;
+
+    if (!applianceController.applianceStandby.value)
+      return applianceConsumption;
+
+    for (var i in applianceController.applianceUsage.keys) {
+      applianceConsumption += (24 - applianceController.applianceUsage[i]) *
+          applianceController.applianceStandbyConsumption.value;
+    }
+
+    return applianceConsumption;
   }
 }

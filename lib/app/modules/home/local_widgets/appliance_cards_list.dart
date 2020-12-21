@@ -85,6 +85,20 @@ class ApplianceCardsList extends StatelessWidget {
             Row(
               children: [
                 Spacer(),
+                Text("ON: "),
+                Text(e.consumptionOn.toString() + " W"),
+                Spacer(flex: 3),
+                Text("Standby: "),
+                Text(e.consumptionStandby.toString() + " W"),
+                Spacer(flex: 3),
+                Text("Total: "),
+                Text(e.consumptionTotal.toString() + " W"),
+                Spacer()
+              ],
+            ),
+            Row(
+              children: [
+                Spacer(),
                 generateDays(e),
                 Spacer(),
               ],
