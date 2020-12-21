@@ -5,12 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 //import "package:velocity_x/velocity_x.dart";
 
-class AppliancePage extends StatefulWidget {
-  @override
-  _AppliancePageState createState() => _AppliancePageState();
-}
-
-class _AppliancePageState extends State<AppliancePage> {
+class AppliancePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final applianceController = Get.find<ApplianceController>();
@@ -93,13 +88,13 @@ class _AppliancePageState extends State<AppliancePage> {
                 ),
                 Row(
                   children: [
-                    generateDaysInputs(applianceController, "Lun"),
-                    generateDaysInputs(applianceController, "Mar"),
-                    generateDaysInputs(applianceController, "Mie"),
-                    generateDaysInputs(applianceController, "Jue"),
-                    generateDaysInputs(applianceController, "Vie"),
-                    generateDaysInputs(applianceController, "Sab"),
-                    generateDaysInputs(applianceController, "Dom"),
+                    generateDaysInputs(applianceController, "Lun", context),
+                    generateDaysInputs(applianceController, "Mar", context),
+                    generateDaysInputs(applianceController, "Mie", context),
+                    generateDaysInputs(applianceController, "Jue", context),
+                    generateDaysInputs(applianceController, "Vie", context),
+                    generateDaysInputs(applianceController, "Sab", context),
+                    generateDaysInputs(applianceController, "Dom", context),
                   ],
                 ),
                 Row(
@@ -107,10 +102,8 @@ class _AppliancePageState extends State<AppliancePage> {
                     Checkbox(
                         value: getStandbyValue(applianceController),
                         onChanged: (bool value) {
-                          setState(() {
-                            applianceController.applianceStandby.value =
-                                !applianceController.applianceStandby.value;
-                          });
+                          applianceController.applianceStandby.value =
+                              !applianceController.applianceStandby.value;
                         }),
                     Text("Se queda en Standby cuando no se usa"),
                   ],
@@ -124,7 +117,8 @@ class _AppliancePageState extends State<AppliancePage> {
     print(day);
   }
 
-  generateDaysInputs(ApplianceController applianceController, String day) {
+  generateDaysInputs(ApplianceController applianceController, String day,
+      BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width / 7 - 10,
       margin: EdgeInsets.only(bottom: 2, top: 2, left: 3, right: 2),
