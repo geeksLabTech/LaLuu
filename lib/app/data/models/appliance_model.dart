@@ -13,7 +13,11 @@ class ApplianceModel {
       {@required this.name,
       @required this.consumption,
       @required this.standbyConsumption,
-      @required this.category});
+      @required this.category})
+      : assert(name != null &&
+            consumption != null &&
+            standbyConsumption != null &&
+            category != null);
 
   factory ApplianceModel.fromJson(Map<String, dynamic> json) =>
       _$ApplianceModelFromJson(json);

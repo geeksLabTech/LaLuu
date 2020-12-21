@@ -20,7 +20,12 @@ class UserApplianceModel {
     this.consumptionOn,
     this.consumptionStandby,
     this.consumptionTotal,
-  });
+  }) : assert(consumptionOn != null &&
+            consumptionStandby != null &&
+            consumptionTotal != null &&
+            applianceModel != null &&
+            usage != null &&
+            tag != null);
 
   factory UserApplianceModel.fromJson(Map<String, dynamic> json) =>
       _$UserApplianceModelFromJson(json);

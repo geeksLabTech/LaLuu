@@ -104,7 +104,7 @@ class ApplianceController extends GetxController {
           applianceController.applianceConsumption.value;
     }
 
-    return applianceConsumption;
+    return double.parse(applianceConsumption.toStringAsFixed(3));
   }
 
   double getStandbyConsumption(ApplianceController applianceController) {
@@ -118,6 +118,6 @@ class ApplianceController extends GetxController {
           applianceController.applianceStandbyConsumption.value;
     }
 
-    return applianceConsumption;
+    return double.parse(applianceConsumption.toStringAsFixed(3));
   }
 }
