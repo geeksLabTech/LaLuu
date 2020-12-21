@@ -113,10 +113,6 @@ class AppliancePage extends StatelessWidget {
             )));
   }
 
-  setStandby(String day) {
-    print(day);
-  }
-
   generateDaysInputs(ApplianceController applianceController, String day,
       BuildContext context) {
     return Container(

@@ -8,8 +8,6 @@ class ApplianceCardsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final homeController = Get.find<HomeController>();
-    print(homeController.userAppliances);
-    //final userAppliances = homeController.getUserAppliancesValues();
     return Obx(() => ListView(
         children: homeController.userAppliances.values
             .map((e) => InkWell(
@@ -85,13 +83,28 @@ class ApplianceCardsList extends StatelessWidget {
             Row(
               children: [
                 Spacer(),
-                Text("ON: "),
+                Text(
+                  "ON: ",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
                 Text(e.consumptionOn.toString() + " W"),
                 Spacer(flex: 3),
-                Text("Standby: "),
+                Text(
+                  "Standby: ",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
                 Text(e.consumptionStandby.toString() + " W"),
                 Spacer(flex: 3),
-                Text("Total: "),
+                Text(
+                  "Total: ",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
                 Text(e.consumptionTotal.toString() + " W"),
                 Spacer()
               ],
