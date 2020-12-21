@@ -1,0 +1,62 @@
+[
+    {
+        "name": "Abrelatas 150W",
+        "category": "Cocina",
+        "consumption": 150.0,
+        "standbyConsumption": 0
+    },
+    {
+        "name": "Afeitadora",
+        "category": "Accesorios",
+        "consumption": 15.0,
+        "standbyConsumption": 0
+    },
+    {
+        "name": "Aire Acondicionado Central ",
+        "category": "Refrigeracion/Calefaccion",
+        "consumption": 2500,
+        "standbyConsumption": 0
+    },
+    {
+        "name": "Aire Acondicionado Central - 1 Ton ",
+        "category": "Refrigeracion/Calefaccion",
+        "consumption": 3250,
+        "standbyConsumption": 2
+    },
+    {
+        "name": "Aire Acondicionado Central - 2 Ton ",
+        "category": "Refrigeracion/Calefaccion",
+        "consumption": 3800,
+        "standbyConsumption": 2
+    },
+    {
+        "name": "Aire Acondicionado con Sistema Evaporativo",
+        "category": "Refrigeracion/Calefaccion",
+        "consumption": 2600,
+        "standbyConsumption": 0
+    },
+    {
+        "name": "Aire acondicionado de 1 ïż½ Ton",
+        "category": "Refrigeracion/Calefaccion",
+        "consumption": 2800,
+        "standbyConsumption": 2
+    },
+    {
+        "name": "Aire acondicionado de 1 ïż½ Ton - Inverter",
+        "category": "Refrigeracion/Calefaccion",
+        "consumption": 1820,
+        "standbyConsumption": 0.9
+    },
+    {
+        "name": "Aire acondicionado de 1 Ton",
+        "category": "Refrigeracion/Calefaccion",
+        "consumption": 2150,
+        "standbyConsumption": 2
+    },
+    {
+        "name": "Aire acondicionado de 1 Ton - Inverter",
+        "category": "Refrigeracion/Calefaccion",
+        "consumption": 1397,
+        "standbyConsumption": 0.9
+    }
+]

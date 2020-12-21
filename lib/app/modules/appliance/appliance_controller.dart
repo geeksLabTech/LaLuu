@@ -15,8 +15,8 @@ class ApplianceController extends GetxController {
   RxDouble applianceConsumption;
   RxDouble applianceStandbyConsumption;
   RxString applianceTag;
-  RxMap<String, double> applianceUsage = new RxMap();
-  RxBool applianceStandby = new RxBool();
+  RxMap<String, double> applianceUsage;
+  RxBool applianceStandby;
   RxBool isEditing;
 
   @override
@@ -31,7 +31,9 @@ class ApplianceController extends GetxController {
       applianceConsumption = 0.0.obs;
       applianceStandbyConsumption = 0.0.obs;
       applianceTag = ''.obs;
+      applianceCategorie = ''.obs;
       applianceStandby = false.obs;
+      applianceUsage = RxMap<String, double>();
     } else {
       isEditing = true.obs;
       _applianceSelectedKey = Get.find(tag: APPLIANCESELECTEDKEY);
@@ -47,10 +49,10 @@ class ApplianceController extends GetxController {
 
   Future<void> saveUserAppliance() async {
     _createUserApplianceModel();
-    if (isEditing.value) {
-      _editAppliance();
-    } else {
-      _addAppliance();
+    if (isEditing.value)
+      await _editAppliance();
+    else {
+      await _addAppliance();
     }
     Get.delete<int>(tag: APPLIANCESELECTEDKEY);
     Get.back();

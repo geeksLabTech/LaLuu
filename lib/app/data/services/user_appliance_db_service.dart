@@ -6,6 +6,8 @@ class UserApplianceDbService extends GetxService {
   Box<Map<String, dynamic>> _box;
 
   Future<UserApplianceDbService> init() async {
+    if (await Hive.boxExists(USERAPPLIANCEBOX))
+      Hive.deleteBoxFromDisk(USERAPPLIANCEBOX);
     _box = await Hive.openBox(USERAPPLIANCEBOX);
     return this;
     //print('akiiii');
