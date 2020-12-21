@@ -15,7 +15,8 @@ class HomeController extends GetxController {
     if (_userDbRepository.isEmpty()) {
       userAppliances = RxMap<dynamic, UserApplianceModel>({});
     } else {
-      userAppliances = _userDbRepository.getAllModels();
+      // userAppliances = _userDbRepository.getAllModels();
+      updateAppliacesList();
     }
   }
 
