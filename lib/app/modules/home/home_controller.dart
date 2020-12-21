@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 class HomeController extends GetxController {
   UserDbRepository _userDbRepository;
   // The int represents the db key
-  RxMap<int, UserApplianceModel> userAppliances;
+  RxMap<dynamic, UserApplianceModel> userAppliances;
 
   @override
   void onInit() {
@@ -13,10 +13,16 @@ class HomeController extends GetxController {
     _userDbRepository = Get.find<UserDbRepository>();
 
     if (_userDbRepository.isEmpty()) {
-      userAppliances = RxMap<int, UserApplianceModel>({});
+      userAppliances = RxMap<dynamic, UserApplianceModel>({});
     } else {
       userAppliances = _userDbRepository.getAllModels();
     }
+  }
+
+  void updateAppliacesList() {
+    _userDbRepository = Get.find<UserDbRepository>();
+
+    userAppliances = _userDbRepository.getAllModels().obs;
   }
 
   int getUserAppliancesLenght() => userAppliances.values.length;

@@ -1,6 +1,7 @@
 import 'package:LaLu/app/data/models/appliance_model.dart';
 import 'package:LaLu/app/data/models/user_appliance_model.dart';
 import 'package:LaLu/app/data/repositories/local/user_db_repository.dart';
+import 'package:LaLu/app/modules/home/home_controller.dart';
 import 'package:LaLu/app/utils/constants.dart';
 import 'package:get/get.dart';
 
@@ -54,12 +55,16 @@ class ApplianceController extends GetxController {
     else {
       await _addAppliance();
     }
+    var homeController = Get.find<HomeController>();
+    homeController.updateAppliacesList();
     Get.delete<int>(tag: APPLIANCESELECTEDKEY);
     Get.back();
   }
 
   Future<void> _addAppliance() async {
     await _userDbRepository.addModel(this._userApplianceModel);
+    // print(_userDbRepository.getAllModels().length);
+    print(_userDbRepository.isEmpty());
     //_userAppliances[key] = applianceModel;
   }
 
