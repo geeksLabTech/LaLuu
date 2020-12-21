@@ -1,6 +1,7 @@
 // import 'dart:html';
 import 'package:LaLu/app/modules/appliance/appliance_controller.dart';
 import 'package:LaLu/app/modules/appliance_search/appliance_search_delegate.dart';
+import 'package:LaLu/app/modules/home/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 //import "package:velocity_x/velocity_x.dart";
