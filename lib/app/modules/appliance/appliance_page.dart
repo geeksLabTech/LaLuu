@@ -127,7 +127,7 @@ class _AppliancePageState extends State<AppliancePage> {
   generateDaysInputs(ApplianceController applianceController, String day) {
     return Container(
       width: MediaQuery.of(context).size.width / 7 - 10,
-      margin: EdgeInsets.all(2),
+      margin: EdgeInsets.only(bottom: 2, top: 2, left: 3, right: 2),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

@@ -47,9 +47,9 @@ class ApplianceController extends GetxController {
 
   Future<void> saveUserAppliance() async {
     _createUserApplianceModel();
-    if (isEditing.value)
+    if (isEditing.value) {
       _editAppliance();
-    else {
+    } else {
       _addAppliance();
     }
     Get.delete<int>(tag: APPLIANCESELECTEDKEY);
@@ -80,7 +80,7 @@ class ApplianceController extends GetxController {
             name: this.applianceName.value,
             consumption: this.applianceConsumption.value,
             category: this.applianceCategorie.value,
-            standbyConsumption: 0.0),
+            standbyConsumption: this.applianceStandbyConsumption.value),
         usage: this.applianceUsage,
         tag: this.applianceTag.value);
   }
