@@ -25,50 +25,72 @@ class ApplianceCardsList extends StatelessWidget {
     return Card(
       color: Colors.white70,
       elevation: 6.0,
-      child: Column(
-        children: [
-          Row(
-            children: [
-              Text(
-                "Equipo: ",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
+      margin: EdgeInsets.all(6),
+      child: Container(
+        padding: EdgeInsets.all(4),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Spacer(),
+                Text(
+                  "Equipo: ",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-              Text(e.applianceModel.name),
-              Text(
-                " Etiqueta: ",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
+                Text(e.applianceModel.name),
+                Spacer()
+              ],
+            ),
+            Row(
+              children: [
+                Spacer(),
+                Text(
+                  "Etiqueta: ",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-              Text(e.tag),
-            ],
-          ),
-          Row(
-            children: [
-              Text(
-                "Consumo Encendido: ",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
+                Text(e.tag),
+                Spacer(),
+              ],
+            ),
+            Row(
+              children: [
+                Spacer(),
+                Text(
+                  "Consumo Encendido: ",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-              Text(e.applianceModel.consumption.toString() + 'W/h'),
-              Text(
-                " Consumo en Standby: ",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
+                Text(e.applianceModel.consumption.toString() + ' W/h'),
+                Spacer(),
+              ],
+            ),
+            Row(
+              children: [
+                Spacer(),
+                Text(
+                  "Consumo en Standby: ",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-              Text(e.applianceModel.standbyConsumption.toString() + 'W/h'),
-            ],
-          ),
-          Row(
-            children: [
-              generateDays(e),
-            ],
-          ),
-        ],
+                Text(e.applianceModel.standbyConsumption.toString() + ' W/h'),
+                Spacer(),
+              ],
+            ),
+            Row(
+              children: [
+                Spacer(),
+                generateDays(e),
+                Spacer(),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
