@@ -32,14 +32,23 @@ generatePieStandbyON() {
   standbyValue = standbyValue / totalValue * 100;
 
   return Card(
-    child: PieChart(
-      PieChartData(
-          borderData: FlBorderData(
-            show: false,
-          ),
-          sectionsSpace: 0,
-          centerSpaceRadius: 40,
-          sections: showingSections(onValue, standbyValue)),
+    child: Column(
+      children: [
+        Text(
+          "% del Consumo Total",
+          style: TextStyle(
+              fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
+        ),
+        PieChart(
+          PieChartData(
+              borderData: FlBorderData(
+                show: false,
+              ),
+              sectionsSpace: 0,
+              centerSpaceRadius: 40,
+              sections: showingSections(onValue, standbyValue)),
+        ),
+      ],
     ),
   );
 }
