@@ -42,13 +42,13 @@
         "standbyConsumption": 0.0
     },
     {
-        "name": "Aire acondicionado de 1 \u00ef\u017c\u00bd Ton",
+        "name": "Aire acondicionado de 1.5 Ton",
         "category": "Refrigeracion\/Calefaccion",
         "consumption": 2800.0,
         "standbyConsumption": 2.0
     },
     {
-        "name": "Aire acondicionado de 1 \u00ef\u017c\u00bd Ton - Inverter",
+        "name": "Aire acondicionado de 1.5 Ton - Inverter",
         "category": "Refrigeracion\/Calefaccion",
         "consumption": 1820.0,
         "standbyConsumption": 0.9
@@ -66,13 +66,13 @@
         "standbyConsumption": 0.9
     },
     {
-        "name": "Aire acondicionado de \u00ef\u017c\u00bd Ton",
+        "name": "Aire acondicionado de 1.5 Ton",
         "category": "Refrigeracion\/Calefaccion",
         "consumption": 1350.0,
         "standbyConsumption": 2.0
     },
     {
-        "name": "Aire acondicionado de \u00ef\u017c\u00bd Ton - Inverter",
+        "name": "Aire acondicionado de 1.5 Ton - Inverter",
         "category": "Refrigeracion\/Calefaccion",
         "consumption": 877.0,
         "standbyConsumption": 0.9
@@ -378,7 +378,7 @@
         "standbyConsumption": 0.0
     },
     {
-        "name": "Cafetera de filtro el\u00ef\u017c\u00bdctrica",
+        "name": "Cafetera de filtro electrica",
         "category": "Cocina",
         "consumption": 900.0,
         "standbyConsumption": 0.0
@@ -474,7 +474,7 @@
         "standbyConsumption": 0.0
     },
     {
-        "name": "Cargador de celular gen\u00ef\u017c\u00bdrico",
+        "name": "Cargador de celular generico",
         "category": "Cargadores",
         "consumption": 5.0,
         "standbyConsumption": 0.0
@@ -601,13 +601,13 @@
     },
     {
         "name": "Ducha Fame ",
-        "category": "Ba\u00ef\u017c\u00bdo",
+        "category": "Hidraulicos",
         "consumption": 3000.0,
         "standbyConsumption": 0.0
     },
     {
         "name": "Ducha tipo Telefono",
-        "category": "Ba\u00ef\u017c\u00bdo",
+        "category": "Hidraulicos",
         "consumption": 9000.0,
         "standbyConsumption": 0.0
     },
@@ -625,12 +625,12 @@
     },
     {
         "name": "Espejo anti Vaho",
-        "category": "Ba\u00ef\u017c\u00bdo",
+        "category": "Hidraulicos",
         "consumption": 75.0,
         "standbyConsumption": 0.0
     },
     {
-        "name": "Est\u00ef\u017c\u00bdreo musical",
+        "name": "Estereo musical",
         "category": "Video\/Audio",
         "consumption": 75.0,
         "standbyConsumption": 0.5
@@ -642,13 +642,13 @@
         "standbyConsumption": 0.0
     },
     {
-        "name": "Estufa hal\u00ef\u017c\u00bdgena de 3 velas c\/termostato",
+        "name": "Estufa halogena de 3 velas c\/termostato",
         "category": "Cocina",
         "consumption": 1500.0,
         "standbyConsumption": 0.0
     },
     {
-        "name": "Exprimidores de cr\u00ef\u017c\u00bdticos",
+        "name": "Exprimidores de citricos",
         "category": "Cocina",
         "consumption": 30.0,
         "standbyConsumption": 0.0
@@ -672,19 +672,19 @@
         "standbyConsumption": 0.0
     },
     {
-        "name": "Extractor de aire para cocina o ba\u00ef\u017c\u00bdo - 1200 m3\/hora",
+        "name": "Extractor de aire para cocina o banno - 1200 m3\/hora",
         "category": "Refrigeracion\/Calefaccion",
         "consumption": 50.0,
         "standbyConsumption": 0.0
     },
     {
-        "name": "Extractor de aire para cocina o ba\u00ef\u017c\u00bdo - 200 m3\/hora",
+        "name": "Extractor de aire para cocina o banno - 200 m3\/hora",
         "category": "Refrigeracion\/Calefaccion",
         "consumption": 20.0,
         "standbyConsumption": 0.0
     },
     {
-        "name": "Extractor de aire para cocina o ba\u00ef\u017c\u00bdo - 80 m3\/hora",
+        "name": "Extractor de aire para cocina o banno - 80 m3\/hora",
         "category": "Refrigeracion\/Calefaccion",
         "consumption": 12.0,
         "standbyConsumption": 0.0
@@ -708,7 +708,7 @@
         "standbyConsumption": 0.0
     },
     {
-        "name": "Freezer 0.5 m\u00ef\u017c\u00bd",
+        "name": "Freezer 0.5 m^3",
         "category": "Cocina",
         "consumption": 45.0,
         "standbyConsumption": 0.0
@@ -762,13 +762,13 @@
         "standbyConsumption": 0.0
     },
     {
-        "name": "Hornilla Electrica de 150 mm de di\u00ef\u017c\u00bdmetro",
+        "name": "Hornilla Electrica de 150 mm de diametro",
         "category": "Cocina",
         "consumption": 1000.0,
         "standbyConsumption": 0.0
     },
     {
-        "name": "Hornilla Electrica de 190 mm de di\u00ef\u017c\u00bdmetro",
+        "name": "Hornilla Electrica de 190 mm de diametro",
         "category": "Cocina",
         "consumption": 2000.0,
         "standbyConsumption": 0.0
@@ -786,25 +786,25 @@
         "standbyConsumption": 4.5
     },
     {
-        "name": "Horno el\u00ef\u017c\u00bdctrico",
+        "name": "Horno electrico",
         "category": "Cocina",
         "consumption": 1000.0,
         "standbyConsumption": 0.0
     },
     {
-        "name": "Horno el\u00ef\u017c\u00bdctrico",
+        "name": "Horno electrico",
         "category": "Cocina",
         "consumption": 1200.0,
         "standbyConsumption": 0.0
     },
     {
-        "name": "Horno el\u00ef\u017c\u00bdctrico de 25 a 30 litros c\/termostato",
+        "name": "Horno electrico de 25 a 30 litros c\/termostato",
         "category": "Cocina",
         "consumption": 1500.0,
         "standbyConsumption": 0.0
     },
     {
-        "name": "Horno el\u00ef\u017c\u00bdctrico de 73 litros c\/termostato",
+        "name": "Horno electrico de 73 litros c\/termostato",
         "category": "Cocina",
         "consumption": 2450.0,
         "standbyConsumption": 0.0
@@ -847,7 +847,7 @@
     },
     {
         "name": "Jacuzzi exterior",
-        "category": "Ba\u00ef\u017c\u00bdo",
+        "category": "Hidraulicos",
         "consumption": 280.0,
         "standbyConsumption": 0.0
     },
@@ -858,7 +858,7 @@
         "standbyConsumption": 0.0
     },
     {
-        "name": "Jarra el\u00ef\u017c\u00bdctrica de 1.7 litros",
+        "name": "Jarra electrica de 1.7 litros",
         "category": "Cocina",
         "consumption": 2000.0,
         "standbyConsumption": 0.0
@@ -870,19 +870,19 @@
         "standbyConsumption": 0.0
     },
     {
-        "name": "L\u00ef\u017c\u00bdmpara de bajo consumo de 11W",
+        "name": "Lempara de bajo consumo de 11W",
         "category": "Luces",
         "consumption": 11.0,
         "standbyConsumption": 0.0
     },
     {
-        "name": "L\u00ef\u017c\u00bdmpara de bajo consumo de 15W",
+        "name": "Lempara de bajo consumo de 15W",
         "category": "Luces",
         "consumption": 15.0,
         "standbyConsumption": 0.0
     },
     {
-        "name": "L\u00ef\u017c\u00bdmpara de bajo consumo de 20W",
+        "name": "Lempara de bajo consumo de 20W",
         "category": "Luces",
         "consumption": 20.0,
         "standbyConsumption": 0.0
@@ -894,37 +894,37 @@
         "standbyConsumption": 0.0
     },
     {
-        "name": "L\u00ef\u017c\u00bdmpara hal\u00ef\u017c\u00bdgena de 100 W",
+        "name": "Lempara halegena de 100 W",
         "category": "Luces",
         "consumption": 100.0,
         "standbyConsumption": 0.0
     },
     {
-        "name": "L\u00ef\u017c\u00bdmpara hal\u00ef\u017c\u00bdgena de 40 W",
+        "name": "Lempara halegena de 40 W",
         "category": "Luces",
         "consumption": 40.0,
         "standbyConsumption": 0.0
     },
     {
-        "name": "L\u00ef\u017c\u00bdmpara hal\u00ef\u017c\u00bdgena de 60 W",
+        "name": "Lempara halegena de 60 W",
         "category": "Luces",
         "consumption": 60.0,
         "standbyConsumption": 0.0
     },
     {
-        "name": "L\u00ef\u017c\u00bdmpara LED de 11 W",
+        "name": "Lempara LED de 11 W",
         "category": "Luces",
         "consumption": 11.0,
         "standbyConsumption": 0.0
     },
     {
-        "name": "L\u00ef\u017c\u00bdmpara LED de 5 W",
+        "name": "Lempara LED de 5 W",
         "category": "Luces",
         "consumption": 5.0,
         "standbyConsumption": 0.0
     },
     {
-        "name": "L\u00ef\u017c\u00bdmpara LED de 9 W",
+        "name": "Lempara LED de 9 W",
         "category": "Luces",
         "consumption": 9.0,
         "standbyConsumption": 0.0
@@ -942,25 +942,25 @@
         "standbyConsumption": 3.5
     },
     {
-        "name": "Lavadora autom\u00ef\u017c\u00bdtica",
+        "name": "Lavadora autometica",
         "category": "Limpieza",
         "consumption": 400.0,
         "standbyConsumption": 3.5
     },
     {
-        "name": "Lavadora autom\u00ef\u017c\u00bdtico de 5 kg",
+        "name": "Lavadora autometico de 5 kg",
         "category": "Limpieza",
         "consumption": 500.0,
         "standbyConsumption": 3.5
     },
     {
-        "name": "Lavadora autom\u00ef\u017c\u00bdtico de 5 kg con calentamiento de agua",
+        "name": "Lavadora autometico de 5 kg con calentamiento de agua",
         "category": "Limpieza",
         "consumption": 2500.0,
         "standbyConsumption": 3.5
     },
     {
-        "name": "Lavadora semi-autom\u00ef\u017c\u00bdtico de 5 kg",
+        "name": "Lavadora semi-autometico de 5 kg",
         "category": "Limpieza",
         "consumption": 200.0,
         "standbyConsumption": 3.5
@@ -1056,7 +1056,7 @@
         "standbyConsumption": 0.0
     },
     {
-        "name": "M\u00ef\u017c\u00bdquina de coser",
+        "name": "Mequina de coser",
         "category": "Accesorios",
         "consumption": 125.0,
         "standbyConsumption": 0.0
@@ -1236,7 +1236,7 @@
         "standbyConsumption": 0.0
     },
     {
-        "name": "Radiador el\u00ef\u017c\u00bdctrico mediano c\/termostato",
+        "name": "Radiador electrico mediano c\/termostato",
         "category": "Refrigeracion\/Calefaccion",
         "consumption": 1500.0,
         "standbyConsumption": 0.0
@@ -1266,37 +1266,37 @@
         "standbyConsumption": 0.9
     },
     {
-        "name": "Refrigeraci\u00ef\u017c\u00bdn central 5 ton. nuevo",
+        "name": "Refrigeracien central 5 ton. nuevo",
         "category": "Refrigeracion\/Calefaccion",
         "consumption": 5250.0,
         "standbyConsumption": 0.0
     },
     {
-        "name": "Refrigeraci\u00ef\u017c\u00bdn central\\xa03 ton. antiguo",
+        "name": "Refrigeracien central\\xa03 ton. antiguo",
         "category": "Refrigeracion\/Calefaccion",
         "consumption": 4450.0,
         "standbyConsumption": 0.0
     },
     {
-        "name": "Refrigeraci\u00ef\u017c\u00bdn central\\xa03 ton. nuevo",
+        "name": "Refrigeracien central\\xa03 ton. nuevo",
         "category": "Refrigeracion\/Calefaccion",
         "consumption": 3350.0,
         "standbyConsumption": 0.0
     },
     {
-        "name": "Refrigeraci\u00ef\u017c\u00bdn central\\xa04 ton. antiguo",
+        "name": "Refrigeracien central\\xa04 ton. antiguo",
         "category": "Refrigeracion\/Calefaccion",
         "consumption": 6500.0,
         "standbyConsumption": 0.0
     },
     {
-        "name": "Refrigeraci\u00ef\u017c\u00bdn central\\xa04 ton. nuevo",
+        "name": "Refrigeracien central\\xa04 ton. nuevo",
         "category": "Refrigeracion\/Calefaccion",
         "consumption": 4250.0,
         "standbyConsumption": 0.0
     },
     {
-        "name": "Refrigeraci\u00ef\u017c\u00bdn central\\xa05 ton. antiguo",
+        "name": "Refrigeracien central\\xa05 ton. antiguo",
         "category": "Refrigeracion\/Calefaccion",
         "consumption": 7900.0,
         "standbyConsumption": 0.0
@@ -1308,25 +1308,25 @@
         "standbyConsumption": 0.0
     },
     {
-        "name": "Refrigerador (11-12 pies c\u00ef\u017c\u00bdbicos)",
+        "name": "Refrigerador (11-12 pies cebicos)",
         "category": "Cocina",
         "consumption": 250.0,
         "standbyConsumption": 0.0
     },
     {
-        "name": "Refrigerador (14-16 pies c\u00ef\u017c\u00bdbicos)",
+        "name": "Refrigerador (14-16 pies cebicos)",
         "category": "Cocina",
         "consumption": 290.0,
         "standbyConsumption": 0.0
     },
     {
-        "name": "Refrigerador (18-22 pies c\u00ef\u017c\u00bdbicos)",
+        "name": "Refrigerador (18-22 pies cebicos)",
         "category": "Cocina",
         "consumption": 375.0,
         "standbyConsumption": 0.0
     },
     {
-        "name": "Refrigerador (25-27 pies c\u00ef\u017c\u00bdbicos)",
+        "name": "Refrigerador (25-27 pies cebicos)",
         "category": "Cocina",
         "consumption": 650.0,
         "standbyConsumption": 0.0
@@ -1338,7 +1338,7 @@
         "standbyConsumption": 0.0
     },
     {
-        "name": "Refrigerador de m\u00ef\u017c\u00bds de 10 a\u00ef\u017c\u00bdos",
+        "name": "Refrigerador de mes de 10 aeos",
         "category": "Cocina",
         "consumption": 500.0,
         "standbyConsumption": 0.0
@@ -1428,7 +1428,7 @@
         "standbyConsumption": 0.0
     },
     {
-        "name": "Secadora centr\u00ef\u017c\u00bdfuga",
+        "name": "Secadora centrefuga",
         "category": "Limpieza",
         "consumption": 380.0,
         "standbyConsumption": 0.0
@@ -1662,7 +1662,7 @@
         "standbyConsumption": 0.5
     },
     {
-        "name": "Termotanque el\u00ef\u017c\u00bdctrico c\/termostato",
+        "name": "Termotanque electrico c\/termostato",
         "category": "Hidraulicos",
         "consumption": 1500.0,
         "standbyConsumption": 0.0
@@ -1776,7 +1776,7 @@
         "standbyConsumption": 0.0
     },
     {
-        "name": "Ventilador de techo sin l\u00ef\u017c\u00bdmparas",
+        "name": "Ventilador de techo sin lemparas",
         "category": "Refrigeracion\/Calefaccion",
         "consumption": 65.0,
         "standbyConsumption": 0.0
@@ -1788,37 +1788,37 @@
         "standbyConsumption": 1.0
     },
     {
-        "name": "Vitrocer\u00ef\u017c\u00bdmica con hornilla de 120 mm de di\u00ef\u017c\u00bdmetro",
+        "name": "Vitroceremica con hornilla de 120 mm de diemetro",
         "category": "Cocina",
         "consumption": 750.0,
         "standbyConsumption": 1.0
     },
     {
-        "name": "Vitrocer\u00ef\u017c\u00bdmica con hornilla de 140 mm de di\u00ef\u017c\u00bdmetro",
+        "name": "Vitroceremica con hornilla de 140 mm de diemetro",
         "category": "Cocina",
         "consumption": 1250.0,
         "standbyConsumption": 1.0
     },
     {
-        "name": "Vitrocer\u00ef\u017c\u00bdmica con hornilla de 175 mm de di\u00ef\u017c\u00bdmetro",
+        "name": "Vitroceremica con hornilla de 175 mm de diemetro",
         "category": "Cocina",
         "consumption": 1500.0,
         "standbyConsumption": 1.0
     },
     {
-        "name": "Vitrocer\u00ef\u017c\u00bdmica con hornilla de 200 mm de di\u00ef\u017c\u00bdmetro",
+        "name": "Vitroceremica con hornilla de 200 mm de diemetro",
         "category": "Cocina",
         "consumption": 1800.0,
         "standbyConsumption": 1.0
     },
     {
-        "name": "Vitrocer\u00ef\u017c\u00bdmica con hornilla de 215 mm de di\u00ef\u017c\u00bdmetro",
+        "name": "Vitroceremica con hornilla de 215 mm de diemetro",
         "category": "Cocina",
         "consumption": 2110.0,
         "standbyConsumption": 1.0
     },
     {
-        "name": "Vitrocer\u00ef\u017c\u00bdmica con hornilla de 220 mm de di\u00ef\u017c\u00bdmetro",
+        "name": "Vitroceremica con hornilla de 220 mm de diemetro",
         "category": "Cocina",
         "consumption": 2350.0,
         "standbyConsumption": 1.0
