@@ -15,7 +15,7 @@ class ApplianceDbService extends GetxService {
     _box = await Hive.openBox(APPLIANCEBOX);
     if (_box.isEmpty) {
       List<dynamic> db =
-          json.decode(await rootBundle.loadString(JSONDBTESTDIRECTORY));
+          json.decode(await rootBundle.loadString(JSONDBDIRECTORY));
       print('MODEL!!');
       print(ApplianceModel.fromJson(db[1] as Map<String, dynamic>));
       db.forEach((element) async {
