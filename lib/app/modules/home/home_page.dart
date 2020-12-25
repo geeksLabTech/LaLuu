@@ -2,6 +2,7 @@ import 'package:LaLu/app/modules/home/home_controller.dart';
 import 'package:LaLu/app/modules/home/local_widgets/appliance_cards_list.dart';
 import 'package:LaLu/app/modules/home/local_widgets/stats_list.dart';
 import 'package:LaLu/app/routes/app_routes.dart';
+import 'package:LaLu/app/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -31,7 +32,9 @@ class HomePage extends StatelessWidget {
               )
             ]),
           ),
-          body: TabBarView(children: [ApplianceCardsList(), statsList()]),
+          body: TabBarView(
+            children: [ApplianceCardsList(), statsList()],
+          ),
           floatingActionButton: FloatingActionButton(
             onPressed: () => Get.toNamed(AppRoutes.APPLIANCE),
             child: Icon(Icons.add),
