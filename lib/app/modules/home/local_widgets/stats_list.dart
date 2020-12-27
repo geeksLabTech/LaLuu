@@ -65,6 +65,9 @@ generateBarON() {
   final homeController = Get.find<HomeController>();
   for (var i in homeController.userAppliances.values) {
     for (var j in i.usage.keys) {
+      // if (i.usage[j] == null) {
+      //   i.usage[j] = 0.0;
+      // }
       days[j] == null
           ? days[j] = i.usage[j] * i.consumptionOn
           : days[j] += i.usage[j] * i.consumptionOn;
