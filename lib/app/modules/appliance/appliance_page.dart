@@ -1,5 +1,4 @@
 // import 'dart:html';
-import 'package:LaLu/app/data/models/appliance_model.dart';
 import 'package:LaLu/app/modules/appliance/appliance_controller.dart';
 import 'package:LaLu/app/modules/appliance_search/appliance_search_delegate.dart';
 import 'package:flutter/material.dart';
