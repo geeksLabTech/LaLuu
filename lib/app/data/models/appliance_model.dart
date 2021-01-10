@@ -11,9 +11,9 @@ class ApplianceModel {
 
   ApplianceModel(
       {@required this.name,
+      @required this.category,
       @required this.consumption,
-      @required this.standbyConsumption,
-      @required this.category})
+      @required this.standbyConsumption})
       : assert(name != null &&
             consumption != null &&
             standbyConsumption != null &&
