@@ -42,10 +42,12 @@ class ApplianceController extends GetxController {
     }
   }
 
+  get name => applianceName.value;
+
   void loadSelectedAppliance(ApplianceModel applianceModel) {
-    applianceName.value = applianceModel.name;
-    applianceConsumption.value = applianceModel.standbyConsumption;
-    applianceConsumption.value = applianceModel.standbyConsumption;
+    applianceName = applianceModel.name.obs;
+    applianceConsumption = applianceModel.standbyConsumption.obs;
+    applianceConsumption = applianceModel.standbyConsumption.obs;
   }
 
   Future<void> saveUserAppliance() async {
