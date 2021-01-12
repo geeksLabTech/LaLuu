@@ -33,8 +33,8 @@ generatePieStandbyON() {
   standbyValue *= 4;
   totalValue *= 4;
 
-  onValue = onValue / totalValue * 100;
-  standbyValue = standbyValue / totalValue * 100;
+  onValue = totalValue == 0 ? 0 : onValue / totalValue * 100;
+  standbyValue = totalValue == 0 ? 0 : standbyValue / totalValue * 100;
 
   return Card(
     child: Column(
@@ -61,10 +61,27 @@ generatePieStandbyON() {
 generateBarON() {
   Map<String, double> days = Map();
   Map<String, double> daysStandby = Map();
+  List<String> daysKeys = [
+    "Lun",
+    "Mar",
+    "Mie",
+    "Jue",
+    "Vie",
+    "Sab",
+    "Dom",
+  ];
+
+  for (var i in daysKeys) {
+    days[i] = 0;
+    daysStandby[i] = 0;
+  }
 
   final homeController = Get.find<HomeController>();
   for (var i in homeController.userAppliances.values) {
     for (var j in i.usage.keys) {
+      // if (i.usage[j] == null) {
+      //   i.usage[j] = 0.0;
+      // }
       days[j] == null
           ? days[j] = i.usage[j] * i.consumptionOn
           : days[j] += i.usage[j] * i.consumptionOn;

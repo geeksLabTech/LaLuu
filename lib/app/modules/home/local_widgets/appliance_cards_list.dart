@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:LaLu/app/data/models/user_appliance_model.dart';
 import 'package:LaLu/app/utils/constants.dart';
 import 'package:flutter/material.dart';
@@ -184,51 +182,16 @@ double getTotalCost() {
   double consumption = getTotalConsumption();
   double cost = 0.0;
 
-  // for (var i = 0;i < PRICES.length; i++){
-  //   var limit = CONSUMPTIONRANGES[CONSUMPTIONRANGES.length-(i+1)];
-  //   if (consumption > limit){
-  //     cost += consumption-limit*PRICES[]
-  //   }
-  // }
+  for (var i = 0; i < PRICES.length; i++) {
+    var limit = CONSUMPTIONRANGES[CONSUMPTIONRANGES.length - (i + 1)];
+    if (consumption > limit) {
+      cost += consumption - limit * PRICES[i];
+    }
+  }
 
-  if (consumption > 5000) {
-    cost += consumption - 5000 * PRICES[9];
-    consumption -= consumption - 5000;
-  }
-  if (consumption > 1000) {
-    cost += consumption - 1000 * PRICES[8];
-    consumption -= consumption - 1000;
-  }
-  if (consumption > 500) {
-    cost += consumption - 500 * PRICES[7];
-    consumption -= consumption - 500;
-  }
-  if (consumption > 350) {
-    cost += consumption - 350 * PRICES[6];
-    consumption -= consumption - 350;
-  }
-  if (consumption > 300) {
-    cost += consumption - 300 * PRICES[5];
-    consumption -= consumption - 300;
-  }
-  if (consumption > 250) {
-    cost += consumption - 250 * PRICES[4];
-    consumption -= consumption - 250;
-  }
-  if (consumption > 200) {
-    cost += consumption - 200 * PRICES[3];
-    consumption -= consumption - 200;
-  }
-  if (consumption > 150) {
-    cost += consumption - 150 * PRICES[2];
-    consumption -= consumption - 150;
-  }
-  if (consumption > 100) {
-    cost += consumption - 100 * PRICES[1];
-    consumption -= consumption - 100;
-  }
   if (consumption > 0) {
     cost += consumption * PRICES[0];
   }
+
   return cost;
 }
