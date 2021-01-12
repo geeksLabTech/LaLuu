@@ -47,6 +47,9 @@ class ApplianceSearchDelegate extends SearchDelegate {
                   .searchedApplianceModelList[index].name),
               subtitle: Text(applianceSearchController
                   .searchedApplianceModelList[index].category),
+              trailing: Text(applianceSearchController
+                  .searchedApplianceModelList[index].consumption
+                  .toString()),
               onTap: () {
                 ApplianceModel selectedAppliance =
                     applianceSearchController.searchedApplianceModelList[index];
