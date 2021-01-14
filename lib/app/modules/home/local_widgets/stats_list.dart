@@ -49,6 +49,7 @@ generatePieStandbyON() {
               borderData: FlBorderData(
                 show: false,
               ),
+              startDegreeOffset: 0,
               sectionsSpace: 0,
               centerSpaceRadius: 40,
               sections: showingSections(onValue, standbyValue)),
