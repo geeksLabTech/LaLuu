@@ -21,6 +21,14 @@ class HomeController extends GetxController {
 
   int getUserAppliancesLenght() => userAppliances.values.length;
 
+  dynamic getModelKey(UserApplianceModel model) {
+    dynamic modelKey = 0;
+    userAppliances.forEach((key, value) {
+      if (value == model) return key;
+    });
+    return modelKey;
+  }
+
   List<UserApplianceModel> getUserAppliancesValues() =>
       userAppliances.values.toList();
 

@@ -25,8 +25,23 @@ class ApplianceController extends GetxController {
     //_localApplianceDbRepository = Get.find<LocalApplianceDbRepository>();
     super.onInit();
     _userDbRepository = Get.find<UserDbRepository>();
-
-    if (!Get.isRegistered<int>(tag: APPLIANCESELECTEDKEY)) {
+    try {
+      _applianceSelectedKey = Get.find<int>(tag: APPLIANCESELECTEDKEY);
+      isEditing = true.obs;
+      _loadUserAppliance(_applianceSelectedKey);
+    } catch (e) {
+      print("AKIII, $e");
+      isEditing = false.obs;
+      applianceName = ''.obs;
+      applianceConsumption = 0.0.obs;
+      applianceStandbyConsumption = 0.0.obs;
+      applianceTag = ''.obs;
+      applianceCategorie = ''.obs;
+      applianceStandby = false.obs;
+    }
+    applianceUsage = RxMap<String, double>();
+    /*
+    if (!Get.isRegistered(tag: APPLIANCESELECTEDKEY)) {
       isEditing = false.obs;
       applianceName = ''.obs;
       applianceConsumption = 0.0.obs;
@@ -36,10 +51,12 @@ class ApplianceController extends GetxController {
       applianceStandby = false.obs;
       applianceUsage = RxMap<String, double>();
     } else {
+      print('HOLLAA');
       isEditing = true.obs;
       _applianceSelectedKey = Get.find(tag: APPLIANCESELECTEDKEY);
       _loadUserAppliance(_applianceSelectedKey);
     }
+    */
   }
 
   get name => applianceName.value;
@@ -76,9 +93,15 @@ class ApplianceController extends GetxController {
 
   void _loadUserAppliance(int key) {
     _userApplianceModel = _userDbRepository.getModel(key);
+
     applianceName = _userApplianceModel.applianceModel.name.obs;
     applianceConsumption = _userApplianceModel.applianceModel.consumption.obs;
+    applianceStandbyConsumption =
+        _userApplianceModel.applianceModel.standbyConsumption.obs;
     applianceTag = _userApplianceModel.tag.obs;
+    // Campo probablemente innecesario
+    applianceStandby = false.obs;
+    applianceCategorie = _userApplianceModel.applianceModel.category.obs;
   }
 
   void _createUserApplianceModel() {
