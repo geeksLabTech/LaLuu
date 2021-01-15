@@ -1,4 +1,5 @@
 import 'package:LaLu/app/data/models/user_appliance_model.dart';
+import 'package:LaLu/app/routes/app_routes.dart';
 import 'package:LaLu/app/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,9 +15,32 @@ class ApplianceCardsList extends StatelessWidget {
         children: homeController.userAppliances.values
             .map((e) => InkWell(
                   onLongPress: () {
-                    //TODO Remove Functionality
+                    int key = homeController.getModelKey(e);
+                    homeController.removeAppliance(key);
                   },
-                  child: createCard(e),
+                  onTap: () {
+                    int key = homeController.getModelKey(e);
+
+                    Get.put<int>(key, tag: APPLIANCESELECTEDKEY);
+                    print(Get.isRegistered(tag: APPLIANCESELECTEDKEY));
+                    Get.toNamed(AppRoutes.APPLIANCE);
+                  },
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20)),
+                    elevation: 2.5,
+                    child: Column(
+                      children: [
+                        Text(e.tag == "" ? e.applianceModel.name : e.tag),
+                        Text(
+                          "Consumo: ${e.applianceModel.consumption}",
+                          textAlign: TextAlign.left,
+                        ),
+                        Text("Estimado Mensual: "),
+                        Text("IMPLEMENTAR"),
+                      ],
+                    ),
+                  ),
                 ))
             .toList(),
       ),
