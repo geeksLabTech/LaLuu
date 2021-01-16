@@ -36,17 +36,28 @@ class _TariffPageState extends State<TariffPage> {
               });
             }),
         Text("$cost"),
-        Table(
-          children: _buildTableRows(list),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Flexible(
+              child: SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: _buildTableRows(list),
+                ),
+              ),
+            ),
+          ],
         ),
       ],
     );
   }
 
-  List<TableRow> _buildTableRows(List values) {
-    List<TableRow> rows = [];
+  List<Widget> _buildTableRows(List values) {
+    List<Widget> rows = [];
     for (int i = 0; i < CONSUMPTIONRANGES.length; i++) {
-      rows.add(TableRow(children: [
+      rows.add(Row(children: [
         Container(
           alignment: Alignment.center,
           child: Text(
@@ -78,7 +89,7 @@ class _TariffPageState extends State<TariffPage> {
       ]));
     }
 
-    rows.add(TableRow(children: [
+    rows.add(Row(children: [
       Container(
         alignment: Alignment.center,
         child: Text(
