@@ -205,5 +205,7 @@ double getTotalConsumption() {
 
 double getTotalCost() {
   double consumption = getTotalConsumption();
-  return electricityCost(consumption);
+  double sum = 0;
+  electricityCost(consumption).forEach((element) => sum += element);
+  return sum;
 }
