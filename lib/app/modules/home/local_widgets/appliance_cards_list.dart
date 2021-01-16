@@ -1,6 +1,7 @@
 import 'package:LaLu/app/data/models/user_appliance_model.dart';
 import 'package:LaLu/app/routes/app_routes.dart';
 import 'package:LaLu/app/utils/constants.dart';
+import 'package:LaLu/app/utils/functions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -204,18 +205,5 @@ double getTotalConsumption() {
 
 double getTotalCost() {
   double consumption = getTotalConsumption();
-  double cost = 0.0;
-
-  for (var i = 0; i < PRICES.length; i++) {
-    var limit = CONSUMPTIONRANGES[CONSUMPTIONRANGES.length - (i + 1)];
-    if (consumption > limit) {
-      cost += consumption - limit * PRICES[i];
-    }
-  }
-
-  if (consumption > 0) {
-    cost += consumption * PRICES[0];
-  }
-
-  return cost;
+  return electricityCost(consumption);
 }
