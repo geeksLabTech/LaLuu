@@ -37,8 +37,12 @@ class ApplianceCardsList extends StatelessWidget {
                           "Consumo: ${e.applianceModel.consumption}",
                           textAlign: TextAlign.left,
                         ),
-                        Text("Estimado Mensual: "),
-                        Text("IMPLEMENTAR"),
+                        Text("Estimado Mensual: " +
+                            getTotalConsumption().toString() +
+                            "KW/h"),
+                        Text("Costo Estimado: " +
+                            getTotalCost().toString() +
+                            "CUP"),
                       ],
                     ),
                   ),
@@ -195,15 +199,13 @@ double getTotalConsumption() {
   double consumption = 0.0;
   final homeController = Get.find<HomeController>();
   for (var i in homeController.userAppliances.values) {
-    for (var j in i.usage.keys) {
-      consumption += 4 * i.usage[j] * i.consumptionOn;
-      consumption += 4 * (24 - i.usage[j]) * i.consumptionStandby;
-    }
+    consumption += 4 * i.consumptionOn;
+    consumption += 4 * i.consumptionStandby;
   }
-  return consumption / 1000;
+  return (consumption / 1000).toPrecision(2);
 }
 
 double getTotalCost() {
   double consumption = getTotalConsumption();
-  return electricityCost(consumption);
+  return electricityCost(consumption).toPrecision(2);
 }

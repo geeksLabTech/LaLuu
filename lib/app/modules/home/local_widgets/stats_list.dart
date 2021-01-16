@@ -33,8 +33,9 @@ generatePieStandbyON() {
   standbyValue *= 4;
   totalValue *= 4;
 
-  onValue = totalValue == 0 ? 0 : onValue / totalValue * 100;
-  standbyValue = totalValue == 0 ? 0 : standbyValue / totalValue * 100;
+  onValue = totalValue == 0 ? 0 : (onValue / totalValue * 100).toPrecision(2);
+  standbyValue =
+      totalValue == 0 ? 0 : (standbyValue / totalValue * 100).toPrecision(2);
 
   return Card(
     child: Column(
@@ -84,11 +85,13 @@ generateBarON() {
       //   i.usage[j] = 0.0;
       // }
       days[j] == null
-          ? days[j] = i.usage[j] * i.consumptionOn
-          : days[j] += i.usage[j] * i.consumptionOn;
+          ? days[j] = (i.usage[j] * i.consumptionOn).toPrecision(2)
+          : days[j] += (i.usage[j] * i.consumptionOn).toPrecision(2);
       daysStandby[j] == null
-          ? daysStandby[j] = (24 - i.usage[j]) * i.consumptionStandby
-          : daysStandby[j] += (24 - i.usage[j]) * i.consumptionStandby;
+          ? daysStandby[j] =
+              ((24 - i.usage[j]) * i.consumptionStandby).toPrecision(2)
+          : daysStandby[j] +=
+              ((24 - i.usage[j]) * i.consumptionStandby).toPrecision(2);
     }
   }
 
