@@ -1,3 +1,4 @@
+import 'package:LaLu/app/data/models/appliance_model.dart';
 import 'package:LaLu/app/modules/appliance_search/appliance_search_controller.dart';
 import 'package:LaLu/app/modules/appliance_search/local_widgets/appliance_search_widget.dart';
 import 'package:flutter/material.dart';
@@ -39,6 +40,21 @@ class ApplianceSearchDelegate extends SearchDelegate {
     final applianceSearchController = Get.find<ApplianceSearchController>();
     applianceSearchController.search(query);
     //applianceSearchController.closeSearchFunction = close;
-    return ApplianceSearchWidget();
+    return Obx(() => ListView.builder(
+        itemCount: applianceSearchController.searchedApplianceModelList.length,
+        itemBuilder: (context, index) => ListTile(
+              title: Text(applianceSearchController
+                  .searchedApplianceModelList[index].name),
+              subtitle: Text(applianceSearchController
+                  .searchedApplianceModelList[index].category),
+              trailing: Text(applianceSearchController
+                  .searchedApplianceModelList[index].consumption
+                  .toString()),
+              onTap: () {
+                ApplianceModel selectedAppliance =
+                    applianceSearchController.searchedApplianceModelList[index];
+                close(context, selectedAppliance);
+              },
+            )));
   }
 }

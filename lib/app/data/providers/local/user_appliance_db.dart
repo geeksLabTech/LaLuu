@@ -31,10 +31,11 @@ class UserApplianceDb {
   }
 
   Map<dynamic, UserApplianceModel> getAllModels() {
-    var boxToMap = _box.toMap();
-    Map<dynamic, UserApplianceModel> allModels;
-    boxToMap.forEach((key, value) {
-      allModels[key] = UserApplianceModel.fromJson(value);
+    var boxKeys = _box.keys;
+    //var boxToMap = _box.toMap();
+    Map<dynamic, UserApplianceModel> allModels = {};
+    boxKeys.forEach((key) {
+      allModels[key] = UserApplianceModel.fromJson(_box.get(key));
     });
     return allModels;
   }

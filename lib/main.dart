@@ -1,6 +1,5 @@
 import 'package:LaLu/app/data/services/appliance_db_service.dart';
 import 'package:LaLu/app/data/services/user_appliance_db_service.dart';
-import 'package:LaLu/app/modules/home/home_binding.dart';
 import 'package:LaLu/app/modules/home/home_controller.dart';
 import 'package:LaLu/app/modules/home/home_page.dart';
 import 'package:LaLu/app/routes/app_pages.dart';

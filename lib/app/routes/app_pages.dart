@@ -1,6 +1,6 @@
 import 'package:LaLu/app/modules/appliance/appliance_binding.dart';
+import 'package:LaLu/app/modules/appliance/appliance_controller.dart';
 import 'package:LaLu/app/modules/appliance/appliance_page.dart';
-import 'package:LaLu/app/modules/home/home_binding.dart';
 import 'package:LaLu/app/modules/home/home_controller.dart';
 import 'package:LaLu/app/modules/home/home_page.dart';
 import 'package:LaLu/app/routes/app_routes.dart';
@@ -15,6 +15,7 @@ class AppPages {
     GetPage(
         name: AppRoutes.APPLIANCE,
         page: () => AppliancePage(),
-        binding: ApplianceBinding())
+        binding:
+            BindingsBuilder(() => {Get.lazyPut(() => ApplianceController())}))
   ];
 }

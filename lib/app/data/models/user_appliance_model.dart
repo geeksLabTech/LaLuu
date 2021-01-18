@@ -9,10 +9,23 @@ class UserApplianceModel {
   Map<String, double> usage;
   String tag;
 
-  UserApplianceModel(
-      {@required this.applianceModel,
-      @required this.usage,
-      @required this.tag});
+  double consumptionOn;
+  double consumptionStandby;
+  double consumptionTotal;
+
+  UserApplianceModel({
+    @required this.applianceModel,
+    @required this.usage,
+    @required this.tag,
+    this.consumptionOn,
+    this.consumptionStandby,
+    this.consumptionTotal,
+  }) : assert(consumptionOn != null &&
+            consumptionStandby != null &&
+            consumptionTotal != null &&
+            applianceModel != null &&
+            usage != null &&
+            tag != null);
 
   factory UserApplianceModel.fromJson(Map<String, dynamic> json) =>
       _$UserApplianceModelFromJson(json);

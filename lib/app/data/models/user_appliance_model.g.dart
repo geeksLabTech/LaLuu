@@ -16,6 +16,9 @@ UserApplianceModel _$UserApplianceModelFromJson(Map<String, dynamic> json) {
       (k, e) => MapEntry(k, (e as num)?.toDouble()),
     ),
     tag: json['tag'] as String,
+    consumptionOn: (json['consumptionOn'] as num)?.toDouble(),
+    consumptionStandby: (json['consumptionStandby'] as num)?.toDouble(),
+    consumptionTotal: (json['consumptionTotal'] as num)?.toDouble(),
   );
 }
 
@@ -24,4 +27,7 @@ Map<String, dynamic> _$UserApplianceModelToJson(UserApplianceModel instance) =>
       'applianceModel': instance.applianceModel?.toJson(),
       'usage': instance.usage,
       'tag': instance.tag,
+      'consumptionOn': instance.consumptionOn,
+      'consumptionStandby': instance.consumptionStandby,
+      'consumptionTotal': instance.consumptionTotal,
     };

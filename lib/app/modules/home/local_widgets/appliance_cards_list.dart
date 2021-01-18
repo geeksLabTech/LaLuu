@@ -1,3 +1,7 @@
+import 'package:LaLu/app/data/models/user_appliance_model.dart';
+import 'package:LaLu/app/routes/app_routes.dart';
+import 'package:LaLu/app/utils/constants.dart';
+import 'package:LaLu/app/utils/functions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -7,23 +11,201 @@ class ApplianceCardsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final homeController = Get.find<HomeController>();
-    //final userAppliances = homeController.getUserAppliancesValues();
-    return Obx(() => ListView(
+    return Obx(
+      () => ListView(
         children: homeController.userAppliances.values
             .map((e) => InkWell(
                   onLongPress: () {
-                    //TODO Remove Functionality
+                    int key = homeController.getModelKey(e);
+                    homeController.removeAppliance(key);
                   },
-                  child: Container(
-                    child: Row(
+                  onTap: () {
+                    int key = homeController.getModelKey(e);
+
+                    Get.put<int>(key, tag: APPLIANCESELECTEDKEY);
+                    print(Get.isRegistered(tag: APPLIANCESELECTEDKEY));
+                    Get.toNamed(AppRoutes.APPLIANCE);
+                  },
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20)),
+                    elevation: 2.5,
+                    child: Column(
                       children: [
-                        Text(e.applianceModel.name),
-                        Text(e.tag),
-                        Text(e.applianceModel.consumption.toString()),
+                        Text(e.tag == "" ? e.applianceModel.name : e.tag),
+                        Text(
+                          "Consumo: ${e.applianceModel.consumption}",
+                          textAlign: TextAlign.left,
+                        ),
+                        Text("Estimado Mensual: " +
+                            getTotalConsumption().toString() +
+                            "KW/h"),
+                        Text("Costo Estimado: " +
+                            getTotalCost().toString() +
+                            "CUP"),
                       ],
                     ),
                   ),
                 ))
-            .toList()));
+            .toList(),
+      ),
+      // createSummary(),
+      // ],
+    );
   }
+
+  createCard(UserApplianceModel e) {
+    return Card(
+      color: Colors.white70,
+      elevation: 6.0,
+      margin: EdgeInsets.all(6),
+      child: Container(
+        padding: EdgeInsets.all(4),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Spacer(),
+                Text(
+                  "Equipo: ",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(e.applianceModel.name),
+                Spacer()
+              ],
+            ),
+            Row(
+              children: [
+                Spacer(),
+                Text(
+                  "Etiqueta: ",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(e.tag),
+                Spacer(),
+              ],
+            ),
+            Row(
+              children: [
+                Spacer(),
+                Text(
+                  "Consumo Encendido: ",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(e.applianceModel.consumption.toString() + ' W/h'),
+                Spacer(),
+              ],
+            ),
+            Row(
+              children: [
+                Spacer(),
+                Text(
+                  "Consumo en Standby: ",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(e.applianceModel.standbyConsumption.toString() + ' W/h'),
+                Spacer(),
+              ],
+            ),
+            Row(
+              children: [
+                Spacer(),
+                Text(
+                  "ON: ",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(e.consumptionOn.toString() + " W"),
+                Spacer(flex: 3),
+                Text(
+                  "Standby: ",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(e.consumptionStandby.toString() + " W"),
+                Spacer(flex: 3),
+                Text(
+                  "Total: ",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(e.consumptionTotal.toString() + " W"),
+                Spacer()
+              ],
+            ),
+            Row(
+              children: [
+                Spacer(),
+                generateDays(e),
+                Spacer(),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  generateDays(UserApplianceModel e) {
+    List<Widget> children = [];
+
+    for (var i in e.usage.keys) {
+      children.add(Container(
+        margin: EdgeInsets.symmetric(horizontal: 3, vertical: 2),
+        child: Column(
+          children: [
+            Text(
+              i,
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            Text(e.usage[i].toString() + ' h'),
+          ],
+        ),
+      ));
+    }
+
+    return Container(
+      child: Row(
+        children: children,
+      ),
+    );
+  }
+}
+
+Widget createSummary() {
+  return Card(
+    child: Row(
+      children: [
+        Text(getTotalConsumption().toString() + ' kW'),
+        Spacer(),
+        Text(getTotalCost().toString() + ' CUP'),
+      ],
+    ),
+  );
+}
+
+double getTotalConsumption() {
+  double consumption = 0.0;
+  final homeController = Get.find<HomeController>();
+  for (var i in homeController.userAppliances.values) {
+    consumption += 4 * i.consumptionOn;
+    consumption += 4 * i.consumptionStandby;
+  }
+  return (consumption / 1000).toPrecision(2);
+}
+
+double getTotalCost() {
+  double consumption = getTotalConsumption();
+  return electricityCost(consumption).toPrecision(2);
 }
