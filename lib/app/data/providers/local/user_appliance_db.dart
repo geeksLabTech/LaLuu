@@ -4,13 +4,13 @@ import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 
 class UserApplianceDb {
-  Box<Map<String, dynamic>> _box;
+  Box _box;
 
   UserApplianceDb() {
+    print('cargar box');
     var userApplianceDbService = Get.find<UserApplianceDbService>();
     _box = userApplianceDbService.box;
     //_box = Get.find<UserApplianceDbService>().box;
-    print(_box);
   }
 
   Future<int> addModel(UserApplianceModel model) async {
@@ -35,7 +35,8 @@ class UserApplianceDb {
     //var boxToMap = _box.toMap();
     Map<dynamic, UserApplianceModel> allModels = {};
     boxKeys.forEach((key) {
-      allModels[key] = UserApplianceModel.fromJson(_box.get(key));
+      allModels[key] =
+          UserApplianceModel.fromJson(Map<String, dynamic>.from(_box.get(key)));
     });
     return allModels;
   }

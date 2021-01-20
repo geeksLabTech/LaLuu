@@ -17,7 +17,9 @@ class LocalApplianceDb {
   }
 
   List<ApplianceModel> getModels() {
-    return _box.values.map((e) => ApplianceModel.fromJson(e)).toList();
+    return _box.values
+        .map((e) => ApplianceModel.fromJson(Map<String, dynamic>.from(e)))
+        .toList();
   }
 
   Future<void> updateModels(List<ApplianceModel> newModels) async {

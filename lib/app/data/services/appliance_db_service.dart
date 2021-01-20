@@ -22,7 +22,6 @@ class ApplianceDbService extends GetxService {
         var model = ApplianceModel.fromJson(element as Map<String, dynamic>);
         await _box.add(model.toJson());
       });
-      //print(_box.values);
     }
     return this;
   }
