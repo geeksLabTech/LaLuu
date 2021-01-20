@@ -34,6 +34,7 @@ class MyApp extends StatelessWidget {
       home: HomePage(),
       getPages: AppPages.pages,
       theme: ThemeData(
+          canvasColor: Colors.grey,
           primaryColor: Colors.amber,
           accentColor: Colors.amber,
           textTheme: TextTheme(caption: TextStyle(color: Colors.white))),

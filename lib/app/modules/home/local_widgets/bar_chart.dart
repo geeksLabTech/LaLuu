@@ -21,7 +21,7 @@ class BarChartSample1 extends StatefulWidget {
 }
 
 class BarChartSample1State extends State<BarChartSample1> {
-  final Color barBackgroundColor = Colors.black12;
+  final Color barBackgroundColor = Colors.black26;
   final Duration animDuration = const Duration(milliseconds: 250);
 
   int touchedIndex;
@@ -34,7 +34,7 @@ class BarChartSample1State extends State<BarChartSample1> {
       aspectRatio: 1,
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
-        color: Colors.grey,
+        color: Colors.black12,
         child: Stack(
           children: <Widget>[
             Padding(
