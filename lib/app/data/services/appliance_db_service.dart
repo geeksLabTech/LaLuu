@@ -10,8 +10,8 @@ class ApplianceDbService extends GetxService {
   Box<Map<String, dynamic>> _box;
 
   Future<ApplianceDbService> init() async {
-    //if (await Hive.boxExists(APPLIANCEBOX))
-    //  Hive.deleteBoxFromDisk(APPLIANCEBOX);
+    if (await Hive.boxExists(APPLIANCEBOX))
+      Hive.deleteBoxFromDisk(APPLIANCEBOX);
     _box = await Hive.openBox(APPLIANCEBOX);
     if (_box.isEmpty) {
       List<dynamic> db =
