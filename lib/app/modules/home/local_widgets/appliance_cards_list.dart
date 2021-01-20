@@ -7,44 +7,85 @@ import 'package:get/get.dart';
 
 import '../home_controller.dart';
 
-class ApplianceCardsList extends StatelessWidget {
+class ApplianceCardsList extends StatefulWidget {
+  @override
+  _ApplianceCardsListState createState() => _ApplianceCardsListState();
+}
+
+class _ApplianceCardsListState extends State<ApplianceCardsList> {
   @override
   Widget build(BuildContext context) {
     final homeController = Get.find<HomeController>();
     return Obx(
       () => ListView(
-        children: homeController.userAppliances.values
-            .map((e) => InkWell(
-                  onLongPress: () {
-                    int key = homeController.getModelKey(e);
-                    homeController.removeAppliance(key);
-                  },
-                  onTap: () {
-                    int key = homeController.getModelKey(e);
+        children: homeController.userAppliances
+            .map((e) => Card(
+                  clipBehavior: Clip.hardEdge,
+                  margin: EdgeInsets.all(10),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20)),
+                  elevation: 2.5,
+                  child: Column(
+                    children: [
+                      Text(
+                        e.userApplianceModel.tag == ""
+                            ? e.userApplianceModel.applianceModel.name
+                            : e.userApplianceModel.tag,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      Row(
+                        children: [
+                          Column(
+                            //mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Estimado mensual: ",
+                                //textAlign: TextAlign.left,
+                              ),
+                              Text(
+                                "Costo estimado: ",
+                                //textAlign: TextAlign.left,
+                              )
+                            ],
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Text(
+                                getTotalConsumption().toString() + "KW/h",
+                                textAlign: TextAlign.end,
+                              ),
+                              Text(getTotalCost().toString() + "CUP"),
+                            ],
+                          ),
+                        ],
+                      ),
+                      Divider(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          IconButton(
+                            icon: Icon(Icons.edit),
+                            onPressed: () async {
+                              //int key = homeController.getModelKey(e);
+                              print(e.key);
+                              await Get.toNamed(AppRoutes.APPLIANCE,
+                                  arguments: {e.key: e.userApplianceModel});
+                              setState(() {});
+                            },
+                          ),
+                          IconButton(
+                            icon: Icon(Icons.delete),
+                            onPressed: () async {
+                              //int key = homeController.getModelKey(e);
 
-                    Get.put<int>(key, tag: APPLIANCESELECTEDKEY);
-                    print(Get.isRegistered(tag: APPLIANCESELECTEDKEY));
-                    Get.toNamed(AppRoutes.APPLIANCE);
-                  },
-                  child: Card(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)),
-                    elevation: 2.5,
-                    child: Column(
-                      children: [
-                        Text(e.tag == "" ? e.applianceModel.name : e.tag),
-                        Text(
-                          "Consumo: ${e.applianceModel.consumption}",
-                          textAlign: TextAlign.left,
-                        ),
-                        Text("Estimado Mensual: " +
-                            getTotalConsumption().toString() +
-                            "KW/h"),
-                        Text("Costo Estimado: " +
-                            getTotalCost().toString() +
-                            "CUP"),
-                      ],
-                    ),
+                              await homeController.removeAppliance(e.key);
+                              setState(() {});
+                            },
+                          )
+                        ],
+                      )
+                    ],
                   ),
                 ))
             .toList(),
@@ -198,9 +239,9 @@ Widget createSummary() {
 double getTotalConsumption() {
   double consumption = 0.0;
   final homeController = Get.find<HomeController>();
-  for (var i in homeController.userAppliances.values) {
-    consumption += 4 * i.consumptionOn;
-    consumption += 4 * i.consumptionStandby;
+  for (var i in homeController.userAppliances) {
+    consumption += 4 * i.userApplianceModel.consumptionOn;
+    consumption += 4 * i.userApplianceModel.consumptionStandby;
   }
   return (consumption / 1000).toPrecision(2);
 }

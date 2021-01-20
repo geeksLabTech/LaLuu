@@ -24,10 +24,10 @@ generatePieStandbyON() {
   double totalValue = 0.0;
 
   final homeController = Get.find<HomeController>();
-  for (var i in homeController.userAppliances.values) {
-    onValue += i.consumptionOn;
-    standbyValue += i.consumptionStandby;
-    totalValue += i.consumptionTotal;
+  for (var i in homeController.userAppliances) {
+    onValue += i.userApplianceModel.consumptionOn;
+    standbyValue += i.userApplianceModel.consumptionStandby;
+    totalValue += i.userApplianceModel.consumptionTotal;
   }
   onValue *= 4;
   standbyValue *= 4;
@@ -79,19 +79,25 @@ generateBarON() {
   }
 
   final homeController = Get.find<HomeController>();
-  for (var i in homeController.userAppliances.values) {
-    for (var j in i.usage.keys) {
+  for (var i in homeController.userAppliances) {
+    for (var j in i.userApplianceModel.usage.keys) {
       // if (i.usage[j] == null) {
       //   i.usage[j] = 0.0;
       // }
       days[j] == null
-          ? days[j] = (i.usage[j] * i.consumptionOn).toPrecision(2)
-          : days[j] += (i.usage[j] * i.consumptionOn).toPrecision(2);
+          ? days[j] = (i.userApplianceModel.usage[j] *
+                  i.userApplianceModel.consumptionOn)
+              .toPrecision(2)
+          : days[j] += (i.userApplianceModel.usage[j] *
+                  i.userApplianceModel.consumptionOn)
+              .toPrecision(2);
       daysStandby[j] == null
-          ? daysStandby[j] =
-              ((24 - i.usage[j]) * i.consumptionStandby).toPrecision(2)
-          : daysStandby[j] +=
-              ((24 - i.usage[j]) * i.consumptionStandby).toPrecision(2);
+          ? daysStandby[j] = ((24 - i.userApplianceModel.usage[j]) *
+                  i.userApplianceModel.consumptionStandby)
+              .toPrecision(2)
+          : daysStandby[j] += ((24 - i.userApplianceModel.usage[j]) *
+                  i.userApplianceModel.consumptionStandby)
+              .toPrecision(2);
     }
   }
 

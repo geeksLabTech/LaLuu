@@ -25,12 +25,14 @@ class ApplianceController extends GetxController {
     //_localApplianceDbRepository = Get.find<LocalApplianceDbRepository>();
     super.onInit();
     _userDbRepository = Get.find<UserDbRepository>();
-    try {
-      _applianceSelectedKey = Get.find<int>(tag: APPLIANCESELECTEDKEY);
+    if (Get.arguments != null) {
+      var arguments = Get.arguments as Map<int, UserApplianceModel>;
+      _applianceSelectedKey = arguments.keys.first;
+      _userApplianceModel = arguments[_applianceSelectedKey];
       isEditing = true.obs;
-      _loadUserAppliance(_applianceSelectedKey);
-    } catch (e) {
-      print("AKIII, $e");
+      _loadUserAppliance();
+    } else {
+      //print("AKIII, $e");
       isEditing = false.obs;
       applianceName = ''.obs;
       applianceConsumption = 0.0.obs;
@@ -91,8 +93,8 @@ class ApplianceController extends GetxController {
     //_userAppliances[key] = newApplianceModel;
   }
 
-  void _loadUserAppliance(int key) {
-    _userApplianceModel = _userDbRepository.getModel(key);
+  void _loadUserAppliance() {
+    //_userApplianceModel = _userDbRepository.getModel(key);
 
     applianceName = _userApplianceModel.applianceModel.name.obs;
     applianceConsumption = _userApplianceModel.applianceModel.consumption.obs;

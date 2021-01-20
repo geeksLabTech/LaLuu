@@ -46,8 +46,8 @@ class _HomePageState extends State<HomePage> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Get.toNamed(AppRoutes.APPLIANCE);
+        onPressed: () async {
+          await Get.toNamed(AppRoutes.APPLIANCE, arguments: null);
           this.setState(() {});
         },
         child: Icon(Icons.add),

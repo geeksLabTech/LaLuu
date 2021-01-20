@@ -5,22 +5,24 @@ import 'package:get/get.dart';
 class HomeController extends GetxController {
   UserDbRepository _userDbRepository;
   // The int represents the db key
-  RxMap<dynamic, UserApplianceModel> userAppliances;
+  RxList<LoadedUserAppliance> userAppliances;
 
   @override
   void onInit() {
     super.onInit();
     _userDbRepository = Get.find<UserDbRepository>();
-
-    if (_userDbRepository.isEmpty()) {
-      userAppliances = RxMap<dynamic, UserApplianceModel>({});
-    } else {
-      userAppliances = _userDbRepository.getAllModels().obs;
+    userAppliances = RxList([]);
+    if (!_userDbRepository.isEmpty()) {
+      _userDbRepository.getAllModels().forEach((key, value) {
+        userAppliances
+            .add(LoadedUserAppliance(key: key, userApplianceModel: value));
+      });
+      print(userAppliances);
     }
   }
 
-  int getUserAppliancesLenght() => userAppliances.values.length;
-
+  //int getUserAppliancesLenght() => userAppliances.values.length;
+  /*
   dynamic getModelKey(UserApplianceModel model) {
     dynamic modelKey = 0;
     userAppliances.forEach((key, value) {
@@ -31,13 +33,24 @@ class HomeController extends GetxController {
 
   List<UserApplianceModel> getUserAppliancesValues() =>
       userAppliances.values.toList();
-
+*/
   Future<void> removeAppliance(int key) async {
     await _userDbRepository.removeModel(key);
-    userAppliances.remove(key);
+    for (int i = 0; i < userAppliances.length; i++) {
+      if (userAppliances[i].key == key) {
+        userAppliances.removeAt(i);
+        break;
+      }
+    }
   }
 
   Future<void> deleteDb() async {
     _userDbRepository.delete();
   }
+}
+
+class LoadedUserAppliance {
+  int key;
+  UserApplianceModel userApplianceModel;
+  LoadedUserAppliance({this.key, this.userApplianceModel});
 }
