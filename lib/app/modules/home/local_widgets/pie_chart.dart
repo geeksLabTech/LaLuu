@@ -11,25 +11,25 @@ List<PieChartSectionData> showingSections(double onValue, double standbyValue) {
     switch (i) {
       case 0:
         return PieChartSectionData(
-          color: const Color(0xff0293ee),
+          color: Colors.yellow,
           value: onValue,
           title: 'ON ' + onValue.toString() + '%',
           radius: radius,
           titleStyle: TextStyle(
               fontSize: fontSize,
               fontWeight: FontWeight.bold,
-              color: Colors.black),
+              color: Colors.black54),
         );
       case 1:
         return PieChartSectionData(
-          color: const Color(0xfff8b250),
+          color: Colors.orangeAccent,
           value: standbyValue,
           title: 'Standby ' + standbyValue.toString() + '%',
           radius: radius,
           titleStyle: TextStyle(
               fontSize: fontSize,
               fontWeight: FontWeight.bold,
-              color: Colors.black),
+              color: Colors.black54),
         );
       default:
         return null;

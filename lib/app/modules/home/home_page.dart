@@ -21,13 +21,17 @@ class _HomePageState extends State<HomePage> {
     final homeController = Get.find<HomeController>();
     return Scaffold(
       appBar: AppBar(
-        title: Text('LaLu'),
+        title: Text(
+          'LaLu',
+          style: TextStyle(color: Colors.white),
+        ),
         centerTitle: true,
         actions: [
           // TODO pass this to the card
           IconButton(
             icon: Icon(Icons.delete_forever),
             onPressed: () async => await homeController.deleteDb(),
+            color: Colors.white,
           )
         ],
       ),
@@ -39,6 +43,7 @@ class _HomePageState extends State<HomePage> {
           TabItem(icon: Icons.bar_chart_sharp)
         ],
         initialActiveIndex: activeIndex,
+        backgroundColor: Theme.of(context).primaryColor,
         onTap: (int value) {
           setState(() {
             activeIndex = value;
@@ -50,7 +55,10 @@ class _HomePageState extends State<HomePage> {
           Get.toNamed(AppRoutes.APPLIANCE);
           this.setState(() {});
         },
-        child: Icon(Icons.add),
+        child: Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
       ),
     );
   }
