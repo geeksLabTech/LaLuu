@@ -8,12 +8,8 @@ import 'package:get/get.dart';
 Widget statsList() {
   return ListView(
     children: [
-      Card(
-        child: generatePieStandbyON(),
-      ),
-      Card(
-        child: generateBarON(),
-      )
+      generatePieStandbyON(),
+      generateBarON(),
     ],
   );
 }
@@ -38,22 +34,21 @@ generatePieStandbyON() {
       totalValue == 0 ? 0 : (standbyValue / totalValue * 100).toPrecision(2);
 
   return Card(
+    color: Colors.black12,
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
     child: Column(
       children: [
-        Text(
-          "% del Consumo Total",
-          style: TextStyle(
-              fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
+        Container(
+          margin: EdgeInsets.only(top: 10.0),
+          child: Text(
+            "% del Consumo Total",
+            style: TextStyle(
+                fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+          ),
         ),
-        PieChart(
-          PieChartData(
-              borderData: FlBorderData(
-                show: false,
-              ),
-              startDegreeOffset: 0,
-              sectionsSpace: 0,
-              centerSpaceRadius: 40,
-              sections: showingSections(onValue, standbyValue)),
+        PieChartSample2(
+          onValue: onValue,
+          stadbyValue: standbyValue,
         ),
       ],
     ),
@@ -101,18 +96,16 @@ generateBarON() {
     }
   }
 
-  return Card(
-    child: Column(
-      children: [
-        BarChartSample1(
-          days: days,
-          details: 'Encendido',
-        ),
-        BarChartSample1(
-          days: daysStandby,
-          details: 'Standby',
-        ),
-      ],
-    ),
+  return Column(
+    children: [
+      BarChartSample1(
+        days: days,
+        details: 'Encendido',
+      ),
+      BarChartSample1(
+        days: daysStandby,
+        details: 'Standby',
+      ),
+    ],
   );
 }
