@@ -22,7 +22,6 @@ class ApplianceController extends GetxController {
 
   @override
   void onInit() {
-    //_localApplianceDbRepository = Get.find<LocalApplianceDbRepository>();
     super.onInit();
     _userDbRepository = Get.find<UserDbRepository>();
     if (Get.arguments != null) {
@@ -32,7 +31,6 @@ class ApplianceController extends GetxController {
       isEditing = true.obs;
       _loadUserAppliance();
     } else {
-      //print("AKIII, $e");
       isEditing = false.obs;
       applianceName = ''.obs;
       applianceConsumption = 0.0.obs;
@@ -42,23 +40,6 @@ class ApplianceController extends GetxController {
       applianceStandby = false.obs;
     }
     applianceUsage = RxMap<String, double>();
-    /*
-    if (!Get.isRegistered(tag: APPLIANCESELECTEDKEY)) {
-      isEditing = false.obs;
-      applianceName = ''.obs;
-      applianceConsumption = 0.0.obs;
-      applianceStandbyConsumption = 0.0.obs;
-      applianceTag = ''.obs;
-      applianceCategorie = ''.obs;
-      applianceStandby = false.obs;
-      applianceUsage = RxMap<String, double>();
-    } else {
-      print('HOLLAA');
-      isEditing = true.obs;
-      _applianceSelectedKey = Get.find(tag: APPLIANCESELECTEDKEY);
-      _loadUserAppliance(_applianceSelectedKey);
-    }
-    */
   }
 
   get name => applianceName.value;
@@ -90,12 +71,9 @@ class ApplianceController extends GetxController {
   Future<void> _editAppliance() async {
     await _userDbRepository.editModel(
         this._applianceSelectedKey, this._userApplianceModel);
-    //_userAppliances[key] = newApplianceModel;
   }
 
   void _loadUserAppliance() {
-    //_userApplianceModel = _userDbRepository.getModel(key);
-
     applianceName = _userApplianceModel.applianceModel.name.obs;
     applianceConsumption = _userApplianceModel.applianceModel.consumption.obs;
     applianceStandbyConsumption =

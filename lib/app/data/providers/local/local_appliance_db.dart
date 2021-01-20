@@ -8,8 +8,6 @@ class LocalApplianceDb {
 
   LocalApplianceDb() {
     _box = Get.find<ApplianceDbService>().box;
-    print('box');
-    print(_box);
   }
 
   Future<void> _addNewModel(ApplianceModel newModel) async {

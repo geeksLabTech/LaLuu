@@ -32,7 +32,6 @@ class UserApplianceDb {
 
   Map<dynamic, UserApplianceModel> getAllModels() {
     var boxKeys = _box.keys;
-    //var boxToMap = _box.toMap();
     Map<dynamic, UserApplianceModel> allModels = {};
     boxKeys.forEach((key) {
       allModels[key] =

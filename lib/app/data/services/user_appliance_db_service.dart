@@ -10,7 +10,6 @@ class UserApplianceDbService extends GetxService {
     //  Hive.deleteBoxFromDisk(USERAPPLIANCEBOX);
     _box = await Hive.openBox(USERAPPLIANCEBOX);
     return this;
-    //print('akiiii');
   }
 
   Box get box => _box;
