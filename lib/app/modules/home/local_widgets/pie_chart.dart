@@ -13,7 +13,7 @@ List<PieChartSectionData> showingSections(double onValue, double standbyValue) {
         return PieChartSectionData(
           color: Colors.yellow,
           value: onValue,
-          title: 'ON ' + onValue.toString() + '%',
+          // title: 'ON ' + onValue.toString() + '%',
           radius: radius,
           titleStyle: TextStyle(
               fontSize: fontSize,
@@ -24,7 +24,7 @@ List<PieChartSectionData> showingSections(double onValue, double standbyValue) {
         return PieChartSectionData(
           color: Colors.orangeAccent,
           value: standbyValue,
-          title: 'Standby ' + standbyValue.toString() + '%',
+          // title: 'Standby ' + standbyValue.toString() + '%',
           radius: radius,
           titleStyle: TextStyle(
               fontSize: fontSize,
