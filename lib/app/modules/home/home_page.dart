@@ -53,8 +53,8 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: Visibility(
         visible: this.visible,
         child: FloatingActionButton(
-          onPressed: () {
-            Get.toNamed(AppRoutes.APPLIANCE, arguments: null);
+          onPressed: () async {
+            await Get.toNamed(AppRoutes.APPLIANCE, arguments: null);
             this.setState(() {});
           },
           child: Icon(
