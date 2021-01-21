@@ -15,6 +15,7 @@ class LocalApplianceDb {
   }
 
   List<ApplianceModel> getModels() {
+    // this sometimes fails to convert if appliance_db_service commented bug is not done that way
     return _box.values
         .map((e) => ApplianceModel.fromJson(Map<String, dynamic>.from(e)))
         .toList();
