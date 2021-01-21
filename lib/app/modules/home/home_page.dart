@@ -15,7 +15,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int activeIndex = 1;
-  bool visible = true;
+  bool isAddBtnVisible = true;
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +51,7 @@ class _HomePageState extends State<HomePage> {
         },
       ),
       floatingActionButton: Visibility(
-        visible: this.visible,
+        visible: this.isAddBtnVisible,
         child: FloatingActionButton(
           onPressed: () async {
             await Get.toNamed(AppRoutes.APPLIANCE, arguments: null);
@@ -69,17 +69,17 @@ class _HomePageState extends State<HomePage> {
   _showSelectedPage() {
     switch (activeIndex) {
       case 0:
-        this.visible = false;
+        this.isAddBtnVisible = false;
         this.setState(() {});
         return TariffPage();
         break;
       case 1:
-        this.visible = true;
+        this.isAddBtnVisible = true;
         this.setState(() {});
         return ApplianceCardsList();
         break;
       case 2:
-        this.visible = false;
+        this.isAddBtnVisible = false;
         this.setState(() {});
         return ChartsPage();
         break;
