@@ -15,21 +15,18 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int activeIndex = 1;
+  bool visible = true;
 
   @override
   Widget build(BuildContext context) {
     final homeController = Get.find<HomeController>();
     return Scaffold(
       appBar: AppBar(
-        title: Text('LaLu'),
+        title: Text(
+          'LaLu',
+          style: TextStyle(color: Colors.white),
+        ),
         centerTitle: true,
-        actions: [
-          // TODO pass this to the card
-          IconButton(
-            icon: Icon(Icons.delete_forever),
-            onPressed: () async => await homeController.deleteDb(),
-          )
-        ],
       ),
       body: _showSelectedPage(),
       bottomNavigationBar: ConvexAppBar(
@@ -39,15 +36,25 @@ class _HomePageState extends State<HomePage> {
           TabItem(icon: Icons.bar_chart_sharp)
         ],
         initialActiveIndex: activeIndex,
+        backgroundColor: Theme.of(context).primaryColor,
         onTap: (int value) {
           setState(() {
             activeIndex = value;
           });
         },
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => Get.toNamed(AppRoutes.APPLIANCE),
-        child: Icon(Icons.add),
+      floatingActionButton: Visibility(
+        visible: this.visible,
+        child: FloatingActionButton(
+          onPressed: () {
+            Get.toNamed(AppRoutes.APPLIANCE, arguments: null);
+            this.setState(() {});
+          },
+          child: Icon(
+            Icons.add,
+            color: Colors.white,
+          ),
+        ),
       ),
     );
   }
@@ -55,12 +62,18 @@ class _HomePageState extends State<HomePage> {
   _showSelectedPage() {
     switch (activeIndex) {
       case 0:
+        this.visible = false;
+        this.setState(() {});
         return TariffPage();
         break;
       case 1:
+        this.visible = true;
+        this.setState(() {});
         return ApplianceCardsList();
         break;
       case 2:
+        this.visible = false;
+        this.setState(() {});
         return ChartsPage();
         break;
     }

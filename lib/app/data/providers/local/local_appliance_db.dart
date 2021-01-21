@@ -8,8 +8,6 @@ class LocalApplianceDb {
 
   LocalApplianceDb() {
     _box = Get.find<ApplianceDbService>().box;
-    print('box');
-    print(_box);
   }
 
   Future<void> _addNewModel(ApplianceModel newModel) async {
@@ -17,7 +15,10 @@ class LocalApplianceDb {
   }
 
   List<ApplianceModel> getModels() {
-    return _box.values.map((e) => ApplianceModel.fromJson(e)).toList();
+    // this sometimes fails to convert if appliance_db_service commented bug is not done that way
+    return _box.values
+        .map((e) => ApplianceModel.fromJson(Map<String, dynamic>.from(e)))
+        .toList();
   }
 
   Future<void> updateModels(List<ApplianceModel> newModels) async {

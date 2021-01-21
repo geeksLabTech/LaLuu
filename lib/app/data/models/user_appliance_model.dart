@@ -5,6 +5,9 @@ part 'user_appliance_model.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class UserApplianceModel {
+  // In .g file :
+  // ApplianceModel.fromJson(Map<String, dynamic>.from(json['applianceModel']))
+  // Map<String, dynamic>.from(json['usage'])
   ApplianceModel applianceModel;
   Map<String, double> usage;
   String tag;

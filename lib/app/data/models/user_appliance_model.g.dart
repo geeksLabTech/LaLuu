@@ -11,8 +11,8 @@ UserApplianceModel _$UserApplianceModelFromJson(Map<String, dynamic> json) {
     applianceModel: json['applianceModel'] == null
         ? null
         : ApplianceModel.fromJson(
-            json['applianceModel'] as Map<String, dynamic>),
-    usage: (json['usage'] as Map<String, dynamic>)?.map(
+            Map<String, dynamic>.from(json['applianceModel'])),
+    usage: (Map<String, dynamic>.from(json['usage']))?.map(
       (k, e) => MapEntry(k, (e as num)?.toDouble()),
     ),
     tag: json['tag'] as String,

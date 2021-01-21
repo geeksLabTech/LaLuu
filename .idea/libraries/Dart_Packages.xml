@@ -156,6 +156,13 @@
             </list>
           </value>
         </entry>
+        <entry key="convex_bottom_bar">
+          <value>
+            <list>
+              <option value="$PROJECT_DIR$/../../../../C/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-2.6.0/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="crypto">
           <value>
             <list>
@@ -636,6 +643,7 @@
       <root url="file://$PROJECT_DIR$/../../../../C/flutter/.pub-cache/hosted/pub.dartlang.org/code_builder-3.5.0/lib" />
       <root url="file://$PROJECT_DIR$/../../../../C/flutter/.pub-cache/hosted/pub.dartlang.org/collection-1.15.0-nullsafety.3/lib" />
       <root url="file://$PROJECT_DIR$/../../../../C/flutter/.pub-cache/hosted/pub.dartlang.org/convert-2.1.1/lib" />
+      <root url="file://$PROJECT_DIR$/../../../../C/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-2.6.0/lib" />
       <root url="file://$PROJECT_DIR$/../../../../C/flutter/.pub-cache/hosted/pub.dartlang.org/crypto-2.1.4/lib" />
       <root url="file://$PROJECT_DIR$/../../../../C/flutter/.pub-cache/hosted/pub.dartlang.org/cupertino_icons-0.1.3/lib" />
       <root url="file://$PROJECT_DIR$/../../../../C/flutter/.pub-cache/hosted/pub.dartlang.org/dart_style-1.3.10/lib" />
