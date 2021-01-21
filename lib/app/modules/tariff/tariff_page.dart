@@ -14,13 +14,16 @@ class _TariffPageState extends State<TariffPage> {
 
   @override
   Widget build(BuildContext context) {
-    
     return Column(
       children: [
-        TextField(
-          autofocus: true,
-          keyboardType: TextInputType.numberWithOptions(decimal: true),
-          onChanged: (value) => consumption = double.tryParse(value),
+        Container(
+          width: 200.0,
+          child: TextField(
+            textAlign: TextAlign.center,
+            autofocus: true,
+            keyboardType: TextInputType.numberWithOptions(decimal: true),
+            onChanged: (value) => consumption = double.tryParse(value),
+          ),
         ),
         Divider(),
         RaisedButton(
