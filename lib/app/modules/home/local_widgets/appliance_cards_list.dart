@@ -67,9 +67,7 @@ class _ApplianceCardsListState extends State<ApplianceCardsList> {
                                 margin: EdgeInsets.all(5.0),
                               ),
                               Container(
-                                child: Text(getTotalCost(e.userApplianceModel)
-                                        .toString() +
-                                    "CUP"),
+                                child: Text(getTotalCost().toString() + "CUP"),
                                 margin: EdgeInsets.all(5.0),
                               ),
                             ],

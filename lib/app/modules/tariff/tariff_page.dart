@@ -46,7 +46,10 @@ class _TariffPageState extends State<TariffPage> {
             Flexible(
               child: SingleChildScrollView(
                 scrollDirection: Axis.vertical,
+                controller: ScrollController(),
                 child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: _buildTableRows(list),
                 ),
@@ -61,36 +64,69 @@ class _TariffPageState extends State<TariffPage> {
   List<Widget> _buildTableRows(List values) {
     List<Widget> rows = [];
     for (int i = 0; i < CONSUMPTIONRANGES.length; i++) {
-      rows.add(Row(children: [
-        Container(
-          alignment: Alignment.center,
-          child: Text(
-            CONSUMPTIONRANGES[i].toString(),
-            style: TextStyle(fontSize: 20.0),
+      rows.add(Container(
+        margin: EdgeInsets.all(3.0),
+        child: Row(children: [
+          Container(
+            alignment: Alignment.center,
+            child: Text(
+              CONSUMPTIONRANGES[i].toString(),
+              style: TextStyle(fontSize: 17.0),
+            ),
+            padding: EdgeInsets.all(1.0),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: Colors.transparent,
+              border: Border(
+                left: BorderSide(
+                  color: Colors.black,
+                  width: 3,
+                ),
+              ),
+            ),
           ),
-          padding: EdgeInsets.all(1.0),
-        ),
-        Container(
-          alignment: Alignment.center,
-          child: Text(
-            PRICES[i].toString(),
-            style: TextStyle(fontSize: 20.0),
+          Container(
+            alignment: Alignment.center,
+            child: Text(
+              PRICES[i].toString(),
+              style: TextStyle(fontSize: 17.0),
+            ),
+            padding: EdgeInsets.all(1.0),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: Colors.transparent,
+              border: Border(
+                left: BorderSide(
+                  color: Colors.black,
+                  width: 3,
+                ),
+              ),
+            ),
           ),
-          padding: EdgeInsets.all(1.0),
-        ),
-        Container(
-          alignment: Alignment.center,
-          child: Text(
-            values is Null || values.length > 0
-                ? values[i] == Null
-                    ? '0'
-                    : values[i].toString()
-                : "0",
-            style: TextStyle(fontSize: 20.0),
+          Container(
+            alignment: Alignment.center,
+            child: Text(
+              values is Null || values.length > 0
+                  ? values[i] == Null
+                      ? '0'
+                      : values[i].toString()
+                  : "0",
+              style: TextStyle(fontSize: 17.0),
+            ),
+            padding: EdgeInsets.all(1.0),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: Colors.transparent,
+              border: Border(
+                left: BorderSide(
+                  color: Colors.black,
+                  width: 3,
+                ),
+              ),
+            ),
           ),
-          padding: EdgeInsets.all(1.0),
-        ),
-      ]));
+        ]),
+      ));
     }
 
     rows.add(Row(children: [
@@ -98,7 +134,7 @@ class _TariffPageState extends State<TariffPage> {
         alignment: Alignment.center,
         child: Text(
           CONSUMPTIONRANGES[CONSUMPTIONRANGES.length - 1].toString() + "+",
-          style: TextStyle(fontSize: 20.0),
+          style: TextStyle(fontSize: 17.0),
         ),
         padding: EdgeInsets.all(1.0),
       ),
@@ -106,7 +142,7 @@ class _TariffPageState extends State<TariffPage> {
         alignment: Alignment.center,
         child: Text(
           PRICES[PRICES.length - 1].toString(),
-          style: TextStyle(fontSize: 20.0),
+          style: TextStyle(fontSize: 17.0),
         ),
         padding: EdgeInsets.all(1.0),
       ),
@@ -118,7 +154,7 @@ class _TariffPageState extends State<TariffPage> {
                   ? "0"
                   : values[values.length - 1].toString()
               : "0",
-          style: TextStyle(fontSize: 20.0),
+          style: TextStyle(fontSize: 17.0),
         ),
         padding: EdgeInsets.all(1.0),
       ),
