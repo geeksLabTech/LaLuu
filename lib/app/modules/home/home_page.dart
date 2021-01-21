@@ -81,7 +81,8 @@ class _HomePageState extends State<HomePage> {
       case 2:
         this.visible = false;
         this.setState(() {});
-        return ChartsPage();
+        final homeController = Get.find<HomeController>();
+        if (homeController.userAppliances.isNotEmpty) return ChartsPage();
         break;
     }
   }
