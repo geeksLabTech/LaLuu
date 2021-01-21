@@ -32,7 +32,11 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: ConvexAppBar(
         items: [
           TabItem(icon: Icons.electrical_services),
-          TabItem(icon: Icons.home),
+          TabItem(
+              icon: new Image.asset(
+            "assets/logo.png",
+            fit: BoxFit.contain,
+          )),
           TabItem(icon: Icons.bar_chart_sharp)
         ],
         initialActiveIndex: activeIndex,
