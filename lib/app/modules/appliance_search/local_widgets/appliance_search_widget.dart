@@ -9,10 +9,19 @@ class ApplianceSearchWidget extends StatelessWidget {
     return Obx(() => ListView.builder(
         itemCount: applianceSearchController.searchedApplianceModelList.length,
         itemBuilder: (context, index) => ListTile(
-              title: Text(applianceSearchController
-                  .searchedApplianceModelList[index].name),
-              subtitle: Text(applianceSearchController
-                  .searchedApplianceModelList[index].category),
+              title: Text(
+                applianceSearchController
+                    .searchedApplianceModelList[index].name,
+                style: TextStyle(
+                  color: Colors.black,
+                ),
+              ),
+              subtitle: Text(
+                  applianceSearchController
+                      .searchedApplianceModelList[index].category,
+                  style: TextStyle(
+                    color: Colors.black,
+                  )),
               onTap: () {
                 applianceSearchController.applianceController
                     .loadSelectedAppliance(applianceSearchController
