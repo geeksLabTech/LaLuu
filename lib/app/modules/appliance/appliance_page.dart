@@ -147,7 +147,6 @@ class _AppliancePageState extends State<AppliancePage> {
             decoration: InputDecoration(
               labelText: '',
             ),
-            // TODO always setting to 0.0
             initialValue: getUsageValue(applianceController, day),
             onChanged: (value) {
               applianceController.applianceUsage[day] = double.parse(value);
@@ -177,9 +176,8 @@ class _AppliancePageState extends State<AppliancePage> {
     setState(() {
       applianceController.loadSelectedAppliance(selectedAppliance);
     });
-    // print('pruba');
-    // print(applianceController.applianceConsumption);
-    // print(applianceController.applianceStandbyConsumption);
-    print(applianceController.applianceUsage);
+    print('pruba');
+    print(applianceController.applianceConsumption);
+    print(applianceController.applianceStandbyConsumption);
   }
 }

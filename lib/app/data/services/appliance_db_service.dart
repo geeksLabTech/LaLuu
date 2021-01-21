@@ -11,19 +11,17 @@ class ApplianceDbService extends GetxService {
 
   Future<ApplianceDbService> init() async {
     if (await Hive.boxExists(APPLIANCEBOX))
-      _box = await Hive.openBox(APPLIANCEBOX);
-    else {
-      _box = await Hive.openBox(APPLIANCEBOX);
-      if (_box.isEmpty) {
-        List<dynamic> db =
-            json.decode(await rootBundle.loadString(JSONDBDIRECTORY));
-        print('MODEL!!');
-        print(ApplianceModel.fromJson(db[1] as Map<String, dynamic>));
-        db.forEach((element) async {
-          var model = ApplianceModel.fromJson(element as Map<String, dynamic>);
-          await _box.add(model.toJson());
-        });
-      }
+      Hive.deleteBoxFromDisk(APPLIANCEBOX);
+    _box = await Hive.openBox(APPLIANCEBOX);
+    if (_box.isEmpty) {
+      List<dynamic> db =
+          json.decode(await rootBundle.loadString(JSONDBDIRECTORY));
+      print('MODEL!!');
+      print(ApplianceModel.fromJson(db[1] as Map<String, dynamic>));
+      db.forEach((element) async {
+        var model = ApplianceModel.fromJson(element as Map<String, dynamic>);
+        await _box.add(model.toJson());
+      });
     }
     return this;
   }

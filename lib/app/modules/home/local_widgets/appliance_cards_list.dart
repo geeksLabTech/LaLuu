@@ -32,46 +32,30 @@ class _ApplianceCardsListState extends State<ApplianceCardsList> {
                             ? e.userApplianceModel.applianceModel.name
                             : e.userApplianceModel.tag,
                         overflow: TextOverflow.ellipsis,
-                        style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                       Row(
                         children: [
                           Column(
                             //mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              // Spacer(3),
-                              Container(
-                                child: Text(
-                                  "Estimado mensual: ",
-                                  //textAlign: TextAlign.left,
-                                ),
-                                margin: EdgeInsets.all(5.0),
+                              Text(
+                                "Estimado mensual: ",
+                                //textAlign: TextAlign.left,
                               ),
-                              Container(
-                                child: Text(
-                                  "Costo estimado: ",
-                                  //textAlign: TextAlign.left,
-                                ),
-                                margin: EdgeInsets.all(5.0),
+                              Text(
+                                "Costo estimado: ",
+                                //textAlign: TextAlign.left,
                               )
                             ],
                           ),
                           Column(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
-                              Container(
-                                child: Text(
-                                  getTotalConsumption().toString() + "KW/h",
-                                  textAlign: TextAlign.end,
-                                ),
-                                margin: EdgeInsets.all(5.0),
+                              Text(
+                                getTotalConsumption().toString() + "KW/h",
+                                textAlign: TextAlign.end,
                               ),
-                              Container(
-                                child: Text(getTotalCost(e.userApplianceModel)
-                                        .toString() +
-                                    "CUP"),
-                                margin: EdgeInsets.all(5.0),
-                              ),
+                              Text(getTotalCost().toString() + "CUP"),
                             ],
                           ),
                         ],
@@ -118,99 +102,97 @@ class _ApplianceCardsListState extends State<ApplianceCardsList> {
       margin: EdgeInsets.all(6),
       child: Container(
         padding: EdgeInsets.all(4),
-        child: Center(
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  Spacer(),
-                  Text(
-                    "Equipo: ",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Spacer(),
+                Text(
+                  "Equipo: ",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
                   ),
-                  Text(e.applianceModel.name),
-                  Spacer()
-                ],
-              ),
-              Row(
-                children: [
-                  Spacer(),
-                  Text(
-                    "Etiqueta: ",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
+                ),
+                Text(e.applianceModel.name),
+                Spacer()
+              ],
+            ),
+            Row(
+              children: [
+                Spacer(),
+                Text(
+                  "Etiqueta: ",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
                   ),
-                  Text(e.tag),
-                  Spacer(),
-                ],
-              ),
-              Row(
-                children: [
-                  Spacer(),
-                  Text(
-                    "Consumo Encendido: ",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
+                ),
+                Text(e.tag),
+                Spacer(),
+              ],
+            ),
+            Row(
+              children: [
+                Spacer(),
+                Text(
+                  "Consumo Encendido: ",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
                   ),
-                  Text(e.applianceModel.consumption.toString() + ' W/h'),
-                  Spacer(),
-                ],
-              ),
-              Row(
-                children: [
-                  Spacer(),
-                  Text(
-                    "Consumo en Standby: ",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
+                ),
+                Text(e.applianceModel.consumption.toString() + ' W/h'),
+                Spacer(),
+              ],
+            ),
+            Row(
+              children: [
+                Spacer(),
+                Text(
+                  "Consumo en Standby: ",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
                   ),
-                  Text(e.applianceModel.standbyConsumption.toString() + ' W/h'),
-                  Spacer(),
-                ],
-              ),
-              Row(
-                children: [
-                  Spacer(),
-                  Text(
-                    "ON: ",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
+                ),
+                Text(e.applianceModel.standbyConsumption.toString() + ' W/h'),
+                Spacer(),
+              ],
+            ),
+            Row(
+              children: [
+                Spacer(),
+                Text(
+                  "ON: ",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
                   ),
-                  Text(e.consumptionOn.toString() + " W"),
-                  Spacer(flex: 3),
-                  Text(
-                    "Standby: ",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
+                ),
+                Text(e.consumptionOn.toString() + " W"),
+                Spacer(flex: 3),
+                Text(
+                  "Standby: ",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
                   ),
-                  Text(e.consumptionStandby.toString() + " W"),
-                  Spacer(flex: 3),
-                  Text(
-                    "Total: ",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
+                ),
+                Text(e.consumptionStandby.toString() + " W"),
+                Spacer(flex: 3),
+                Text(
+                  "Total: ",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
                   ),
-                  Text(e.consumptionTotal.toString() + " W"),
-                  Spacer()
-                ],
-              ),
-              Row(
-                children: [
-                  Spacer(),
-                  generateDays(e),
-                  Spacer(),
-                ],
-              ),
-            ],
-          ),
+                ),
+                Text(e.consumptionTotal.toString() + " W"),
+                Spacer()
+              ],
+            ),
+            Row(
+              children: [
+                Spacer(),
+                generateDays(e),
+                Spacer(),
+              ],
+            ),
+          ],
         ),
       ),
     );
@@ -242,17 +224,17 @@ class _ApplianceCardsListState extends State<ApplianceCardsList> {
   }
 }
 
-// Widget createSummary() {
-//   return Card(
-//     child: Row(
-//       children: [
-//         Text(getTotalConsumption().toString() + ' kW'),
-//         Spacer(),
-//         Text(getTotalCost().toString() + ' CUP'),
-//       ],
-//     ),
-//   );
-// }
+Widget createSummary() {
+  return Card(
+    child: Row(
+      children: [
+        Text(getTotalConsumption().toString() + ' kW'),
+        Spacer(),
+        Text(getTotalCost().toString() + ' CUP'),
+      ],
+    ),
+  );
+}
 
 double getTotalConsumption() {
   double consumption = 0.0;
@@ -264,14 +246,7 @@ double getTotalConsumption() {
   return (consumption / 1000).toPrecision(2);
 }
 
-double getTotalCost(UserApplianceModel userApplianceModel) {
-  double consumption = getApplianceConsumption(userApplianceModel);
+double getTotalCost() {
+  double consumption = getTotalConsumption();
   return electricityCost(consumption).toPrecision(2);
-}
-
-double getApplianceConsumption(UserApplianceModel userApplianceModel) {
-  double consumption = 0.0;
-  consumption += 4 * userApplianceModel.consumptionOn;
-  consumption += 4 * userApplianceModel.consumptionStandby;
-  return consumption / 1000;
 }

@@ -27,6 +27,14 @@ class _HomePageState extends State<HomePage> {
           style: TextStyle(color: Colors.white),
         ),
         centerTitle: true,
+        actions: [
+          // TODO pass this to the card
+          IconButton(
+            icon: Icon(Icons.delete_forever),
+            onPressed: () async => await homeController.deleteDb(),
+            color: Colors.white,
+          )
+        ],
       ),
       body: _showSelectedPage(),
       bottomNavigationBar: ConvexAppBar(
