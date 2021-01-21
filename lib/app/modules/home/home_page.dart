@@ -33,13 +33,17 @@ class _HomePageState extends State<HomePage> {
         items: [
           TabItem(icon: Icons.electrical_services),
           TabItem(
+              activeIcon: Container(
+                  padding: EdgeInsets.all(10.0),
+                  child: new Image.asset(
+                    "assets/logo.png",
+                  )),
               icon: Container(
-            padding: EdgeInsets.all(10.0),
-            child: new Image.asset(
-              "assets/logo.png",
-              // fit: BoxFit.,
-            ),
-          )),
+                // padding: EdgeInsets.all(10.0),
+                child: new Image.asset(
+                  "assets/logo.png",
+                ),
+              )),
           TabItem(icon: Icons.bar_chart_sharp)
         ],
         initialActiveIndex: activeIndex,
