@@ -42,7 +42,7 @@ class _TariffPageState extends State<TariffPage> {
         SizedBox(
           height: 20,
         ),
-        SafeArea(child: _buildTableRows()),
+        Center(child: _buildTableRows()),
         SizedBox(
           height: 30,
         )
