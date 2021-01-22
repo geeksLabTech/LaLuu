@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+import 'dart:math';
+
+import 'package:LaLu/app/utils/constants.dart';
+>>>>>>> parent of c935439... Merge branch 'UI' into table
 import 'package:LaLu/app/utils/functions.dart';
 import 'package:flutter/material.dart';
 

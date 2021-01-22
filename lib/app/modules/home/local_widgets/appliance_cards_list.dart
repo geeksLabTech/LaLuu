@@ -1,9 +1,10 @@
 import 'package:LaLu/app/data/models/user_appliance_model.dart';
 import 'package:LaLu/app/routes/app_routes.dart';
+import 'package:LaLu/app/utils/constants.dart';
 import 'package:LaLu/app/utils/functions.dart';
-import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../home_controller.dart';
 
 class ApplianceCardsList extends StatefulWidget {
@@ -12,213 +13,205 @@ class ApplianceCardsList extends StatefulWidget {
 }
 
 class _ApplianceCardsListState extends State<ApplianceCardsList> {
-  HomeController homeController;
-
   @override
   Widget build(BuildContext context) {
     final homeController = Get.find<HomeController>();
-    if (homeController.userAppliances.isNotEmpty)
-      return Obx(
-        () => ListView(
-          children: homeController.userAppliances
-              .map((e) => Card(
-                    clipBehavior: Clip.hardEdge,
-                    margin: EdgeInsets.all(10),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)),
-                    elevation: 2.5,
-                    child: Column(
-                      children: [
-                        Text(
-                          e.userApplianceModel.tag == ""
-                              ? e.userApplianceModel.applianceModel.name
-                              : e.userApplianceModel.tag,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        Row(
-                          children: [
-                            Column(
-                              //mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                // Spacer(3),
-                                Container(
-                                  child: Text(
-                                    "Estimado mensual: ",
-                                    //textAlign: TextAlign.left,
-                                  ),
-                                  margin: EdgeInsets.all(5.0),
+    return Obx(
+      () => ListView(
+        children: homeController.userAppliances
+            .map((e) => Card(
+                  clipBehavior: Clip.hardEdge,
+                  margin: EdgeInsets.all(10),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20)),
+                  elevation: 2.5,
+                  child: Column(
+                    children: [
+                      Text(
+                        e.userApplianceModel.tag == ""
+                            ? e.userApplianceModel.applianceModel.name
+                            : e.userApplianceModel.tag,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      Row(
+                        children: [
+                          Column(
+                            //mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              // Spacer(3),
+                              Container(
+                                child: Text(
+                                  "Estimado mensual: ",
+                                  //textAlign: TextAlign.left,
                                 ),
-                                Container(
-                                  child: Text(
-                                    "Costo estimado: ",
-                                    //textAlign: TextAlign.left,
-                                  ),
-                                  margin: EdgeInsets.all(5.0),
-                                )
-                              ],
-                            ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Container(
-                                  child: Text(
-                                    getApplianceConsumption(
-                                                e.userApplianceModel)
-                                            .toString() +
-                                        "KW/h",
-                                    textAlign: TextAlign.end,
-                                  ),
-                                  margin: EdgeInsets.all(5.0),
+                                margin: EdgeInsets.all(5.0),
+                              ),
+                              Container(
+                                child: Text(
+                                  "Costo estimado: ",
+                                  //textAlign: TextAlign.left,
                                 ),
-                                Container(
-                                  child: Text(getTotalCost(e.userApplianceModel)
-                                          .toString() +
-                                      "CUP"),
-                                  margin: EdgeInsets.all(5.0),
+                                margin: EdgeInsets.all(5.0),
+                              )
+                            ],
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Container(
+                                child: Text(
+                                  getTotalConsumption().toString() + "KW/h",
+                                  textAlign: TextAlign.end,
                                 ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        Divider(),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            IconButton(
-                              icon: Icon(Icons.edit),
-                              onPressed: () async {
-                                //int key = homeController.getModelKey(e);
-                                print(e.key);
-                                await Get.toNamed(AppRoutes.APPLIANCE,
-                                    arguments: {e.key: e.userApplianceModel});
-                                setState(() {});
-                              },
-                            ),
-                            IconButton(
-                              icon: Icon(Icons.delete),
-                              onPressed: () async {
-                                //int key = homeController.getModelKey(e);
+                                margin: EdgeInsets.all(5.0),
+                              ),
+                              Container(
+                                child: Text(getTotalCost().toString() + "CUP"),
+                                margin: EdgeInsets.all(5.0),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      Divider(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          IconButton(
+                            icon: Icon(Icons.edit),
+                            onPressed: () async {
+                              //int key = homeController.getModelKey(e);
+                              print(e.key);
+                              await Get.toNamed(AppRoutes.APPLIANCE,
+                                  arguments: {e.key: e.userApplianceModel});
+                              setState(() {});
+                            },
+                          ),
+                          IconButton(
+                            icon: Icon(Icons.delete),
+                            onPressed: () async {
+                              //int key = homeController.getModelKey(e);
 
-                                await homeController.removeAppliance(e.key);
-                                setState(() {});
-                              },
-                            )
-                          ],
-                        )
-                      ],
-                    ),
-                  ))
-              .toList(),
-        ),
-        // createSummary(),
-        // ],
-      );
-    return Center(
-      child: Text(
-        "No hay datos para mostrar",
-        style: TextStyle(color: Colors.white),
+                              await homeController.removeAppliance(e.key);
+                              setState(() {});
+                            },
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                ))
+            .toList(),
       ),
+      // createSummary(),
+      // ],
     );
   }
 
-  Widget createCard(LoadedUserAppliance e) {
+  createCard(UserApplianceModel e) {
     return Card(
-      clipBehavior: Clip.hardEdge,
-      margin: EdgeInsets.all(10),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      elevation: 2.5,
-      child: Column(
-        children: [
-          Text(
-            e.userApplianceModel.tag == ""
-                ? e.userApplianceModel.applianceModel.name
-                : e.userApplianceModel.tag,
-            overflow: TextOverflow.ellipsis,
-            style: TextStyle(fontWeight: FontWeight.bold),
-          ),
-          Row(
+      color: Colors.white70,
+      elevation: 6.0,
+      margin: EdgeInsets.all(6),
+      child: Container(
+        padding: EdgeInsets.all(4),
+        child: Center(
+          child: Column(
             children: [
-              Column(
+              Row(
                 children: [
-                  Container(
-                    padding: EdgeInsets.only(left: 10),
-                    child: Text(
-                      "Estimado mensual:",
+                  Spacer(),
+                  Text(
+                    "Equipo: ",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
                     ),
-                    margin: EdgeInsets.all(5.0),
                   ),
-                  Container(
-                    padding: EdgeInsets.only(left: 10),
-                    child: Text(
-                      "Costo estimado:",
-                    ),
-                    margin: EdgeInsets.all(5.0),
-                  )
+                  Text(e.applianceModel.name),
+                  Spacer()
                 ],
               ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.end,
+              Row(
                 children: [
-                  Container(
-                    child: Text(
-                      getApplianceConsumption(e.userApplianceModel).toString() +
-                          "KW/h",
-                      textAlign: TextAlign.end,
+                  Spacer(),
+                  Text(
+                    "Etiqueta: ",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
                     ),
-                    margin: EdgeInsets.all(5.0),
                   ),
-                  Container(
-                    child: Text(
-                        getTotalCost(e.userApplianceModel).toString() + "CUP"),
-                    margin: EdgeInsets.all(5.0),
+                  Text(e.tag),
+                  Spacer(),
+                ],
+              ),
+              Row(
+                children: [
+                  Spacer(),
+                  Text(
+                    "Consumo Encendido: ",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
+                  Text(e.applianceModel.consumption.toString() + ' W/h'),
+                  Spacer(),
+                ],
+              ),
+              Row(
+                children: [
+                  Spacer(),
+                  Text(
+                    "Consumo en Standby: ",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(e.applianceModel.standbyConsumption.toString() + ' W/h'),
+                  Spacer(),
+                ],
+              ),
+              Row(
+                children: [
+                  Spacer(),
+                  Text(
+                    "ON: ",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(e.consumptionOn.toString() + " W"),
+                  Spacer(flex: 3),
+                  Text(
+                    "Standby: ",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(e.consumptionStandby.toString() + " W"),
+                  Spacer(flex: 3),
+                  Text(
+                    "Total: ",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(e.consumptionTotal.toString() + " W"),
+                  Spacer()
+                ],
+              ),
+              Row(
+                children: [
+                  Spacer(),
+                  generateDays(e),
+                  Spacer(),
                 ],
               ),
             ],
           ),
-          Divider(
-            thickness: 2.0,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              IconButton(
-                icon: Icon(Icons.edit),
-                onPressed: () async {
-                  await Get.toNamed(AppRoutes.APPLIANCE,
-                      arguments: {e.key: e.userApplianceModel});
-                  setState(() {});
-                },
-              ),
-              IconButton(
-                icon: Icon(Icons.delete),
-                onPressed: () async {
-                  showRemoveDialog(context, e);
-                },
-              )
-            ],
-          )
-        ],
+        ),
       ),
     );
-  }
-
-  showRemoveDialog(BuildContext context, LoadedUserAppliance e) {
-    AwesomeDialog(
-        context: context,
-        dialogType: DialogType.WARNING,
-        animType: AnimType.BOTTOMSLIDE,
-        dismissOnTouchOutside: false,
-        body: Center(
-          child: Text('¿Está seguro que desea eliminar este Equipo?'),
-        ),
-        btnCancelOnPress: () {},
-        btnOkOnPress: () async {
-          await homeController.removeAppliance(e.key);
-          setState(() {});
-        })
-      ..show();
   }
 
   generateDays(UserApplianceModel e) {
@@ -246,6 +239,18 @@ class _ApplianceCardsListState extends State<ApplianceCardsList> {
     );
   }
 }
+
+// Widget createSummary() {
+//   return Card(
+//     child: Row(
+//       children: [
+//         Text(getTotalConsumption().toString() + ' kW'),
+//         Spacer(),
+//         Text(getTotalCost().toString() + ' CUP'),
+//       ],
+//     ),
+//   );
+// }
 
 double getTotalConsumption() {
   double consumption = 0.0;
