@@ -3,7 +3,6 @@ import 'package:LaLu/app/routes/app_routes.dart';
 import 'package:LaLu/app/utils/functions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../home_controller.dart';
 
 class ApplianceCardsList extends StatefulWidget {
@@ -166,7 +165,8 @@ class _ApplianceCardsListState extends State<ApplianceCardsList> {
                 children: [
                   Container(
                     child: Text(
-                      getTotalConsumption().toString() + "KW/h",
+                      getApplianceConsumption(e.userApplianceModel).toString() +
+                          "KW/h",
                       textAlign: TextAlign.end,
                     ),
                     margin: EdgeInsets.all(5.0),
