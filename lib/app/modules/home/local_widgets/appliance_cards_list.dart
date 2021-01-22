@@ -72,9 +72,8 @@ class _ApplianceCardsListState extends State<ApplianceCardsList> {
                                   margin: EdgeInsets.all(5.0),
                                 ),
                                 Container(
-                                  child: Text(getTotalCost(e.userApplianceModel)
-                                          .toString() +
-                                      "CUP"),
+                                  child:
+                                      Text(getTotalCost().toString() + "CUP"),
                                   margin: EdgeInsets.all(5.0),
                                 ),
                               ],
@@ -169,8 +168,7 @@ class _ApplianceCardsListState extends State<ApplianceCardsList> {
                     margin: EdgeInsets.all(5.0),
                   ),
                   Container(
-                    child: Text(
-                        getTotalCost(e.userApplianceModel).toString() + "CUP"),
+                    child: Text(getTotalCost().toString() + "CUP"),
                     margin: EdgeInsets.all(5.0),
                   ),
                 ],
@@ -257,9 +255,16 @@ double getTotalConsumption() {
   return (consumption / 1000).toPrecision(2);
 }
 
-double getTotalCost(UserApplianceModel userApplianceModel) {
-  double consumption = getApplianceConsumption(userApplianceModel);
-  return electricityCost(consumption).toPrecision(2);
+// double getTotalCost(UserApplianceModel userApplianceModel) {
+//   double consumption = getApplianceConsumption(userApplianceModel);
+//   return electricityCost(consumption).toPrecision(2);
+// }
+
+double getTotalCost() {
+  double consumption = getTotalConsumption();
+  double sum = 0;
+  electricityCost(consumption).forEach((element) => sum += element);
+  return sum.toPrecision(2);
 }
 
 double getApplianceConsumption(UserApplianceModel userApplianceModel) {
