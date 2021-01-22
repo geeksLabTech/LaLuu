@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:LaLu/app/utils/constants.dart';
 import 'package:LaLu/app/utils/functions.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class TariffPage extends StatefulWidget {
   @override
@@ -20,11 +21,14 @@ class _TariffPageState extends State<TariffPage> {
           width: 200.0,
           child: Column(
             children: [
-              TextField(
-                textAlign: TextAlign.center,
-                autofocus: true,
-                keyboardType: TextInputType.numberWithOptions(decimal: true),
-                onChanged: (value) => consumption = double.tryParse(value),
+              SizedBox(
+                width: 150.0,
+                child: TextField(
+                  textAlign: TextAlign.center,
+                  autofocus: true,
+                  keyboardType: TextInputType.numberWithOptions(decimal: true),
+                  onChanged: (value) => consumption = double.tryParse(value),
+                ),
               ),
               Divider(),
               RaisedButton(
@@ -39,7 +43,13 @@ class _TariffPageState extends State<TariffPage> {
                       cost = sum;
                     });
                   }),
-              Text("$cost"),
+              Container(
+                margin: EdgeInsets.all(10.0),
+                child: Text(
+                  "$cost CUP",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),
+                ),
+              ),
             ],
           ),
         ),
@@ -57,9 +67,9 @@ class _TariffPageState extends State<TariffPage> {
   Widget _buildTableRows() {
     if (costByRanges.isEmpty) return Container();
     return DataTable(columns: [
-      DataColumn(label: Text("Rango")),
-      DataColumn(label: Text("Precio")),
-      DataColumn(label: Text("Costo"))
+      DataColumn(label: Center(child: Text("Rango"))),
+      DataColumn(label: Center(child: Text("Precio"))),
+      DataColumn(label: Center(child: Text("Costo")))
     ], rows: _getDataRows());
   }
 
@@ -69,8 +79,8 @@ class _TariffPageState extends State<TariffPage> {
     for (int i = 0; i < costByRanges.length; i++) {
       dataRows.add(DataRow(cells: [
         DataCell(Center(child: Text(TARIFFRANGES[i]))),
-        DataCell(Center(child: Text(PRICES[i].toString()))),
-        DataCell(Center(child: Text(costByRanges[i].toString())))
+        DataCell(Center(child: Text(PRICES[i].toPrecision(2).toString()))),
+        DataCell(Center(child: Text(costByRanges[i].toPrecision(2).toString())))
       ]));
     }
     return dataRows;
