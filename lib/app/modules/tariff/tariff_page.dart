@@ -18,27 +18,31 @@ class _TariffPageState extends State<TariffPage> {
       children: [
         Container(
           width: 200.0,
-          child: TextField(
-            textAlign: TextAlign.center,
-            autofocus: true,
-            keyboardType: TextInputType.numberWithOptions(decimal: true),
-            onChanged: (value) => consumption = double.tryParse(value),
+          child: Column(
+            children: [
+              TextField(
+                textAlign: TextAlign.center,
+                autofocus: true,
+                keyboardType: TextInputType.numberWithOptions(decimal: true),
+                onChanged: (value) => consumption = double.tryParse(value),
+              ),
+              Divider(),
+              RaisedButton(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20)),
+                  child: Icon(Icons.calculate),
+                  onPressed: () {
+                    setState(() {
+                      double sum = 0;
+                      costByRanges = electricityCost(consumption);
+                      costByRanges.forEach((element) => sum += element);
+                      cost = sum;
+                    });
+                  }),
+              Text("$cost"),
+            ],
           ),
         ),
-        Divider(),
-        RaisedButton(
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-            child: Icon(Icons.calculate),
-            onPressed: () {
-              setState(() {
-                double sum = 0;
-                costByRanges = electricityCost(consumption);
-                costByRanges.forEach((element) => sum += element);
-                cost = sum;
-              });
-            }),
-        Text("$cost"),
         SizedBox(
           height: 20,
         ),
@@ -64,9 +68,9 @@ class _TariffPageState extends State<TariffPage> {
     List<DataRow> dataRows = [];
     for (int i = 0; i < costByRanges.length; i++) {
       dataRows.add(DataRow(cells: [
-        DataCell(Text(TARIFFRANGES[i])),
-        DataCell(Text(PRICES[i].toString())),
-        DataCell(Text(costByRanges[i].toString()))
+        DataCell(Center(child: Text(TARIFFRANGES[i]))),
+        DataCell(Center(child: Text(PRICES[i].toString()))),
+        DataCell(Center(child: Text(costByRanges[i].toString())))
       ]));
     }
     return dataRows;
