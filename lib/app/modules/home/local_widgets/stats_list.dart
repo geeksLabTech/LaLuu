@@ -1,4 +1,5 @@
 import 'package:LaLu/app/modules/home/home_controller.dart';
+import 'package:LaLu/app/modules/home/local_widgets/appliance_cards_list.dart';
 import 'package:LaLu/app/modules/home/local_widgets/bar_chart.dart';
 import 'package:LaLu/app/modules/home/local_widgets/pie_chart.dart';
 import 'package:flutter/material.dart';
@@ -40,7 +41,7 @@ generatePieStandbyON() {
         Container(
           margin: EdgeInsets.only(top: 10.0),
           child: Text(
-            "% del Consumo Total",
+            "% del Consumo Total: " + getTotalConsumption().toString() + "KW",
             style: TextStyle(
                 fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
           ),

@@ -177,7 +177,6 @@ class _AppliancePageState extends State<AppliancePage> {
     setState(() {
       applianceController.loadSelectedAppliance(selectedAppliance);
     });
-    print('pruba');
     print(applianceController.applianceConsumption);
     print(applianceController.applianceStandbyConsumption);
   }
