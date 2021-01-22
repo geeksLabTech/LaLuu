@@ -48,6 +48,7 @@ class _HomePageState extends State<HomePage> {
       ),
       body: _showSelectedPage(),
       bottomNavigationBar: ConvexAppBar(
+        color: Colors.white,
         items: [
           TabItem(icon: Icons.electrical_services),
           TabItem(
@@ -56,12 +57,7 @@ class _HomePageState extends State<HomePage> {
                   child: new Image.asset(
                     "assets/logo.png",
                   )),
-              icon: Container(
-                // padding: EdgeInsets.all(10.0),
-                child: new Image.asset(
-                  "assets/logo.png",
-                ),
-              )),
+              icon: Icons.home),
           TabItem(icon: Icons.bar_chart_sharp)
         ],
         initialActiveIndex: activeIndex,
