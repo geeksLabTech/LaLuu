@@ -14,7 +14,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int activeIndex = 1;
-  bool visible = true;
+  bool isAddBtnVisible = true;
 
   _showSelectedPage() {
     switch (activeIndex) {
@@ -74,7 +74,7 @@ class _HomePageState extends State<HomePage> {
         },
       ),
       floatingActionButton: Visibility(
-        visible: this.visible,
+        visible: this.isAddBtnVisible,
         child: FloatingActionButton(
           onPressed: () async {
             await Get.toNamed(AppRoutes.APPLIANCE, arguments: null);

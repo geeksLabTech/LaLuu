@@ -13,6 +13,8 @@ class ApplianceCardsList extends StatefulWidget {
 }
 
 class _ApplianceCardsListState extends State<ApplianceCardsList> {
+  HomeController homeController;
+
   @override
   Widget build(BuildContext context) {
     final homeController = Get.find<HomeController>();
@@ -121,107 +123,92 @@ class _ApplianceCardsListState extends State<ApplianceCardsList> {
     );
   }
 
-  createCard(UserApplianceModel e) {
+  Widget createCard(LoadedUserAppliance e) {
     return Card(
-      color: Colors.white70,
-      elevation: 6.0,
-      margin: EdgeInsets.all(6),
-      child: Container(
-        padding: EdgeInsets.all(4),
-        child: Center(
-          child: Column(
+      clipBehavior: Clip.hardEdge,
+      margin: EdgeInsets.all(10),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      elevation: 2.5,
+      child: Column(
+        children: [
+          Text(
+            e.userApplianceModel.tag == ""
+                ? e.userApplianceModel.applianceModel.name
+                : e.userApplianceModel.tag,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+          Row(
             children: [
-              Row(
+              Column(
+                //mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Spacer(),
-                  Text(
-                    "Equipo: ",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
+                  // Spacer(3),
+                  Container(
+                    padding: EdgeInsets.only(left: 10),
+                    child: Text(
+                      "Estimado mensual:",
+                      //textAlign: TextAlign.left,
                     ),
+                    margin: EdgeInsets.all(5.0),
                   ),
-                  Text(e.applianceModel.name),
-                  Spacer()
+                  Container(
+                    padding: EdgeInsets.only(left: 10),
+                    child: Text(
+                      "Costo estimado:",
+                      //textAlign: TextAlign.left,
+                    ),
+                    margin: EdgeInsets.all(5.0),
+                  )
                 ],
               ),
-              Row(
+              Column(
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Spacer(),
-                  Text(
-                    "Etiqueta: ",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
+                  Container(
+                    child: Text(
+                      getTotalConsumption().toString() + "KW/h",
+                      textAlign: TextAlign.end,
                     ),
+                    margin: EdgeInsets.all(5.0),
                   ),
-                  Text(e.tag),
-                  Spacer(),
-                ],
-              ),
-              Row(
-                children: [
-                  Spacer(),
-                  Text(
-                    "Consumo Encendido: ",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
+                  Container(
+                    child: Text(
+                        getTotalCost(e.userApplianceModel).toString() + "CUP"),
+                    margin: EdgeInsets.all(5.0),
                   ),
-                  Text(e.applianceModel.consumption.toString() + ' W/h'),
-                  Spacer(),
-                ],
-              ),
-              Row(
-                children: [
-                  Spacer(),
-                  Text(
-                    "Consumo en Standby: ",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Text(e.applianceModel.standbyConsumption.toString() + ' W/h'),
-                  Spacer(),
-                ],
-              ),
-              Row(
-                children: [
-                  Spacer(),
-                  Text(
-                    "ON: ",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Text(e.consumptionOn.toString() + " W"),
-                  Spacer(flex: 3),
-                  Text(
-                    "Standby: ",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Text(e.consumptionStandby.toString() + " W"),
-                  Spacer(flex: 3),
-                  Text(
-                    "Total: ",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Text(e.consumptionTotal.toString() + " W"),
-                  Spacer()
-                ],
-              ),
-              Row(
-                children: [
-                  Spacer(),
-                  generateDays(e),
-                  Spacer(),
                 ],
               ),
             ],
           ),
-        ),
+          Divider(
+            thickness: 2.0,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              IconButton(
+                icon: Icon(Icons.edit),
+                onPressed: () async {
+                  //int key = homeController.getModelKey(e);
+                  print(e.key);
+                  await Get.toNamed(AppRoutes.APPLIANCE,
+                      arguments: {e.key: e.userApplianceModel});
+                  setState(() {});
+                },
+              ),
+              IconButton(
+                icon: Icon(Icons.delete),
+                onPressed: () async {
+                  //int key = homeController.getModelKey(e);
+
+                  await homeController.removeAppliance(e.key);
+                  setState(() {});
+                },
+              )
+            ],
+          )
+        ],
       ),
     );
   }
