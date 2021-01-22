@@ -1,7 +1,6 @@
 import 'package:LaLu/app/modules/charts/charts_page.dart';
 import 'package:LaLu/app/modules/home/home_controller.dart';
 import 'package:LaLu/app/modules/home/local_widgets/appliance_cards_list.dart';
-import 'package:LaLu/app/modules/home/local_widgets/stats_list.dart';
 import 'package:LaLu/app/modules/tariff/tariff_page.dart';
 import 'package:LaLu/app/routes/app_routes.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
@@ -17,9 +16,30 @@ class _HomePageState extends State<HomePage> {
   int activeIndex = 1;
   bool isAddBtnVisible = true;
 
+  _showSelectedPage() {
+    switch (activeIndex) {
+      case 0:
+        this.visible = false;
+        this.setState(() {});
+        return TariffPage();
+        break;
+      case 1:
+        this.visible = true;
+        this.setState(() {});
+        return ApplianceCardsList();
+        break;
+      case 2:
+        this.visible = false;
+        this.setState(() {});
+        final homeController = Get.find<HomeController>();
+        if (homeController.userAppliances.isNotEmpty) return ChartsPage();
+        break;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    final homeController = Get.find<HomeController>();
+    // final homeController = Get.find<HomeController>();
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -33,13 +53,17 @@ class _HomePageState extends State<HomePage> {
         items: [
           TabItem(icon: Icons.electrical_services),
           TabItem(
+              activeIcon: Container(
+                  padding: EdgeInsets.all(10.0),
+                  child: new Image.asset(
+                    "assets/logo.png",
+                  )),
               icon: Container(
-            padding: EdgeInsets.all(10.0),
-            child: new Image.asset(
-              "assets/logo.png",
-              // fit: BoxFit.,
-            ),
-          )),
+                // padding: EdgeInsets.all(10.0),
+                child: new Image.asset(
+                  "assets/logo.png",
+                ),
+              )),
           TabItem(icon: Icons.bar_chart_sharp)
         ],
         initialActiveIndex: activeIndex,
@@ -64,25 +88,5 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
-  }
-
-  _showSelectedPage() {
-    switch (activeIndex) {
-      case 0:
-        this.isAddBtnVisible = false;
-        this.setState(() {});
-        return TariffPage();
-        break;
-      case 1:
-        this.isAddBtnVisible = true;
-        this.setState(() {});
-        return ApplianceCardsList();
-        break;
-      case 2:
-        this.isAddBtnVisible = false;
-        this.setState(() {});
-        return ChartsPage();
-        break;
-    }
   }
 }

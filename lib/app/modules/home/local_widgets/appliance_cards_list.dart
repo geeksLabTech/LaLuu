@@ -1,6 +1,6 @@
 import 'package:LaLu/app/data/models/user_appliance_model.dart';
+import 'package:LaLu/app/modules/appliance/appliance_controller.dart';
 import 'package:LaLu/app/routes/app_routes.dart';
-import 'package:LaLu/app/utils/constants.dart';
 import 'package:LaLu/app/utils/functions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
