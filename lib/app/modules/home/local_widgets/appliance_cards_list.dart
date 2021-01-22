@@ -1,4 +1,5 @@
 import 'package:LaLu/app/data/models/user_appliance_model.dart';
+import 'package:LaLu/app/modules/home/local_widgets/summary_widget.dart';
 import 'package:LaLu/app/routes/app_routes.dart';
 import 'package:LaLu/app/utils/constants.dart';
 import 'package:LaLu/app/utils/functions.dart';
@@ -14,19 +15,26 @@ class ApplianceCardsList extends StatefulWidget {
 }
 
 class _ApplianceCardsListState extends State<ApplianceCardsList> {
-  HomeController homeController;
-
+  final homeController = Get.find<HomeController>();
   @override
   Widget build(BuildContext context) {
-    homeController = Get.find<HomeController>();
-    return Obx(
-      () => ListView(
-        children:
-            homeController.userAppliances.map((e) => createCard(e)).toList(),
-      ),
-      // createSummary(),
-      // ],
+    var cards =
+        homeController.userAppliances.map((e) => createCard(e)).toList();
+
+    // cards.insert(0, generateSummaryWidget());
+
+    return Column(
+      children: [
+        generateSummaryWidget(),
+        Expanded(
+          child: ListView(
+            children: cards,
+          ),
+        ),
+      ],
     );
+    // createSummary(),
+    // ],
   }
 
   Widget createCard(LoadedUserAppliance e) {
@@ -69,7 +77,9 @@ class _ApplianceCardsListState extends State<ApplianceCardsList> {
                 children: [
                   Container(
                     child: Text(
-                      getApplianceConsumption(e.userApplianceModel).toString() +
+                      getApplianceConsumption(e.userApplianceModel)
+                              .toPrecision(2)
+                              .toString() +
                           "KW/h",
                       textAlign: TextAlign.end,
                     ),
@@ -187,7 +197,7 @@ double getTotalCost(UserApplianceModel userApplianceModel) {
   electricityCost(consumption).forEach((element) {
     totalCost += element;
   });
-  return totalCost;
+  return (totalCost).toPrecision(2);
 }
 
 double getApplianceConsumption(UserApplianceModel userApplianceModel) {
