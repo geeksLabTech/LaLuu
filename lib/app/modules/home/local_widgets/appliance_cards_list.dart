@@ -1,6 +1,7 @@
 import 'package:LaLu/app/data/models/user_appliance_model.dart';
 import 'package:LaLu/app/routes/app_routes.dart';
 import 'package:LaLu/app/utils/functions.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../home_controller.dart';
@@ -139,14 +140,11 @@ class _ApplianceCardsListState extends State<ApplianceCardsList> {
           Row(
             children: [
               Column(
-                //mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  // Spacer(3),
                   Container(
                     padding: EdgeInsets.only(left: 10),
                     child: Text(
                       "Estimado mensual:",
-                      //textAlign: TextAlign.left,
                     ),
                     margin: EdgeInsets.all(5.0),
                   ),
@@ -154,7 +152,6 @@ class _ApplianceCardsListState extends State<ApplianceCardsList> {
                     padding: EdgeInsets.only(left: 10),
                     child: Text(
                       "Costo estimado:",
-                      //textAlign: TextAlign.left,
                     ),
                     margin: EdgeInsets.all(5.0),
                   )
@@ -189,8 +186,6 @@ class _ApplianceCardsListState extends State<ApplianceCardsList> {
               IconButton(
                 icon: Icon(Icons.edit),
                 onPressed: () async {
-                  //int key = homeController.getModelKey(e);
-                  print(e.key);
                   await Get.toNamed(AppRoutes.APPLIANCE,
                       arguments: {e.key: e.userApplianceModel});
                   setState(() {});
@@ -199,10 +194,7 @@ class _ApplianceCardsListState extends State<ApplianceCardsList> {
               IconButton(
                 icon: Icon(Icons.delete),
                 onPressed: () async {
-                  //int key = homeController.getModelKey(e);
-
-                  await homeController.removeAppliance(e.key);
-                  setState(() {});
+                  showRemoveDialog(context, e);
                 },
               )
             ],
@@ -210,6 +202,23 @@ class _ApplianceCardsListState extends State<ApplianceCardsList> {
         ],
       ),
     );
+  }
+
+  showRemoveDialog(BuildContext context, LoadedUserAppliance e) {
+    AwesomeDialog(
+        context: context,
+        dialogType: DialogType.WARNING,
+        animType: AnimType.BOTTOMSLIDE,
+        dismissOnTouchOutside: false,
+        body: Center(
+          child: Text('¿Está seguro que desea eliminar este Equipo?'),
+        ),
+        btnCancelOnPress: () {},
+        btnOkOnPress: () async {
+          await homeController.removeAppliance(e.key);
+          setState(() {});
+        })
+      ..show();
   }
 
   generateDays(UserApplianceModel e) {
@@ -237,18 +246,6 @@ class _ApplianceCardsListState extends State<ApplianceCardsList> {
     );
   }
 }
-
-// Widget createSummary() {
-//   return Card(
-//     child: Row(
-//       children: [
-//         Text(getTotalConsumption().toString() + ' kW'),
-//         Spacer(),
-//         Text(getTotalCost().toString() + ' CUP'),
-//       ],
-//     ),
-//   );
-// }
 
 double getTotalConsumption() {
   double consumption = 0.0;
