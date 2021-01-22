@@ -7,7 +7,8 @@ class ChartsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final homeController = Get.find<HomeController>();
-    if (homeController.userAppliances.isNotEmpty)
+    if (homeController.userAppliances.isNotEmpty &&
+        checkIfHasData(homeController.userAppliances))
       return Container(
         child: statsList(),
       );
@@ -17,5 +18,18 @@ class ChartsPage extends StatelessWidget {
         style: TextStyle(color: Colors.white),
       ),
     );
+  }
+
+  bool checkIfHasData(RxList<LoadedUserAppliance> userAppliances) {
+    for (int i = 0; i < userAppliances.length; i++) {
+      if (userAppliances[i]
+              .userApplianceModel
+              .usage
+              .values
+              .any((element) => element != 0) &&
+          (userAppliances[i].userApplianceModel.consumptionTotal != 0))
+        return true;
+    }
+    return false;
   }
 }
