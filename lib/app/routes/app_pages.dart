@@ -1,4 +1,3 @@
-import 'package:LaLu/app/modules/appliance/appliance_binding.dart';
 import 'package:LaLu/app/modules/appliance/appliance_controller.dart';
 import 'package:LaLu/app/modules/appliance/appliance_page.dart';
 import 'package:LaLu/app/modules/home/home_controller.dart';
