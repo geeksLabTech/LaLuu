@@ -38,8 +38,8 @@ class ApplianceController extends GetxController {
       applianceTag = ''.obs;
       applianceCategorie = ''.obs;
       applianceStandby = false.obs;
+      applianceUsage = RxMap<String, double>();
     }
-    applianceUsage = RxMap<String, double>();
   }
 
   get name => applianceName.value;
@@ -82,6 +82,7 @@ class ApplianceController extends GetxController {
     // Campo probablemente innecesario
     applianceStandby = false.obs;
     applianceCategorie = _userApplianceModel.applianceModel.category.obs;
+    applianceUsage = _userApplianceModel.usage;
   }
 
   void _createUserApplianceModel() {
