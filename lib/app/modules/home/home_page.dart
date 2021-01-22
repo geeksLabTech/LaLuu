@@ -1,5 +1,4 @@
 import 'package:LaLu/app/modules/charts/charts_page.dart';
-import 'package:LaLu/app/modules/home/home_controller.dart';
 import 'package:LaLu/app/modules/home/local_widgets/appliance_cards_list.dart';
 import 'package:LaLu/app/modules/tariff/tariff_page.dart';
 import 'package:LaLu/app/routes/app_routes.dart';
@@ -19,20 +18,19 @@ class _HomePageState extends State<HomePage> {
   _showSelectedPage() {
     switch (activeIndex) {
       case 0:
-        this.visible = false;
+        this.isAddBtnVisible = false;
         this.setState(() {});
         return TariffPage();
         break;
       case 1:
-        this.visible = true;
+        this.isAddBtnVisible = true;
         this.setState(() {});
         return ApplianceCardsList();
         break;
       case 2:
-        this.visible = false;
+        this.isAddBtnVisible = false;
         this.setState(() {});
-        final homeController = Get.find<HomeController>();
-        if (homeController.userAppliances.isNotEmpty) return ChartsPage();
+        return ChartsPage();
         break;
     }
   }

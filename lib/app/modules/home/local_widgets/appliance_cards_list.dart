@@ -1,5 +1,4 @@
 import 'package:LaLu/app/data/models/user_appliance_model.dart';
-import 'package:LaLu/app/modules/appliance/appliance_controller.dart';
 import 'package:LaLu/app/routes/app_routes.dart';
 import 'package:LaLu/app/utils/functions.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
@@ -18,11 +17,108 @@ class _ApplianceCardsListState extends State<ApplianceCardsList> {
 
   @override
   Widget build(BuildContext context) {
-    homeController = Get.find<HomeController>();
-    return Obx(
-      () => ListView(
-        children:
-            homeController.userAppliances.map((e) => createCard(e)).toList(),
+    final homeController = Get.find<HomeController>();
+    if (homeController.userAppliances.isNotEmpty)
+      return Obx(
+        () => ListView(
+          children: homeController.userAppliances
+              .map((e) => Card(
+                    clipBehavior: Clip.hardEdge,
+                    margin: EdgeInsets.all(10),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20)),
+                    elevation: 2.5,
+                    child: Column(
+                      children: [
+                        Text(
+                          e.userApplianceModel.tag == ""
+                              ? e.userApplianceModel.applianceModel.name
+                              : e.userApplianceModel.tag,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        Row(
+                          children: [
+                            Column(
+                              //mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                // Spacer(3),
+                                Container(
+                                  child: Text(
+                                    "Estimado mensual: ",
+                                    //textAlign: TextAlign.left,
+                                  ),
+                                  margin: EdgeInsets.all(5.0),
+                                ),
+                                Container(
+                                  child: Text(
+                                    "Costo estimado: ",
+                                    //textAlign: TextAlign.left,
+                                  ),
+                                  margin: EdgeInsets.all(5.0),
+                                )
+                              ],
+                            ),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Container(
+                                  child: Text(
+                                    getApplianceConsumption(
+                                                e.userApplianceModel)
+                                            .toString() +
+                                        "KW/h",
+                                    textAlign: TextAlign.end,
+                                  ),
+                                  margin: EdgeInsets.all(5.0),
+                                ),
+                                Container(
+                                  child: Text(getTotalCost(e.userApplianceModel)
+                                          .toString() +
+                                      "CUP"),
+                                  margin: EdgeInsets.all(5.0),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        Divider(),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            IconButton(
+                              icon: Icon(Icons.edit),
+                              onPressed: () async {
+                                //int key = homeController.getModelKey(e);
+                                print(e.key);
+                                await Get.toNamed(AppRoutes.APPLIANCE,
+                                    arguments: {e.key: e.userApplianceModel});
+                                setState(() {});
+                              },
+                            ),
+                            IconButton(
+                              icon: Icon(Icons.delete),
+                              onPressed: () async {
+                                //int key = homeController.getModelKey(e);
+
+                                await homeController.removeAppliance(e.key);
+                                setState(() {});
+                              },
+                            )
+                          ],
+                        )
+                      ],
+                    ),
+                  ))
+              .toList(),
+        ),
+        // createSummary(),
+        // ],
+      );
+    return Center(
+      child: Text(
+        "No hay datos para mostrar",
+        style: TextStyle(color: Colors.white),
       ),
     );
   }
