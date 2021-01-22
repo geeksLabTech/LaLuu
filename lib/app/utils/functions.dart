@@ -17,6 +17,6 @@ List<double> electricityCost(double consumption) {
     // cost += consumption * PRICES[0];
     slices.add(consumption * PRICES[0]);
   }
-
+  slices.sort();
   return slices;
 }

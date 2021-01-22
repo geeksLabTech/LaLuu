@@ -12,10 +12,10 @@ class TariffPage extends StatefulWidget {
 class _TariffPageState extends State<TariffPage> {
   double consumption = 0;
   double cost = 0;
-  List<double> list = [];
+  List<double> costByRanges = [];
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return ListView(
       children: [
         Container(
           width: 200.0,
@@ -34,131 +34,42 @@ class _TariffPageState extends State<TariffPage> {
             onPressed: () {
               setState(() {
                 double sum = 0;
-                list = electricityCost(consumption);
-                list.forEach((element) => sum += element);
+                costByRanges = electricityCost(consumption);
+                costByRanges.forEach((element) => sum += element);
                 cost = sum;
               });
             }),
         Text("$cost"),
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Flexible(
-              child: SingleChildScrollView(
-                scrollDirection: Axis.vertical,
-                controller: ScrollController(),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: _buildTableRows(list),
-                ),
-              ),
-            ),
-          ],
+        SizedBox(
+          height: 20,
         ),
+        SafeArea(child: _buildTableRows()),
+        SizedBox(
+          height: 30,
+        )
       ],
     );
   }
 
-  List<Widget> _buildTableRows(List values) {
-    List<Widget> rows = [];
-    for (int i = 0; i < CONSUMPTIONRANGES.length; i++) {
-      rows.add(Container(
-        margin: EdgeInsets.all(3.0),
-        child: Row(children: [
-          Container(
-            alignment: Alignment.center,
-            child: Text(
-              CONSUMPTIONRANGES[i].toString(),
-              style: TextStyle(fontSize: 17.0),
-            ),
-            padding: EdgeInsets.all(1.0),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: Colors.transparent,
-              border: Border(
-                left: BorderSide(
-                  color: Colors.black,
-                  width: 3,
-                ),
-              ),
-            ),
-          ),
-          Container(
-            alignment: Alignment.center,
-            child: Text(
-              PRICES[i].toString(),
-              style: TextStyle(fontSize: 17.0),
-            ),
-            padding: EdgeInsets.all(1.0),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: Colors.transparent,
-              border: Border(
-                left: BorderSide(
-                  color: Colors.black,
-                  width: 3,
-                ),
-              ),
-            ),
-          ),
-          Container(
-            alignment: Alignment.center,
-            child: Text(
-              values is Null || values.length > 0
-                  ? values[i] == Null
-                      ? '0'
-                      : values[i].toString()
-                  : "0",
-              style: TextStyle(fontSize: 17.0),
-            ),
-            padding: EdgeInsets.all(1.0),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: Colors.transparent,
-              border: Border(
-                left: BorderSide(
-                  color: Colors.black,
-                  width: 3,
-                ),
-              ),
-            ),
-          ),
-        ]),
-      ));
-    }
+  Widget _buildTableRows() {
+    if (costByRanges.isEmpty) return Container();
+    return DataTable(columns: [
+      DataColumn(label: Text("Rango")),
+      DataColumn(label: Text("Precio")),
+      DataColumn(label: Text("Costo"))
+    ], rows: _getDataRows());
+  }
 
-    rows.add(Row(children: [
-      Container(
-        alignment: Alignment.center,
-        child: Text(
-          CONSUMPTIONRANGES[CONSUMPTIONRANGES.length - 1].toString() + "+",
-          style: TextStyle(fontSize: 17.0),
-        ),
-        padding: EdgeInsets.all(1.0),
-      ),
-      Container(
-        alignment: Alignment.center,
-        child: Text(
-          PRICES[PRICES.length - 1].toString(),
-          style: TextStyle(fontSize: 17.0),
-        ),
-        padding: EdgeInsets.all(1.0),
-      ),
-      Container(
-        alignment: Alignment.center,
-        child: Text(
-          values is Null || values.length > 0
-              ? values[values.length - 1] == Null
-                  ? "0"
-                  : values[values.length - 1].toString()
-              : "0",
-          style: TextStyle(fontSize: 17.0),
-        ),
-        padding: EdgeInsets.all(1.0),
-      ),
-    ]));
-    return rows;
+  List<DataRow> _getDataRows() {
+    print(costByRanges);
+    List<DataRow> dataRows = [];
+    for (int i = 0; i < costByRanges.length; i++) {
+      dataRows.add(DataRow(cells: [
+        DataCell(Text(TARIFFRANGES[i])),
+        DataCell(Text(PRICES[i].toString())),
+        DataCell(Text(costByRanges[i].toString()))
+      ]));
+    }
+    return dataRows;
   }
 }
