@@ -1,7 +1,5 @@
 import 'package:LaLu/app/modules/charts/charts_page.dart';
-import 'package:LaLu/app/modules/home/home_controller.dart';
 import 'package:LaLu/app/modules/home/local_widgets/appliance_cards_list.dart';
-import 'package:LaLu/app/modules/home/local_widgets/stats_list.dart';
 import 'package:LaLu/app/modules/tariff/tariff_page.dart';
 import 'package:LaLu/app/routes/app_routes.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
@@ -15,57 +13,78 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int activeIndex = 1;
+  bool isAddBtnVisible = true;
+
+  _showSelectedPage() {
+    switch (activeIndex) {
+      case 0:
+        this.isAddBtnVisible = false;
+        this.setState(() {});
+        return TariffPage();
+        break;
+      case 1:
+        this.isAddBtnVisible = true;
+        this.setState(() {});
+        return ApplianceCardsList();
+        break;
+      case 2:
+        this.isAddBtnVisible = false;
+        this.setState(() {});
+        return ChartsPage();
+        break;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    final homeController = Get.find<HomeController>();
+    // final homeController = Get.find<HomeController>();
     return Scaffold(
       appBar: AppBar(
-        title: Text('LaLu'),
+        title: Text(
+          'LaLu',
+          style: TextStyle(color: Colors.white),
+        ),
         centerTitle: true,
-        actions: [
-          // TODO pass this to the card
-          IconButton(
-            icon: Icon(Icons.delete_forever),
-            onPressed: () async => await homeController.deleteDb(),
-          )
-        ],
       ),
       body: _showSelectedPage(),
       bottomNavigationBar: ConvexAppBar(
         items: [
           TabItem(icon: Icons.electrical_services),
-          TabItem(icon: Icons.home),
+          TabItem(
+              activeIcon: Container(
+                  padding: EdgeInsets.all(10.0),
+                  child: new Image.asset(
+                    "assets/logo.png",
+                  )),
+              icon: Container(
+                // padding: EdgeInsets.all(10.0),
+                child: new Image.asset(
+                  "assets/logo.png",
+                ),
+              )),
           TabItem(icon: Icons.bar_chart_sharp)
         ],
         initialActiveIndex: activeIndex,
+        backgroundColor: Theme.of(context).primaryColor,
         onTap: (int value) {
           setState(() {
             activeIndex = value;
           });
         },
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Get.toNamed(AppRoutes.APPLIANCE);
-          this.setState(() {});
-        },
-        child: Icon(Icons.add),
+      floatingActionButton: Visibility(
+        visible: this.isAddBtnVisible,
+        child: FloatingActionButton(
+          onPressed: () async {
+            await Get.toNamed(AppRoutes.APPLIANCE, arguments: null);
+            this.setState(() {});
+          },
+          child: Icon(
+            Icons.add,
+            color: Colors.white,
+          ),
+        ),
       ),
     );
-  }
-
-  _showSelectedPage() {
-    switch (activeIndex) {
-      case 0:
-        return TariffPage();
-        break;
-      case 1:
-        return ApplianceCardsList();
-        break;
-      case 2:
-        return ChartsPage();
-        break;
-    }
   }
 }

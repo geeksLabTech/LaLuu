@@ -10,6 +10,7 @@ class ApplianceDbService extends GetxService {
   Box<Map<String, dynamic>> _box;
 
   Future<ApplianceDbService> init() async {
+    // this sometimes returns null if commented the following 2 lines
     if (await Hive.boxExists(APPLIANCEBOX))
       Hive.deleteBoxFromDisk(APPLIANCEBOX);
     _box = await Hive.openBox(APPLIANCEBOX);
@@ -22,7 +23,6 @@ class ApplianceDbService extends GetxService {
         var model = ApplianceModel.fromJson(element as Map<String, dynamic>);
         await _box.add(model.toJson());
       });
-      //print(_box.values);
     }
     return this;
   }

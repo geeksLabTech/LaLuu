@@ -21,7 +21,7 @@ class BarChartSample1 extends StatefulWidget {
 }
 
 class BarChartSample1State extends State<BarChartSample1> {
-  final Color barBackgroundColor = const Color(0xff72d8bf);
+  final Color barBackgroundColor = Colors.black26;
   final Duration animDuration = const Duration(milliseconds: 250);
 
   int touchedIndex;
@@ -34,7 +34,7 @@ class BarChartSample1State extends State<BarChartSample1> {
       aspectRatio: 1,
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
-        color: const Color(0xff81e5cd),
+        color: Colors.black12,
         child: Stack(
           children: <Widget>[
             Padding(
@@ -47,7 +47,7 @@ class BarChartSample1State extends State<BarChartSample1> {
                   Text(
                     'Consumo Semanal',
                     style: TextStyle(
-                        color: const Color(0xff0f4a3c),
+                        color: Colors.white,
                         fontSize: 24,
                         fontWeight: FontWeight.bold),
                   ),
@@ -57,7 +57,7 @@ class BarChartSample1State extends State<BarChartSample1> {
                   Text(
                     widget.details,
                     style: TextStyle(
-                        color: const Color(0xff379982),
+                        color: Colors.white38,
                         fontSize: 18,
                         fontWeight: FontWeight.bold),
                   ),
@@ -89,7 +89,7 @@ class BarChartSample1State extends State<BarChartSample1> {
     int x,
     double y, {
     bool isTouched = false,
-    Color barColor = Colors.white,
+    Color barColor = Colors.yellow,
     double width = 22,
     List<int> showTooltips = const [],
   }) {

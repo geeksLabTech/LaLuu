@@ -22,15 +22,15 @@ class ApplianceController extends GetxController {
 
   @override
   void onInit() {
-    //_localApplianceDbRepository = Get.find<LocalApplianceDbRepository>();
     super.onInit();
     _userDbRepository = Get.find<UserDbRepository>();
-    try {
-      _applianceSelectedKey = Get.find<int>(tag: APPLIANCESELECTEDKEY);
+    if (Get.arguments != null) {
+      var arguments = Get.arguments as Map<int, UserApplianceModel>;
+      _applianceSelectedKey = arguments.keys.first;
+      _userApplianceModel = arguments[_applianceSelectedKey];
       isEditing = true.obs;
-      _loadUserAppliance(_applianceSelectedKey);
-    } catch (e) {
-      print("AKIII, $e");
+      _loadUserAppliance();
+    } else {
       isEditing = false.obs;
       applianceName = ''.obs;
       applianceConsumption = 0.0.obs;
@@ -40,23 +40,6 @@ class ApplianceController extends GetxController {
       applianceStandby = false.obs;
     }
     applianceUsage = RxMap<String, double>();
-    /*
-    if (!Get.isRegistered(tag: APPLIANCESELECTEDKEY)) {
-      isEditing = false.obs;
-      applianceName = ''.obs;
-      applianceConsumption = 0.0.obs;
-      applianceStandbyConsumption = 0.0.obs;
-      applianceTag = ''.obs;
-      applianceCategorie = ''.obs;
-      applianceStandby = false.obs;
-      applianceUsage = RxMap<String, double>();
-    } else {
-      print('HOLLAA');
-      isEditing = true.obs;
-      _applianceSelectedKey = Get.find(tag: APPLIANCESELECTEDKEY);
-      _loadUserAppliance(_applianceSelectedKey);
-    }
-    */
   }
 
   get name => applianceName.value;
@@ -88,12 +71,9 @@ class ApplianceController extends GetxController {
   Future<void> _editAppliance() async {
     await _userDbRepository.editModel(
         this._applianceSelectedKey, this._userApplianceModel);
-    //_userAppliances[key] = newApplianceModel;
   }
 
-  void _loadUserAppliance(int key) {
-    _userApplianceModel = _userDbRepository.getModel(key);
-
+  void _loadUserAppliance() {
     applianceName = _userApplianceModel.applianceModel.name.obs;
     applianceConsumption = _userApplianceModel.applianceModel.consumption.obs;
     applianceStandbyConsumption =
