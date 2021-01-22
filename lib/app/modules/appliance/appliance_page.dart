@@ -118,7 +118,8 @@ class _AppliancePageState extends State<AppliancePage> {
                   value: getStandbyValue(applianceController),
                   onChanged: (bool value) {
                     applianceController.applianceStandby.value =
-                        !applianceController.applianceStandby.value;
+                        !getStandbyValue(applianceController);
+                    this.setState(() {});
                   }),
               Text("Se queda en Standby cuando no se usa"),
             ],
@@ -176,7 +177,6 @@ class _AppliancePageState extends State<AppliancePage> {
     setState(() {
       applianceController.loadSelectedAppliance(selectedAppliance);
     });
-    print('pruba');
     print(applianceController.applianceConsumption);
     print(applianceController.applianceStandbyConsumption);
   }
