@@ -61,13 +61,17 @@ class _ApplianceCardsListState extends State<ApplianceCardsList> {
                             children: [
                               Container(
                                 child: Text(
-                                  getTotalConsumption().toString() + "KW/h",
+                                  getApplianceConsumption(e.userApplianceModel)
+                                          .toString() +
+                                      "KW/h",
                                   textAlign: TextAlign.end,
                                 ),
                                 margin: EdgeInsets.all(5.0),
                               ),
                               Container(
-                                child: Text(getTotalCost().toString() + "CUP"),
+                                child: Text(getTotalCost(e.userApplianceModel)
+                                        .toString() +
+                                    "CUP"),
                                 margin: EdgeInsets.all(5.0),
                               ),
                             ],
