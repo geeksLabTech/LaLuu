@@ -1,7 +1,9 @@
+import 'package:get/get.dart';
+
 import 'constants.dart';
 
 List<double> electricityCost(double consumption) {
-  double cost = 0.0;
+  //double cost = 0.0;
   List<double> slices = [];
 
   for (var i = 0; i < PRICES.length - 1; i++) {
@@ -15,7 +17,7 @@ List<double> electricityCost(double consumption) {
 
   if (consumption > 0) {
     // cost += consumption * PRICES[0];
-    slices.add(consumption * PRICES[0]);
+    slices.add((consumption * PRICES[0]).toPrecision(2));
   }
   slices.sort();
   return slices;

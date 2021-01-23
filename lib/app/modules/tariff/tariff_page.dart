@@ -1,7 +1,7 @@
-import 'dart:math';
-import 'package:LaLu/app/utils/constants.dart';
-import 'package:LaLu/app/utils/functions.dart';
+import 'package:LaLuu/app/utils/constants.dart';
+import 'package:LaLuu/app/utils/functions.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class TariffPage extends StatefulWidget {
   @override
@@ -18,31 +18,51 @@ class _TariffPageState extends State<TariffPage> {
       children: [
         Container(
           width: 200.0,
-          child: TextField(
-            textAlign: TextAlign.center,
-            autofocus: true,
-            keyboardType: TextInputType.numberWithOptions(decimal: true),
-            onChanged: (value) => consumption = double.tryParse(value),
+          child: Column(
+            children: [
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                "Escriba la cantidad de Kw consumidos",
+                style: TextStyle(fontSize: 16),
+              ),
+              SizedBox(
+                width: 150.0,
+                child: TextField(
+                  textAlign: TextAlign.center,
+                  autofocus: true,
+                  keyboardType: TextInputType.numberWithOptions(decimal: true),
+                  onChanged: (value) => consumption = double.tryParse(value),
+                ),
+              ),
+              Divider(),
+              RaisedButton(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20)),
+                  child: Icon(Icons.calculate),
+                  onPressed: () {
+                    setState(() {
+                      double sum = 0;
+                      costByRanges = electricityCost(consumption);
+                      costByRanges.forEach((element) => sum += element);
+                      cost = sum;
+                    });
+                  }),
+              Container(
+                margin: EdgeInsets.all(10.0),
+                child: Text(
+                  "$cost CUP",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),
+                ),
+              ),
+            ],
           ),
         ),
-        Divider(),
-        RaisedButton(
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-            child: Icon(Icons.calculate),
-            onPressed: () {
-              setState(() {
-                double sum = 0;
-                costByRanges = electricityCost(consumption);
-                costByRanges.forEach((element) => sum += element);
-                cost = sum;
-              });
-            }),
-        Text("$cost"),
         SizedBox(
           height: 20,
         ),
-        SafeArea(child: _buildTableRows()),
+        Center(child: _buildTableRows()),
         SizedBox(
           height: 30,
         )
@@ -53,9 +73,9 @@ class _TariffPageState extends State<TariffPage> {
   Widget _buildTableRows() {
     if (costByRanges.isEmpty) return Container();
     return DataTable(columns: [
-      DataColumn(label: Text("Rango")),
-      DataColumn(label: Text("Precio")),
-      DataColumn(label: Text("Costo"))
+      DataColumn(label: Center(child: Text("Rango"))),
+      DataColumn(label: Center(child: Text("Precio"))),
+      DataColumn(label: Center(child: Text("Costo")))
     ], rows: _getDataRows());
   }
 
@@ -64,9 +84,9 @@ class _TariffPageState extends State<TariffPage> {
     List<DataRow> dataRows = [];
     for (int i = 0; i < costByRanges.length; i++) {
       dataRows.add(DataRow(cells: [
-        DataCell(Text(TARIFFRANGES[i])),
-        DataCell(Text(PRICES[i].toString())),
-        DataCell(Text(costByRanges[i].toString()))
+        DataCell(Center(child: Text(TARIFFRANGES[i]))),
+        DataCell(Center(child: Text(PRICES[i].toPrecision(2).toString()))),
+        DataCell(Center(child: Text(costByRanges[i].toPrecision(2).toString())))
       ]));
     }
     return dataRows;

@@ -1,13 +1,14 @@
-import 'package:LaLu/app/data/services/appliance_db_service.dart';
-import 'package:LaLu/app/data/services/user_appliance_db_service.dart';
-import 'package:LaLu/app/modules/home/home_controller.dart';
-import 'package:LaLu/app/modules/home/home_page.dart';
-import 'package:LaLu/app/routes/app_pages.dart';
-import 'package:LaLu/app/utils/dependency_injection.dart';
+import 'package:LaLuu/app/data/services/appliance_db_service.dart';
+import 'package:LaLuu/app/data/services/user_appliance_db_service.dart';
+import 'package:LaLuu/app/modules/home/home_controller.dart';
+import 'package:LaLuu/app/modules/home/home_page.dart';
+import 'package:LaLuu/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
+
+import 'app/utils/dependency_injection.dart';
 
 void main() async {
   await initServices();
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Material App',
+      title: 'Laluu',
       debugShowCheckedModeBanner: false,
       initialBinding:
           BindingsBuilder(() => {Get.lazyPut(() => HomeController())}),

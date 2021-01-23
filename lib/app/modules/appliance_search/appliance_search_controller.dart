@@ -1,6 +1,6 @@
-import 'package:LaLu/app/data/models/appliance_model.dart';
-import 'package:LaLu/app/data/repositories/local/local_appliance_db_repository.dart';
-import 'package:LaLu/app/modules/appliance/appliance_controller.dart';
+import 'package:LaLuu/app/data/models/appliance_model.dart';
+import 'package:LaLuu/app/data/repositories/local/local_appliance_db_repository.dart';
+import 'package:LaLuu/app/modules/appliance/appliance_controller.dart';
 import 'package:get/get.dart';
 
 class ApplianceSearchController extends GetxController {
@@ -22,7 +22,8 @@ class ApplianceSearchController extends GetxController {
 
   void search(String query) {
     Iterable<ApplianceModel> appliances = allApplianceModels.where((appliance) {
-      return appliance.name.toLowerCase().contains(query.toLowerCase());
+      return appliance.name.toLowerCase().contains(query.toLowerCase()) ||
+          appliance.category.toLowerCase().contains(query.toLowerCase());
     });
     searchedApplianceModelList = appliances.toList().obs;
   }

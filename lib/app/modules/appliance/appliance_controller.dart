@@ -1,8 +1,8 @@
-import 'package:LaLu/app/data/models/appliance_model.dart';
-import 'package:LaLu/app/data/models/user_appliance_model.dart';
-import 'package:LaLu/app/data/repositories/local/user_db_repository.dart';
-import 'package:LaLu/app/modules/home/home_controller.dart';
-import 'package:LaLu/app/utils/constants.dart';
+import 'package:LaLuu/app/data/models/appliance_model.dart';
+import 'package:LaLuu/app/data/models/user_appliance_model.dart';
+import 'package:LaLuu/app/data/repositories/local/user_db_repository.dart';
+import 'package:LaLuu/app/modules/home/home_controller.dart';
+import 'package:LaLuu/app/utils/constants.dart';
 import 'package:get/get.dart';
 
 class ApplianceController extends GetxController {
@@ -38,8 +38,8 @@ class ApplianceController extends GetxController {
       applianceTag = ''.obs;
       applianceCategorie = ''.obs;
       applianceStandby = false.obs;
+      applianceUsage = RxMap<String, double>();
     }
-    applianceUsage = RxMap<String, double>();
   }
 
   get name => applianceName.value;
@@ -82,6 +82,7 @@ class ApplianceController extends GetxController {
     // Campo probablemente innecesario
     applianceStandby = false.obs;
     applianceCategorie = _userApplianceModel.applianceModel.category.obs;
+    applianceUsage = _userApplianceModel.usage;
   }
 
   void _createUserApplianceModel() {

@@ -1,4 +1,4 @@
-import 'package:LaLu/app/modules/home/local_widgets/indicator.dart';
+import 'package:LaLuu/app/modules/home/local_widgets/indicator.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 

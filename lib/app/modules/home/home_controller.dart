@@ -1,5 +1,5 @@
-import 'package:LaLu/app/data/models/user_appliance_model.dart';
-import 'package:LaLu/app/data/repositories/local/user_db_repository.dart';
+import 'package:LaLuu/app/data/models/user_appliance_model.dart';
+import 'package:LaLuu/app/data/repositories/local/user_db_repository.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {

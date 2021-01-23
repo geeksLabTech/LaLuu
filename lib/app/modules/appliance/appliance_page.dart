@@ -1,13 +1,9 @@
-// import 'dart:html';
-import 'package:LaLu/app/modules/appliance/appliance_controller.dart';
-import 'package:LaLu/app/modules/appliance_search/appliance_search_delegate.dart';
+import 'package:LaLuu/app/modules/appliance/appliance_controller.dart';
+import 'package:LaLuu/app/modules/appliance_search/appliance_search_delegate.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-//import "package:velocity_x/velocity_x.dart";
 
 class AppliancePage extends StatefulWidget {
-  //ApplianceController applianceController;
-
   @override
   _AppliancePageState createState() => _AppliancePageState();
 }
@@ -44,6 +40,7 @@ class _AppliancePageState extends State<AppliancePage> {
         children: [
           TextField(
             enabled: true,
+            keyboardType: TextInputType.text,
             decoration: InputDecoration(
               labelText: 'Nombre',
             ),
@@ -55,6 +52,7 @@ class _AppliancePageState extends State<AppliancePage> {
           ),
           TextField(
             enabled: true,
+            keyboardType: TextInputType.text,
             decoration: InputDecoration(
                 labelText: 'Etiqueta', hintText: 'Ejemplo: TV de la sala'),
             controller: TextEditingController()
@@ -94,7 +92,7 @@ class _AppliancePageState extends State<AppliancePage> {
           Container(
             margin: EdgeInsets.all(2),
             child: Text(
-              "Cantidad de Horas por dia de la semana",
+              "Cantidad de Horas por día de la semana",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
@@ -130,7 +128,7 @@ class _AppliancePageState extends State<AppliancePage> {
     );
   }
 
-  generateDaysInputs(ApplianceController applianceController, String day,
+  Widget generateDaysInputs(ApplianceController applianceController, String day,
       BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width / 7 - 10,
@@ -166,7 +164,6 @@ class _AppliancePageState extends State<AppliancePage> {
   }
 
   getUsageValue(ApplianceController applianceController, String day) {
-    //print(applianceController.applianceStandby);
     if (applianceController.applianceUsage[day] == null) {
       applianceController.applianceUsage[day] = 0.0;
     }
@@ -177,7 +174,5 @@ class _AppliancePageState extends State<AppliancePage> {
     setState(() {
       applianceController.loadSelectedAppliance(selectedAppliance);
     });
-    print(applianceController.applianceConsumption);
-    print(applianceController.applianceStandbyConsumption);
   }
 }
