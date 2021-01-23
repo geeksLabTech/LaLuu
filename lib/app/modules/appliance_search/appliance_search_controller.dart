@@ -22,7 +22,8 @@ class ApplianceSearchController extends GetxController {
 
   void search(String query) {
     Iterable<ApplianceModel> appliances = allApplianceModels.where((appliance) {
-      return appliance.name.toLowerCase().contains(query.toLowerCase());
+      return appliance.name.toLowerCase().contains(query.toLowerCase()) ||
+          appliance.category.toLowerCase().contains(query.toLowerCase());
     });
     searchedApplianceModelList = appliances.toList().obs;
   }
