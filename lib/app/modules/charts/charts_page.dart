@@ -1,5 +1,5 @@
-import 'package:LaLu/app/modules/home/home_controller.dart';
-import 'package:LaLu/app/modules/home/local_widgets/stats_list.dart';
+import 'package:LaLuu/app/modules/home/home_controller.dart';
+import 'package:LaLuu/app/modules/home/local_widgets/stats_list.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

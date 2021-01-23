@@ -1,8 +1,8 @@
-import 'package:LaLu/app/data/models/user_appliance_model.dart';
-import 'package:LaLu/app/modules/home/local_widgets/summary_widget.dart';
-import 'package:LaLu/app/routes/app_routes.dart';
-import 'package:LaLu/app/utils/constants.dart';
-import 'package:LaLu/app/utils/functions.dart';
+import 'package:LaLuu/app/data/models/user_appliance_model.dart';
+import 'package:LaLuu/app/modules/home/local_widgets/summary_widget.dart';
+import 'package:LaLuu/app/routes/app_routes.dart';
+import 'package:LaLuu/app/utils/constants.dart';
+import 'package:LaLuu/app/utils/functions.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

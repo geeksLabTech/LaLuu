@@ -1,5 +1,5 @@
-import 'package:LaLu/app/data/models/user_appliance_model.dart';
-import 'package:LaLu/app/data/providers/local/user_appliance_db.dart';
+import 'package:LaLuu/app/data/models/user_appliance_model.dart';
+import 'package:LaLuu/app/data/providers/local/user_appliance_db.dart';
 import 'package:get/get.dart';
 
 class UserDbRepository {

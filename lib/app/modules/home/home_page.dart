@@ -1,7 +1,7 @@
-import 'package:LaLu/app/modules/charts/charts_page.dart';
-import 'package:LaLu/app/modules/home/local_widgets/appliance_cards_list.dart';
-import 'package:LaLu/app/modules/tariff/tariff_page.dart';
-import 'package:LaLu/app/routes/app_routes.dart';
+import 'package:LaLuu/app/modules/charts/charts_page.dart';
+import 'package:LaLuu/app/modules/home/local_widgets/appliance_cards_list.dart';
+import 'package:LaLuu/app/modules/tariff/tariff_page.dart';
+import 'package:LaLuu/app/routes/app_routes.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -15,33 +15,13 @@ class _HomePageState extends State<HomePage> {
   int activeIndex = 1;
   bool isAddBtnVisible = true;
 
-  _showSelectedPage() {
-    switch (activeIndex) {
-      case 0:
-        this.isAddBtnVisible = false;
-        this.setState(() {});
-        return TariffPage();
-        break;
-      case 1:
-        this.isAddBtnVisible = true;
-        this.setState(() {});
-        return ApplianceCardsList();
-        break;
-      case 2:
-        this.isAddBtnVisible = false;
-        this.setState(() {});
-        return ChartsPage();
-        break;
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     // final homeController = Get.find<HomeController>();
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'LaLu',
+          'LaLuu',
           style: TextStyle(color: Colors.white),
         ),
         centerTitle: true,
@@ -82,5 +62,25 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
+  }
+
+  _showSelectedPage() {
+    switch (activeIndex) {
+      case 0:
+        this.isAddBtnVisible = false;
+        this.setState(() {});
+        return TariffPage();
+        break;
+      case 1:
+        this.isAddBtnVisible = true;
+        this.setState(() {});
+        return ApplianceCardsList();
+        break;
+      case 2:
+        this.isAddBtnVisible = false;
+        this.setState(() {});
+        return ChartsPage();
+        break;
+    }
   }
 }

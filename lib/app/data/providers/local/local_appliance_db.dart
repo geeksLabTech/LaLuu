@@ -1,5 +1,5 @@
-import 'package:LaLu/app/data/models/appliance_model.dart';
-import 'package:LaLu/app/data/services/appliance_db_service.dart';
+import 'package:LaLuu/app/data/models/appliance_model.dart';
+import 'package:LaLuu/app/data/services/appliance_db_service.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 

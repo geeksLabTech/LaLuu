@@ -1,4 +1,4 @@
-import 'package:LaLu/app/data/models/appliance_model.dart';
+import 'package:LaLuu/app/data/models/appliance_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:meta/meta.dart';
 part 'user_appliance_model.g.dart';
@@ -12,6 +12,7 @@ class UserApplianceModel {
   Map<String, double> usage;
   String tag;
 
+  // This three fields will be removed in future versions
   double consumptionOn;
   double consumptionStandby;
   double consumptionTotal;

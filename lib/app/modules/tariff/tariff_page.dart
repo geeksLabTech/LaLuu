@@ -1,6 +1,5 @@
-import 'dart:math';
-import 'package:LaLu/app/utils/constants.dart';
-import 'package:LaLu/app/utils/functions.dart';
+import 'package:LaLuu/app/utils/constants.dart';
+import 'package:LaLuu/app/utils/functions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -21,6 +20,13 @@ class _TariffPageState extends State<TariffPage> {
           width: 200.0,
           child: Column(
             children: [
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                "Escriba la cantidad de Kw consumidos",
+                style: TextStyle(fontSize: 16),
+              ),
               SizedBox(
                 width: 150.0,
                 child: TextField(

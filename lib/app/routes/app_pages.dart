@@ -1,8 +1,8 @@
-import 'package:LaLu/app/modules/appliance/appliance_controller.dart';
-import 'package:LaLu/app/modules/appliance/appliance_page.dart';
-import 'package:LaLu/app/modules/home/home_controller.dart';
-import 'package:LaLu/app/modules/home/home_page.dart';
-import 'package:LaLu/app/routes/app_routes.dart';
+import 'package:LaLuu/app/modules/appliance/appliance_controller.dart';
+import 'package:LaLuu/app/modules/appliance/appliance_page.dart';
+import 'package:LaLuu/app/modules/home/home_controller.dart';
+import 'package:LaLuu/app/modules/home/home_page.dart';
+import 'package:LaLuu/app/routes/app_routes.dart';
 import 'package:get/get.dart';
 
 class AppPages {

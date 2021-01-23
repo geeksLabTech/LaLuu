@@ -1,5 +1,5 @@
-import 'package:LaLu/app/data/models/appliance_model.dart';
-import 'package:LaLu/app/modules/appliance_search/appliance_search_controller.dart';
+import 'package:LaLuu/app/data/models/appliance_model.dart';
+import 'package:LaLuu/app/modules/appliance_search/appliance_search_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

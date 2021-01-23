@@ -1,4 +1,4 @@
-name: LaLu
+name: LaLuu
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -23,7 +23,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  velocity_x: ^1.0.1
   get: ^3.22.2
   hive: ^1.4.4+1
   fl_chart: ^0.12.1

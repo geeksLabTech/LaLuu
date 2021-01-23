@@ -1,5 +1,5 @@
-import 'package:LaLu/app/modules/home/local_widgets/appliance_cards_list.dart';
-import 'package:LaLu/app/utils/functions.dart';
+import 'package:LaLuu/app/modules/home/local_widgets/appliance_cards_list.dart';
+import 'package:LaLuu/app/utils/functions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
