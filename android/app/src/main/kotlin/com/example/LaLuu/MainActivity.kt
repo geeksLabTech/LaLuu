@@ -1,4 +1,4 @@
-package com.example.LaLu
+package com.example.LaLuu
 
 import io.flutter.embedding.android.FlutterActivity
 

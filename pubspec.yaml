@@ -30,9 +30,11 @@ dependencies:
   path_provider: ^1.6.24
   convex_bottom_bar: ^2.6.0
   awesome_dialog: ^1.3.1
+
+
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^0.1.3
+  cupertino_icons: ^1.0.0
 
 dev_dependencies:
   flutter_test:
@@ -56,6 +58,7 @@ flutter:
     - assets/db/appliance_db.json
     - assets/db/db_test.json
     - assets/logo.png
+  
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
