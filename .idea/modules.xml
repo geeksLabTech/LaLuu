@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/LaLu.iml" filepath="$PROJECT_DIR$/.idea/LaLu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LaLuu.iml" filepath="$PROJECT_DIR$/LaLuu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/LaLuu_android.iml" filepath="$PROJECT_DIR$/android/LaLuu_android.iml" />
     </modules>
   </component>
 </project>
