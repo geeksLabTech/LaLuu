@@ -82,7 +82,7 @@ class ApplianceController extends GetxController {
     // Campo probablemente innecesario
     applianceStandby = false.obs;
     applianceCategorie = _userApplianceModel.applianceModel.category.obs;
-    applianceUsage = _userApplianceModel.usage;
+    applianceUsage = _userApplianceModel.usage.obs;
   }
 
   void _createUserApplianceModel() {
