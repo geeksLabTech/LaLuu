@@ -4,6 +4,9 @@ const APPLIANCESELECTEDKEY = 'appliance_selected_key';
 const JSONDBDIRECTORY = 'assets/db/appliance_db.json';
 const JSONDBTESTDIRECTORY = 'assets/db/db_test.json';
 
+const NOMINALTEXT =
+    "Es importante mencionar que el consumo de equipos como aires acondicionados, refrigeradores y freezers puede estar sujeto a errores, dado que se debe utilizar su consumo nominal para mejorar la pecicion del calculo, lamentablemente el consumo nominal varia en dependencia de demasiados factores, incluidos temperatura, area a enfriar etc, por tanto, se aconseja al usuario tomar con cautela las cifras de prediccion de estos equipos";
+
 const List<double> PRICES = [
   0.33,
   1.07,

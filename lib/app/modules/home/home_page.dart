@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:LaLuu/app/modules/charts/charts_page.dart';
 import 'package:LaLuu/app/modules/home/local_widgets/appliance_cards_list.dart';
 import 'package:LaLuu/app/modules/tariff/tariff_page.dart';
 import 'package:LaLuu/app/routes/app_routes.dart';
+import 'package:LaLuu/app/utils/constants.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -25,6 +28,24 @@ class _HomePageState extends State<HomePage> {
           style: TextStyle(color: Colors.white),
         ),
         centerTitle: true,
+      ),
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            Expanded(
+              child: Text(NOMINALTEXT),
+            ),
+            Divider(),
+            Column(
+              children: [
+                Text("About us"),
+                Row(
+                  children: generateSocialLinks(),
+                )
+              ],
+            )
+          ],
+        ),
       ),
       body: _showSelectedPage(),
       bottomNavigationBar: ConvexAppBar(
@@ -82,5 +103,11 @@ class _HomePageState extends State<HomePage> {
         return ChartsPage();
         break;
     }
+  }
+
+  generateSocialLinks() {
+    return [
+      Text('www.github.com'),
+    ];
   }
 }
