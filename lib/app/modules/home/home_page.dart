@@ -1,10 +1,9 @@
-import 'dart:io';
-
 import 'package:LaLuu/app/modules/charts/charts_page.dart';
 import 'package:LaLuu/app/modules/home/local_widgets/appliance_cards_list.dart';
 import 'package:LaLuu/app/modules/tariff/tariff_page.dart';
 import 'package:LaLuu/app/routes/app_routes.dart';
 import 'package:LaLuu/app/utils/constants.dart';
+import 'package:LaLuu/app/utils/widgets/drawer_menu.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -20,7 +19,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    // final homeController = Get.find<HomeController>();
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -29,24 +27,7 @@ class _HomePageState extends State<HomePage> {
         ),
         centerTitle: true,
       ),
-      drawer: Drawer(
-        child: ListView(
-          children: [
-            Expanded(
-              child: Text(NOMINALTEXT),
-            ),
-            Divider(),
-            Column(
-              children: [
-                Text("About us"),
-                Row(
-                  children: generateSocialLinks(),
-                )
-              ],
-            )
-          ],
-        ),
-      ),
+      drawer: DrawerMenu(),
       body: _showSelectedPage(),
       bottomNavigationBar: ConvexAppBar(
         color: Colors.white,
@@ -56,7 +37,7 @@ class _HomePageState extends State<HomePage> {
               activeIcon: Container(
                   padding: EdgeInsets.all(10.0),
                   child: new Image.asset(
-                    "assets/logo.png",
+                    LOGODIRECTORY,
                   )),
               icon: Icons.home),
           TabItem(icon: Icons.bar_chart_sharp)
