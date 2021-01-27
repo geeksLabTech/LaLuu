@@ -9,12 +9,14 @@ class DrawerMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: ListView(
+        padding: EdgeInsets.zero,
         children: [
           DrawerHeader(
             child: Container(),
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage(LOGODIRECTORY), fit: BoxFit.cover)),
+                    image: AssetImage(DRAWERIMAGEDIRECTORY),
+                    fit: BoxFit.cover)),
           ),
           ListTile(
             leading: Icon(
@@ -39,7 +41,9 @@ class DrawerMenu extends StatelessWidget {
               title: Text("Repositorio de github"),
               onTap: () => Get.offNamed(AppRoutes.RELEVANTINFO)),
           Divider(),
-          ListTile(),
+          ListTile(
+            title: Text("Acerca De Nosotros:"),
+          ),
         ],
       ),
     );

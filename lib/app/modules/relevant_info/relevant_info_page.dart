@@ -9,7 +9,7 @@ class RelevantInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Información de interes"),
+        title: Text("Información de Interés"),
         centerTitle: true,
       ),
       drawer: DrawerMenu(),

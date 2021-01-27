@@ -59,7 +59,7 @@ flutter:
     - assets/db/appliance_db.json
     - assets/db/db_test.json
     - assets/logo.png
-  
+    - assets/drawer_image.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

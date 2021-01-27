@@ -4,6 +4,7 @@ const APPLIANCESELECTEDKEY = 'appliance_selected_key';
 const JSONDBDIRECTORY = 'assets/db/appliance_db.json';
 const JSONDBTESTDIRECTORY = 'assets/db/db_test.json';
 const LOGODIRECTORY = 'assets/logo.png';
+const DRAWERIMAGEDIRECTORY = 'assets/drawer_image.jpg';
 
 const IMPORTANTTEXT = """
       Los datos de los equipos mostrados en esta aplicación han sido extraidos de distintas páginas de internet. El cálculo del consumo a partir del uso de cada equipo debe ser tomado con cautela, ya que en determinadas circunstancias puede diferir mucho de la realidad. Ejemplo de esto es que un refrigerador solo consume potencia alrededor de 8 horas al día si nunca se desconecta. 
