@@ -32,7 +32,7 @@ class DrawerMenu extends StatelessWidget {
                 Icons.info,
                 color: Colors.yellow,
               ),
-              title: Text("Información de interés"),
+              title: Text("Información de Interés"),
               onTap: () => Get.offNamed(AppRoutes.RELEVANTINFO)),
           ListTile(
             leading: Icon(
