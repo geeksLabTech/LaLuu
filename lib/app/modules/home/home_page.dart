@@ -85,10 +85,4 @@ class _HomePageState extends State<HomePage> {
         break;
     }
   }
-
-  generateSocialLinks() {
-    return [
-      Text('www.github.com'),
-    ];
-  }
 }

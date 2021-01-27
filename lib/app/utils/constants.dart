@@ -16,6 +16,8 @@ const IMPORTANTURLS = [
   "https://procoen.com/9-factores-energia-en-aire-acondicionado/"
 ];
 
+const SOCIALLINKS = {"github": "www.github.com/geeksLabTech/LaLuu"};
+
 const List<double> PRICES = [
   0.33,
   1.07,
