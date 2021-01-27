@@ -1,6 +1,7 @@
 import 'package:LaLuu/app/routes/app_routes.dart';
 import 'package:LaLuu/app/utils/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
 class DrawerMenu extends StatelessWidget {
@@ -29,7 +30,16 @@ class DrawerMenu extends StatelessWidget {
                 color: Colors.yellow,
               ),
               title: Text("Información de interes"),
-              onTap: () => Get.offNamed(AppRoutes.RELEVANTINFO))
+              onTap: () => Get.offNamed(AppRoutes.RELEVANTINFO)),
+          ListTile(
+              leading: Icon(
+                FontAwesomeIcons.github,
+                color: Colors.yellow,
+              ),
+              title: Text("Repositorio de github"),
+              onTap: () => Get.offNamed(AppRoutes.RELEVANTINFO)),
+          Divider(),
+          ListTile(),
         ],
       ),
     );
