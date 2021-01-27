@@ -8,12 +8,14 @@ class DrawerMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: ListView(
+        padding: EdgeInsets.zero,
         children: [
           DrawerHeader(
             child: Container(),
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage(LOGODIRECTORY), fit: BoxFit.cover)),
+                    image: AssetImage(DRAWERIMAGEDIRECTORY),
+                    fit: BoxFit.cover)),
           ),
           ListTile(
             leading: Icon(
@@ -28,7 +30,7 @@ class DrawerMenu extends StatelessWidget {
                 Icons.info,
                 color: Colors.yellow,
               ),
-              title: Text("Información de interes"),
+              title: Text("Información de Interés"),
               onTap: () => Get.offNamed(AppRoutes.RELEVANTINFO))
         ],
       ),

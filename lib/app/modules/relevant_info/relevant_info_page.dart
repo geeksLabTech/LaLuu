@@ -1,7 +1,6 @@
 import 'package:LaLuu/app/utils/constants.dart';
 import 'package:LaLuu/app/utils/widgets/drawer_menu.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class RelevantInfo extends StatelessWidget {
@@ -9,7 +8,7 @@ class RelevantInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Información de interes"),
+        title: Text("Información de Interés"),
         centerTitle: true,
       ),
       drawer: DrawerMenu(),
