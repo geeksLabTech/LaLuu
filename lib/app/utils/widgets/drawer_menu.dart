@@ -32,7 +32,7 @@ class DrawerMenu extends StatelessWidget {
                 Icons.info,
                 color: Colors.yellow,
               ),
-              title: Text("Información de interes"),
+              title: Text("Información de interés"),
               onTap: () => Get.offNamed(AppRoutes.RELEVANTINFO)),
           ListTile(
             leading: Icon(
@@ -43,49 +43,49 @@ class DrawerMenu extends StatelessWidget {
             onTap: () => _launchUrl(SOCIALLINKS["github"]),
           ),
           // onTap: () => Get.offNamed(AppRoutes.RELEVANTINFO)),
-          Divider(),
-          Container(
-            child: Column(
-              children: [
-                Container(
-                  padding: EdgeInsets.all(10.0),
-                  child: Align(
-                    child: Text(
-                      "Acerca de Nosotros:",
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.left,
-                    ),
-                    alignment: Alignment.topLeft,
-                  ),
-                ),
-                _generateContributor("Javier A. Oramas López", "Developer"),
-                _generateContributor("Daniel A. Cardenas Cabrera", "Developer"),
-                _generateContributor("Isabel Alvarez Gonzalez", "Diseñadora"),
-              ],
-            ),
-          )
+          // Divider(),
+          // Container(
+          //   child: Column(
+          //     children: [
+          //       Container(
+          //         padding: EdgeInsets.all(10.0),
+          //         child: Align(
+          //           child: Text(
+          //             "Acerca de Nosotros:",
+          //             style: TextStyle(fontWeight: FontWeight.bold),
+          //             textAlign: TextAlign.left,
+          //           ),
+          //           alignment: Alignment.topLeft,
+          //         ),
+          //       ),
+          //       _generateContributor("Javier A. Oramas López", "Developer"),
+          //       _generateContributor("Daniel A. Cardenas Cabrera", "Developer"),
+          //       _generateContributor("Isabel Alvarez Gonzalez", "Diseñadora"),
+          //     ],
+          //   ),
+          // )
         ],
       ),
     );
   }
 
-  _generateContributor(String name, String ocupation) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-      child: Align(
-        alignment: Alignment.topLeft,
-        child: Column(
-          children: [
-            Text(name),
-            Text(
-              ocupation,
-              style: TextStyle(fontSize: 12.0),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+  // _generateContributor(String name, String ocupation) {
+  //   return Container(
+  //     padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+  //     child: Align(
+  //       alignment: Alignment.topLeft,
+  //       child: Column(
+  //         children: [
+  //           Text(name),
+  //           Text(
+  //             ocupation,
+  //             style: TextStyle(fontSize: 12.0),
+  //           ),
+  //         ],
+  //       ),
+  //     ),
+  //   );
+  // }
 
   _launchUrl(String url) async {
     if (await canLaunch(url)) {
