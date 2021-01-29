@@ -16,7 +16,7 @@ class _AppliancePageState extends State<AppliancePage> {
     applianceController = Get.find<ApplianceController>();
     return Scaffold(
       appBar: AppBar(
-        title: Text('Seleccion de Equipo'),
+        title: Text('Selección de Equipo'),
         centerTitle: true,
         actions: [
           IconButton(
