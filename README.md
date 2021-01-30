@@ -3,8 +3,8 @@
 LaLuu es una herramienta para controlar y estimar el gasto de corriente eléctrica en Cuba, acorde a las nuevas tarifas aprobadas pos la UNE en el nuevo ordenamiento económico 
 
 ## Desarrolladores
-- Daniel A. Cardenas Cabrera <\br>
-- Javier A. Oramas López <\br>
+- Daniel A. Cardenas Cabrera
+- Javier A. Oramas López 
 
 ## Diseño
-- Isabel Alvarez González<\br>
+- Isabel Alvarez González
