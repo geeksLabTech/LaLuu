@@ -1,10 +1,13 @@
+import 'dart:io';
+
+import 'package:grizzly_io/grizzly_io.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:LaLuu/app/data/models/user_appliance_model.dart';
 import 'package:LaLuu/app/data/repositories/local/user_db_repository.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
   UserDbRepository _userDbRepository;
-  // The int represents the db key
   RxList<LoadedUserAppliance> userAppliances;
 
   @override
@@ -21,19 +24,6 @@ class HomeController extends GetxController {
     }
   }
 
-  //int getUserAppliancesLenght() => userAppliances.values.length;
-  /*
-  dynamic getModelKey(UserApplianceModel model) {
-    dynamic modelKey = 0;
-    userAppliances.forEach((key, value) {
-      if (value == model) return key;
-    });
-    return modelKey;
-  }
-
-  List<UserApplianceModel> getUserAppliancesValues() =>
-      userAppliances.values.toList();
-*/
   Future<void> removeAppliance(int key) async {
     await _userDbRepository.removeModel(key);
     for (int i = 0; i < userAppliances.length; i++) {
@@ -46,6 +36,52 @@ class HomeController extends GetxController {
 
   Future<void> deleteDb() async {
     _userDbRepository.delete();
+  }
+
+  Future<File> exportToCsv() async {
+    final directory = await getExternalStorageDirectory();
+    final data = getUserApplianceCsvList(
+        userAppliances.map((e) => e.userApplianceModel));
+    final file = File('${directory.path}/mis_equipos.csv');
+    return file.writeAsString('${encodeCsv(data)}');
+  }
+
+  List<List<String>> getUserApplianceCsvList(
+      Iterable<UserApplianceModel> models) {
+    List<List<String>> data = new List();
+    data.add([
+      'Nombre',
+      'Etiqueta',
+      'Consumo',
+      'Consumo en Standby',
+      'Categoría',
+      'Lunes',
+      'Martes',
+      'Miércoles',
+      'Jueves',
+      'Viernes',
+      'Sábado',
+      'Domingo'
+    ]);
+
+    models.forEach((model) {
+      data.add([
+        model.applianceModel.name,
+        model.tag,
+        model.applianceModel.consumption.toString(),
+        model.applianceModel.standbyConsumption.toString(),
+        model.applianceModel.category,
+        model.usage['Lunes'].toString(),
+        model.usage['Martes'].toString(),
+        model.usage['Miércoles'].toString(),
+        model.usage['Jueves'].toString(),
+        model.usage['Viernes'].toString(),
+        model.usage['Sábado'].toString(),
+        model.usage['Domingo'].toString(),
+      ]);
+    });
+
+    return data;
   }
 }
 

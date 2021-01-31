@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:LaLuu/app/modules/charts/charts_page.dart';
+import 'package:LaLuu/app/modules/home/home_controller.dart';
 import 'package:LaLuu/app/modules/home/local_widgets/appliance_cards_list.dart';
 import 'package:LaLuu/app/modules/tariff/tariff_page.dart';
 import 'package:LaLuu/app/routes/app_routes.dart';
@@ -19,6 +22,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final homeController = Get.find<HomeController>();
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -26,6 +30,30 @@ class _HomePageState extends State<HomePage> {
           style: TextStyle(color: Colors.white),
         ),
         centerTitle: true,
+        actions: [
+          PopupMenuButton(
+            itemBuilder: (c) {
+              return [
+                PopupMenuItem(
+                  textStyle: TextStyle(color: Colors.yellow),
+                  child: Text(
+                    'Exportar CSV',
+                  ),
+                  value: 0,
+                ),
+              ];
+            },
+            onSelected: (int index) async {
+              File file = await homeController.exportToCsv();
+              if (file != null) {
+                Get.dialog(
+                    Text('Los datos han sido exportados satisfactoriamente'));
+              } else {
+                Get.dialog(Text("Ha ocurrido un error al exportar los datos"));
+              }
+            },
+          )
+        ],
       ),
       drawer: DrawerMenu(),
       body: _showSelectedPage(),
