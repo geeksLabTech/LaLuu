@@ -1,4 +1,7 @@
+import 'package:apklis_api/apklis_api.dart';
+import 'package:dio/dio.dart';
 import 'package:get/get.dart';
+import 'package:package_info/package_info.dart';
 
 import 'constants.dart';
 
@@ -21,4 +24,14 @@ List<double> electricityCost(double consumption) {
   }
   slices.sort();
   return slices;
+}
+
+Future<bool> isAppUpdateAvaliable() async {
+  var apklisApi = ApklisApi(dioClient: Dio());
+  var info = await apklisApi.get(['com.geeksLabTech.LaLuu']);
+  var app = info.result.results[0];
+  int lastVersionCode = app.lastRelease.versionCode;
+  PackageInfo packageInfo = await PackageInfo.fromPlatform();
+  int actualVersionCode = int.parse(packageInfo.buildNumber);
+  print('$lastVersionCode' + 'y' + '$actualVersionCode');
 }

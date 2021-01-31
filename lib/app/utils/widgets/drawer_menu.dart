@@ -1,5 +1,6 @@
 import 'package:LaLuu/app/routes/app_routes.dart';
 import 'package:LaLuu/app/utils/constants.dart';
+import 'package:LaLuu/app/utils/functions.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -42,6 +43,11 @@ class DrawerMenu extends StatelessWidget {
             title: Text("Repositorio de Github"),
             onTap: () => _launchUrl(SOCIALLINKS["github"]),
           ),
+          ListTile(
+            leading: Icon(Icons.upgrade, color: Colors.yellow),
+            title: Text('Comprobar si hay actualizaciones'),
+            onTap: () => isAppUpdateAvaliable(),
+          )
           // onTap: () => Get.offNamed(AppRoutes.RELEVANTINFO)),
           // Divider(),
           // Container(
